@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <!-- Clean Spex Monogram -->
+  <g transform="translate(10, 16)">
+    <rect x="0" y="0" width="48" height="48" rx="10" fill="#0F1015" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <path d="M16 16 L9 24 L16 32" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M26 13 L22 35" stroke="#E7FE00" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M32 16 L39 24 L32 32" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- SPURX Wordmark -->
+  <g fill="white" font-family="'Syne', 'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="36" letter-spacing="4">
+    <text x="74" y="52" fill="#FFFFFF">SPUR</text>
+    <text x="210" y="52" fill="#E7FE00">X</text>
+  </g>
+
+  <circle cx="288" cy="34" r="3" fill="#E7FE00"/>
+</svg>
