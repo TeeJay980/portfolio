@@ -39,12 +39,12 @@ export const ProjectsGrid = ({ onSelectProject }) => {
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex overflow-x-auto no-scrollbar sm:flex-wrap items-center gap-2 pb-1 -mx-4 px-4 sm:mx-0 sm:px-0">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all flex-shrink-0 ${
                   activeFilter === cat
                     ? 'bg-white text-black font-bold shadow-md'
                     : 'bg-spex-surface text-spex-muted hover:text-white border border-white/[0.08]'

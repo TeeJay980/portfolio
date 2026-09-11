@@ -9,7 +9,7 @@ export const FloatingContactDock = ({ onOpenEmail }) => {
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${prefilledMessage}`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-2.5 sm:gap-3 pb-[env(safe-area-inset-bottom)]">
       
       {/* 1. WhatsApp Button (Top) */}
       <div className="flex items-center gap-3">
