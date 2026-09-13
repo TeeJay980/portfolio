@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, ExternalLink } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { PROJECTS } from '../data/developerData';
 
 export const LuziaProjects = ({ onSelectProject }) => {
   const [activeFilter, setActiveFilter] = useState('All');
-  const categories = ['All', 'Full-Stack SaaS', 'E-Commerce', 'Web Applications'];
+  const categories = ['All', 'Framer Website', 'SaaS', 'Travel', 'E-commerce'];
 
   const filteredProjects = activeFilter === 'All'
     ? PROJECTS
-    : PROJECTS.filter((p) => p.category.toLowerCase().includes(activeFilter.toLowerCase()) || activeFilter === 'All');
+    : PROJECTS.filter((p) => p.category.toLowerCase().includes(activeFilter.toLowerCase()) || (p.secondaryCategory && p.secondaryCategory.toLowerCase().includes(activeFilter.toLowerCase())));
 
   return (
     <section id="projects" className="py-12 sm:py-20 relative">
@@ -22,7 +22,7 @@ export const LuziaProjects = ({ onSelectProject }) => {
               Selected Works
             </h2>
             <p className="text-xs sm:text-sm text-[#6c7179] mt-1">
-              Production web applications and live client systems engineered by TeeJay.
+              A curation of digital products, Framer websites, and SaaS platforms.
             </p>
           </div>
 
@@ -47,7 +47,7 @@ export const LuziaProjects = ({ onSelectProject }) => {
         {/* 2-Column Grid with Luzia rounded-[32px] cards */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           <AnimatePresence>
-            {filteredProjects.map((project, idx) => (
+            {filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
                 layout
@@ -73,28 +73,26 @@ export const LuziaProjects = ({ onSelectProject }) => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
 
                     {/* Category Pill Tag */}
-                    <div className="absolute top-3.5 left-3.5 z-10">
+                    <div className="absolute top-3.5 left-3.5 z-10 flex items-center gap-1.5">
                       <span className="px-3 py-1 rounded-full text-[11px] font-semibold bg-white/95 backdrop-blur-md text-[#0c0c0c] border border-black/[0.06] shadow-sm">
                         {project.category}
                       </span>
+                      {project.secondaryCategory && (
+                        <span className="px-3 py-1 rounded-full text-[11px] font-medium bg-black/40 backdrop-blur-md text-white border border-white/10 shadow-sm hidden sm:inline-block">
+                          {project.secondaryCategory}
+                        </span>
+                      )}
                     </div>
 
-                    {/* Live Link Button */}
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="absolute top-3.5 right-3.5 z-10 p-2.5 rounded-full bg-black/80 hover:bg-black text-white transition-all transform hover:scale-105 shadow-md active:scale-95"
-                      title="Open Live Website"
-                    >
+                    {/* View Button */}
+                    <div className="absolute top-3.5 right-3.5 z-10 p-2.5 rounded-full bg-black/80 hover:bg-black text-white transition-all transform hover:scale-105 shadow-md active:scale-95">
                       <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
-                    </a>
+                    </div>
                   </div>
 
                   {/* Project Details */}
                   <div className="mt-4 px-1">
-                    <h3 className="text-lg sm:text-xl font-display font-bold text-[#0c0c0c] group-hover:text-[#6E2CF4] transition-colors">
+                    <h3 className="text-lg sm:text-xl font-display font-bold text-[#0c0c0c] group-hover:text-neutral-700 transition-colors">
                       {project.title}
                     </h3>
 
@@ -102,35 +100,39 @@ export const LuziaProjects = ({ onSelectProject }) => {
                       {project.description}
                     </p>
 
-                    {/* Tech stack pills */}
+                    {/* Deliverables / Tech pills */}
                     <div className="mt-3.5 flex flex-wrap gap-1.5">
-                      {project.techStack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-neutral-100 text-neutral-700 border border-black/[0.04]"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                      {project.deliverables ? (
+                        project.deliverables.slice(0, 3).map((item) => (
+                          <span
+                            key={item}
+                            className="px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-neutral-100 text-neutral-700 border border-black/[0.04]"
+                          >
+                            {item}
+                          </span>
+                        ))
+                      ) : (
+                        project.techStack.slice(0, 3).map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-neutral-100 text-neutral-700 border border-black/[0.04]"
+                          >
+                            {tech}
+                          </span>
+                        ))
+                      )}
                     </div>
                   </div>
                 </div>
 
                 {/* Bottom Actions */}
                 <div className="mt-5 pt-3.5 border-t border-neutral-100 flex items-center justify-between px-1">
-                  <a
-                    href={project.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#6E2CF4] hover:underline"
-                  >
-                    <span>Visit Live App</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
+                  <span className="text-xs font-bold text-[#0c0c0c] group-hover:underline">
+                    View Project Case
+                  </span>
 
                   <span className="text-xs font-semibold text-neutral-400 group-hover:text-neutral-900 transition-colors">
-                    View Case Study →
+                    {project.year} • {project.client}
                   </span>
                 </div>
 

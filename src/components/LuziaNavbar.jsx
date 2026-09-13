@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, Search, Menu, X, MessageCircle } from 'lucide-react';
-import { WHATSAPP_URL } from '../config';
+import { ArrowUpRight, Search, Menu, X } from 'lucide-react';
+import { DEVELOPER_INFO } from '../data/developerData';
 
 export const LuziaNavbar = ({ onOpenBooking, onOpenPalette }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -33,12 +33,12 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette }) => {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
-          {/* Left: Brand / Developer Name */}
+          {/* Left: Brand / Designer Name */}
           <Link
             to="/"
             className="flex items-center gap-2 group font-display font-bold text-sm sm:text-base tracking-tight text-[#0c0c0c] hover:opacity-80 transition-opacity"
           >
-            <span>TERRENCE J. MARK</span>
+            <span>{DEVELOPER_INFO.name.toUpperCase()}</span>
           </Link>
 
           {/* Center: Exact Nav Links (Work, About, Contact) */}
@@ -74,16 +74,16 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette }) => {
                       >
                         <div className="aspect-[4/3] rounded-xl overflow-hidden bg-neutral-900 mb-2">
                           <img
-                            src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=400&auto=format&fit=crop&q=80"
-                            alt="TeeJay"
+                            src={DEVELOPER_INFO.portrait}
+                            alt={DEVELOPER_INFO.name}
                             className="w-full h-full object-cover"
                           />
                         </div>
                         <p className="text-[11px] font-semibold text-neutral-900 leading-tight">
-                          TERRENCE J. MARK
+                          {DEVELOPER_INFO.name.toUpperCase()}
                         </p>
                         <p className="text-[10px] text-neutral-500 mt-0.5">
-                          Full-Stack Architect • Abuja, NG
+                          {DEVELOPER_INFO.role}
                         </p>
                       </motion.div>
                     )}
@@ -145,22 +145,14 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette }) => {
                   <ArrowUpRight className="w-4 h-4 text-neutral-400" />
                 </Link>
               ))}
-              <div className="pt-3 border-t border-black/[0.06] flex gap-2">
+              <div className="pt-3 border-t border-black/[0.06]">
                 <button
                   onClick={() => { setMobileMenuOpen(false); onOpenBooking(); }}
-                  className="flex-1 py-3 rounded-2xl bg-[#0c0c0c] text-white font-bold text-xs flex items-center justify-center gap-2"
+                  className="w-full py-3 rounded-2xl bg-[#0c0c0c] text-white font-bold text-xs flex items-center justify-center gap-2"
                 >
-                  <span>Start Project</span>
+                  <span>Get In Touch</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </button>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-2xl bg-[#25D366] text-white flex items-center justify-center"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                </a>
               </div>
             </div>
           </motion.div>

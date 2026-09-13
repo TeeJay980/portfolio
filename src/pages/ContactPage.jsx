@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Send, CheckCircle2, MessageCircle, Mail, MapPin, Clock } from 'lucide-react';
+import { ArrowUpRight, Send, CheckCircle2, Mail, MapPin, Calendar } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { WHATSAPP_URL, GITHUB_URL } from '../config';
+import { EMAIL_ADDRESS, CAL_URL } from '../config';
 import { LuziaFAQ } from '../components/LuziaFAQ';
 import { DevFooter } from '../components/DevFooter';
 
@@ -10,7 +10,7 @@ export const ContactPage = ({ onOpenBooking, onOpenEmail }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    projectType: 'Full-Stack Web App (SaaS)',
+    projectType: 'Framer Website',
     details: ''
   });
   const [submitted, setSubmitted] = useState(false);
@@ -35,48 +35,51 @@ export const ContactPage = ({ onOpenBooking, onOpenEmail }) => {
               <span>LET'S TALK</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-display font-black text-[#0c0c0c] tracking-tight leading-[1.1]">
-              Have a project? <br />
-              <span className="text-[#8e8e93] font-normal">Let's connect.</span>
+            <h1 className="text-3xl sm:text-5xl font-display font-extrabold text-[#0c0c0c] tracking-tight leading-[1.1]">
+              Let’s build something <br />
+              <span className="text-[#8e8e93] font-normal">great together.</span>
             </h1>
 
             <p className="text-sm text-[#6c7179] mt-4 leading-relaxed font-normal">
-              Whether you are looking to build a new SaaS product, scale frontend architecture, or launch a modern storefront, I am available for new initiatives.
+              Have a project in mind or want to explore how we can collaborate? Fill out the form or book a quick 15-minute call.
             </p>
 
             <div className="mt-8 space-y-4">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-4 rounded-2xl bg-white border border-black/[0.06] shadow-sm flex items-center gap-3 hover:border-black/20 transition-all group"
+              <div
+                onClick={onOpenBooking}
+                className="p-5 rounded-2xl bg-white border border-black/[0.06] shadow-sm flex items-center justify-between hover:border-black/20 transition-all cursor-pointer group"
               >
-                <div className="p-2.5 rounded-xl bg-[#25D366]/10 text-[#25D366]">
-                  <MessageCircle className="w-5 h-5" />
+                <div className="flex items-center gap-3.5">
+                  <div className="p-3 rounded-xl bg-neutral-100 text-neutral-900">
+                    <Calendar className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-mono text-neutral-400 block uppercase">Schedule a Meeting</span>
+                    <span className="text-xs sm:text-sm font-bold text-neutral-900 group-hover:text-black">15-Min Intro Call</span>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-[10px] font-mono text-neutral-400 block uppercase">WhatsApp Direct</span>
-                  <span className="text-xs sm:text-sm font-bold text-neutral-900 group-hover:text-[#25D366] transition-colors">+234 809 144 1008</span>
-                </div>
-              </a>
-
-              <div className="p-4 rounded-2xl bg-white border border-black/[0.06] shadow-sm flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-blue-50 text-blue-600">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div>
-                  <span className="text-[10px] font-mono text-neutral-400 block uppercase">Direct Inbox</span>
-                  <span className="text-xs sm:text-sm font-bold text-neutral-900">mctjay80@gmail.com</span>
+                <div className="p-2 rounded-full bg-neutral-100 group-hover:bg-black group-hover:text-white transition-colors">
+                  <ArrowUpRight className="w-4 h-4" />
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white border border-black/[0.06] shadow-sm flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-purple-50 text-[#6E2CF4]">
+              <div className="p-5 rounded-2xl bg-white border border-black/[0.06] shadow-sm flex items-center gap-3.5">
+                <div className="p-3 rounded-xl bg-neutral-100 text-neutral-900">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-[11px] font-mono text-neutral-400 block uppercase">Direct Email</span>
+                  <span className="text-xs sm:text-sm font-bold text-neutral-900">{EMAIL_ADDRESS}</span>
+                </div>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-white border border-black/[0.06] shadow-sm flex items-center gap-3.5">
+                <div className="p-3 rounded-xl bg-neutral-100 text-neutral-900">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono text-neutral-400 block uppercase">Location</span>
-                  <span className="text-xs sm:text-sm font-bold text-neutral-900">Abuja, Nigeria • Remote Worldwide</span>
+                  <span className="text-[11px] font-mono text-neutral-400 block uppercase">Location</span>
+                  <span className="text-xs sm:text-sm font-bold text-neutral-900">San Francisco, CA • Remote Worldwide</span>
                 </div>
               </div>
             </div>
@@ -90,25 +93,23 @@ export const ContactPage = ({ onOpenBooking, onOpenEmail }) => {
                   <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-4 border border-emerald-200">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="text-2xl font-display font-extrabold text-[#0c0c0c]">Message Dispatched</h3>
+                  <h3 className="text-2xl font-display font-extrabold text-[#0c0c0c]">Message Received</h3>
                   <p className="mt-2 text-[#6c7179] text-sm max-w-sm mx-auto leading-relaxed">
-                    Thank you, <span className="font-bold text-[#0c0c0c]">{formData.name}</span>. I have received your brief and will reply within 12 hours.
+                    Thank you, <span className="font-bold text-[#0c0c0c]">{formData.name}</span>. I have received your inquiry and will reply shortly.
                   </p>
-                  <div className="mt-8 flex justify-center gap-3">
-                    <a
-                      href={WHATSAPP_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-6 py-3 rounded-full bg-[#25D366] text-white font-bold text-xs flex items-center gap-2 shadow-sm"
+                  <div className="mt-8 flex justify-center">
+                    <button
+                      onClick={onOpenBooking}
+                      className="px-6 py-3 rounded-full bg-[#0c0c0c] text-white font-bold text-xs flex items-center gap-2 shadow-sm"
                     >
-                      <MessageCircle className="w-4 h-4 fill-white" />
-                      <span>Chat on WhatsApp</span>
-                    </a>
+                      <span>Book a 15-Min Call</span>
+                      <ArrowUpRight className="w-4 h-4" />
+                    </button>
                   </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <h3 className="text-xl font-display font-bold text-[#0c0c0c] mb-4">Send an Inquiry</h3>
+                  <h3 className="text-xl font-display font-bold text-[#0c0c0c] mb-4">Send a Message</h3>
 
                   <div>
                     <label className="block text-xs font-semibold text-neutral-700 mb-1.5">Your Name</label>
@@ -118,7 +119,7 @@ export const ContactPage = ({ onOpenBooking, onOpenEmail }) => {
                       placeholder="e.g. Alex Morgan"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-2xl bg-neutral-50 border border-neutral-200 text-neutral-900 text-xs focus:outline-none focus:border-[#6E2CF4] focus:bg-white transition-all"
+                      className="w-full px-4 py-3.5 rounded-2xl bg-neutral-50 border border-neutral-200 text-neutral-900 text-xs focus:outline-none focus:border-black focus:bg-white transition-all"
                     />
                   </div>
 
@@ -130,7 +131,7 @@ export const ContactPage = ({ onOpenBooking, onOpenEmail }) => {
                       placeholder="alex@company.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-2xl bg-neutral-50 border border-neutral-200 text-neutral-900 text-xs focus:outline-none focus:border-[#6E2CF4] focus:bg-white transition-all"
+                      className="w-full px-4 py-3.5 rounded-2xl bg-neutral-50 border border-neutral-200 text-neutral-900 text-xs focus:outline-none focus:border-black focus:bg-white transition-all"
                     />
                   </div>
 
@@ -139,24 +140,24 @@ export const ContactPage = ({ onOpenBooking, onOpenEmail }) => {
                     <select
                       value={formData.projectType}
                       onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-2xl bg-neutral-50 border border-neutral-200 text-neutral-900 text-xs focus:outline-none focus:border-[#6E2CF4] focus:bg-white transition-all"
+                      className="w-full px-4 py-3.5 rounded-2xl bg-neutral-50 border border-neutral-200 text-neutral-900 text-xs focus:outline-none focus:border-black focus:bg-white transition-all"
                     >
-                      <option value="Full-Stack Web App (SaaS)">Full-Stack Web App (SaaS)</option>
-                      <option value="Frontend Architecture & UI/UX">Frontend Architecture & UI/UX</option>
-                      <option value="Rapid Startup MVP Builder">Rapid Startup MVP Builder</option>
-                      <option value="E-Commerce & Performance Optimization">E-Commerce & Performance Optimization</option>
+                      <option value="Framer Website">Framer Website Development</option>
+                      <option value="Product Design & SaaS">Product Design & SaaS UI/UX</option>
+                      <option value="Branding & Identity">Branding & Visual Identity</option>
+                      <option value="Design System & Consulting">Design System & Consulting</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-neutral-700 mb-1.5">Project Brief</label>
+                    <label className="block text-xs font-semibold text-neutral-700 mb-1.5">Project Details</label>
                     <textarea
                       rows={4}
                       required
-                      placeholder="Tell me about what you want to build, timelines, and requirements..."
+                      placeholder="Tell me about your goals, timeline, and deliverables..."
                       value={formData.details}
                       onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-2xl bg-neutral-50 border border-neutral-200 text-neutral-900 text-xs focus:outline-none focus:border-[#6E2CF4] focus:bg-white transition-all resize-none"
+                      className="w-full px-4 py-3.5 rounded-2xl bg-neutral-50 border border-neutral-200 text-neutral-900 text-xs focus:outline-none focus:border-black focus:bg-white transition-all resize-none"
                     />
                   </div>
 
@@ -164,7 +165,7 @@ export const ContactPage = ({ onOpenBooking, onOpenEmail }) => {
                     type="submit"
                     className="w-full py-4 rounded-2xl bg-[#0c0c0c] hover:bg-neutral-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md active:scale-98 transition-all"
                   >
-                    <span>Send Project Inquiry</span>
+                    <span>Send Message</span>
                     <Send className="w-3.5 h-3.5" />
                   </button>
                 </form>

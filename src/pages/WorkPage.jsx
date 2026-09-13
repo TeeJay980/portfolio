@@ -14,15 +14,15 @@ export const WorkPage = ({ onSelectProject, onOpenBooking, onOpenEmail }) => {
           className="max-w-2xl"
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-black/[0.06] text-xs font-semibold text-[#0c0c0c] shadow-sm mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#6E2CF4]" />
+            <span className="w-2 h-2 rounded-full bg-black" />
             <span>PORTFOLIO & CASE STUDIES</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-display font-black text-[#0c0c0c] tracking-tight leading-[1.1]">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold text-[#0c0c0c] tracking-tight leading-[1.1]">
             Selected Works & <br />
-            <span className="text-[#8e8e93] font-normal">Shipped Systems.</span>
+            <span className="text-[#8e8e93] font-normal">Digital Products.</span>
           </h1>
           <p className="text-sm sm:text-base text-[#6c7179] mt-3 leading-relaxed">
-            A curation of real-world production web applications, SaaS platforms, and client storefronts.
+            A curation of bespoke Framer websites, SaaS platforms, and digital product experiences designed for modern brands.
           </p>
         </motion.div>
       </div>

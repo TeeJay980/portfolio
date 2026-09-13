@@ -1,225 +1,311 @@
-// SPURX Full-Stack Web Developer & Creative Technologist Portfolio Data
+// Luzia Portfolio Data — Michael Carter (Digital Product Designer)
+
+export const DEVELOPER_INFO = {
+  name: 'Michael Carter',
+  shortName: 'Carter',
+  role: 'Digital Product Designer',
+  status: '2 projects left in March',
+  location: 'San Francisco, CA • Remote Worldwide',
+  email: 'hello@michaelcarter.design',
+  secondaryEmail: 'carter.design@studio.com',
+  calUrl: 'https://cal.com/michaelcarter/15min',
+  heroHeadline: 'Carter is solving problems through strategic design and compelling visuals.',
+  heroBio: 'As a digital product designer with a strong focus on visual design and Framer websites, he collaborates closely with teams to craft seamless, user-centered experiences. A reliable partner in bringing ideas to life.',
+  aboutStory: 'Michael Carter is a digital product designer with 5+ years of experience helping startups and established brands build intuitive, impactful digital experiences. From early design concepts to pixel-perfect Framer websites, Carter combines strategic thinking with aesthetic craftsmanship.',
+  aboutSubStory: 'He works closely with founders and creative teams to transform complex challenges into clean, accessible products that users love.',
+  avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80',
+  portrait: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80'
+};
 
 export const PROJECTS = [
   {
-    id: 'proj-oriflame',
-    title: 'Oriflame Abuja — Swedish Beauty & Cosmetics',
-    category: 'E-Commerce',
-    tagline: 'Luxury cosmetics storefront with interactive product catalogue drawer',
-    description: 'High-aesthetic Swedish beauty & luxury fragrance storefront featuring an interactive slide-out product catalogue, real-time consultation booking, and fast mobile navigation.',
-    longDescription: 'Architected responsive luxury storefront with custom typography, modal product views, dynamic category filters, and seamless WhatsApp order dispatch for Abuja flagship store.',
+    id: 'pulma',
+    title: 'Pulma',
+    category: 'Framer Website',
+    secondaryCategory: 'Web Design',
+    tagline: 'A calm, modern website template built for creative agencies',
+    description: 'A calm, modern website template built for creative agencies, design studios, and freelance professionals to showcase their work with elegance and clarity.',
+    longDescription: 'Pulma was designed as a bespoke portfolio and agency showcase built natively in Framer. It features fluid kinetic typography, minimalist grid systems, dynamic CMS case studies, and custom interactive components for high-conversion design presentations.',
     stats: {
-      lighthouse: '100',
-      activeUsers: '10K+',
-      speedIndex: '0.6s'
+      timeline: '2 Weeks',
+      platform: 'Framer CMS',
+      rating: '5.0 / 5.0'
     },
-    techStack: ['JavaScript', 'CSS3', 'Glassmorphism', 'Catalogue Drawer API', 'Responsive UI'],
-    image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&auto=format&fit=crop&q=80',
-    demoUrl: 'https://saved-cancel.vercel.app/',
-    githubUrl: 'https://github.com/TeeJay980',
-    featured: true,
-    year: '2025'
+    client: 'Pulma Studio',
+    year: '2024',
+    role: 'Visual Design & Framer Dev',
+    deliverables: ['Design System', 'Responsive Website', 'Interactive CMS', 'Custom Micro-animations'],
+    techStack: ['Framer', 'Design Tokens', 'CMS Architecture', 'Figma Prototyping', 'Responsive UI'],
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80',
+    demoUrl: 'https://luzia.framer.website/works/pulma',
+    featured: true
   },
   {
-    id: 'proj-edu-admin',
-    title: 'EduPortal — School Management Admin System',
-    category: 'Full-Stack SaaS',
-    tagline: 'Comprehensive school admin dashboard with PCB circuit UI & Cloudflare Turnstile',
-    description: 'Full-featured academic management dashboard for administrators and staff, handling student grading, attendance tracking, fee invoicing, and secure bot-protected login.',
-    longDescription: 'Engineered an interactive dashboard application featuring SVG PCB circuit traces, modular view transitions, Cloudflare Turnstile bot verification, and data table filtering.',
+    id: 'lumex',
+    title: 'LumeX',
+    category: 'SaaS',
+    secondaryCategory: 'Dashboard Design',
+    tagline: 'A powerful SaaS platform designed to help businesses streamline data management',
+    description: 'A powerful SaaS platform designed to help businesses streamline data management and analytics through an intuitive, modern dashboard interface.',
+    longDescription: 'LumeX provides real-time financial telemetry and machine learning analytics for high-growth tech enterprises. Designed with high-density data visualization, customizable widgets, and dark mode palette for seamless data exploration.',
     stats: {
-      lighthouse: '99',
-      activeUsers: '5K+',
-      uptime: '99.9%'
+      timeline: '4 Weeks',
+      platform: 'Web & Dashboard',
+      efficiency: '+38% Flow'
     },
-    techStack: ['JavaScript', 'Dashboard Architecture', 'Cloudflare Turnstile', 'SVG Animations', 'Data Tables'],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80',
-    demoUrl: 'https://school-portal-two-mu.vercel.app/',
-    githubUrl: 'https://github.com/TeeJay980',
-    featured: true,
-    year: '2025'
+    client: 'LumeX Technologies',
+    year: '2024',
+    role: 'Product Design & UI System',
+    deliverables: ['SaaS Platform UI', 'Design Tokens', 'Data Visualization', 'Interactive Wireframes'],
+    techStack: ['Figma', 'UI/UX Design', 'Design System', 'Data Telemetry', 'Micro-interactions'],
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80',
+    demoUrl: 'https://luzia.framer.website/works/lumex',
+    featured: true
   },
   {
-    id: 'proj-edu-student',
-    title: 'EduPortal — Student Self-Service Portal',
-    category: 'Web Applications',
-    tagline: 'Mobile-first student portal for academic grades, timetables & tuition billing',
-    description: 'Dedicated student portal enabling students to check exam results, download course materials, view class schedules, and review fee statements with PWA capabilities.',
-    longDescription: 'Crafted with dark-mode aesthetic, manifest-enabled PWA features, secure authentication with Cloudflare Turnstile, and responsive timetable views.',
+    id: 'planza',
+    title: 'Planza',
+    category: 'Framer Website',
+    secondaryCategory: 'Event Platform',
+    tagline: 'A dynamic event planning platform for memorable experiences',
+    description: 'A dynamic event planning platform that helps individuals and businesses organize, promote, and manage memorable experiences with ease.',
+    longDescription: 'Engineered for modern event curators and global conferences, Planza simplifies attendee ticketing, speaker itineraries, interactive venue mapping, and live registration with an engaging visual identity.',
     stats: {
-      lighthouse: '100',
-      speedIndex: '0.5s',
-      testCoverage: '95%'
+      timeline: '3 Weeks',
+      platform: 'Framer & Web App',
+      users: '100K+ Attendees'
     },
-    techStack: ['PWA', 'JavaScript', 'CSS Design System', 'Cloudflare Security', 'Responsive UI'],
-    image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop&q=80',
-    demoUrl: 'https://school-portal-ecxr.vercel.app/',
-    githubUrl: 'https://github.com/TeeJay980',
-    featured: true,
-    year: '2025'
+    client: 'Planza Inc.',
+    year: '2024',
+    role: 'Brand Strategy & Framer Build',
+    deliverables: ['Brand Identity', 'Event Management UI', 'Interactive Schedule', 'Mobile Viewport'],
+    techStack: ['Framer', 'Figma', 'Interaction Design', 'Event Architecture', 'Brand Strategy'],
+    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&auto=format&fit=crop&q=80',
+    demoUrl: 'https://luzia.framer.website/works/planza',
+    featured: true
   },
   {
-    id: 'proj-ivoterngo',
-    title: 'ivoterngo — Volunteer Onboarding Portal',
-    category: 'Web Applications',
-    tagline: 'Community cleaning initiative with country-code phone picker & automated onboarding',
-    description: 'Volunteer recruitment and application portal for community cleaning initiatives across orphanages, public spaces, and auditoriums with international phone validation.',
-    longDescription: 'Developed bespoke volunteer onboarding platform with warm editorial typography, intl-tel-input country phone formatting, Cloudflare Turnstile protection, and step validation.',
+    id: 'horizon-atlas',
+    title: 'Horizon Atlas',
+    category: 'Travel',
+    secondaryCategory: 'Web Design',
+    tagline: 'Personalized travel itineraries and curation for modern explorers',
+    description: 'A travel platform that curates personalized itineraries for modern explorers, blending rich visuals with seamless trip-planning tools.',
+    longDescription: 'Horizon Atlas combines editorial travel photography with interactive maps and smart scheduling algorithms to deliver bespoke adventure guides across 80+ countries.',
     stats: {
-      lighthouse: '100',
-      conversionRate: '+45%',
-      speedIndex: '0.4s'
+      timeline: '3 Weeks',
+      conversion: '+45%',
+      coverage: '80+ Countries'
     },
-    techStack: ['JavaScript', 'Intl-Tel-Input', 'Cloudflare Turnstile', 'Editorial UI', 'Form Architecture'],
-    image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&auto=format&fit=crop&q=80',
-    demoUrl: 'https://legendary-system-psi.vercel.app/',
-    githubUrl: 'https://github.com/TeeJay980',
-    featured: true,
-    year: '2024'
+    client: 'Horizon Ventures',
+    year: '2023',
+    role: 'UI/UX Design & Prototyping',
+    deliverables: ['Desktop & Mobile Web', 'Dynamic Map UI', 'Itinerary Builder', 'Visual Direction'],
+    techStack: ['Figma', 'Framer', 'Travel UI', 'Map Interactivity', 'Editorial Layouts'],
+    image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&auto=format&fit=crop&q=80',
+    demoUrl: 'https://luzia.framer.website/works/horizon-atlas',
+    featured: true
+  },
+  {
+    id: 'echowear',
+    title: 'EchoWear',
+    category: 'E-commerce',
+    secondaryCategory: 'Branding',
+    tagline: 'Modern e-commerce storefront for next-generation smart apparel',
+    description: 'A modern e-commerce storefront crafted for next-generation smart apparel, featuring immersive product storytelling and seamless checkout.',
+    longDescription: 'Designed for an avant-garde wearable tech brand, EchoWear blends high-fashion editorial layouts with frictionless shopping cart interactions, 3D garment previews, and Apple Pay checkout.',
+    stats: {
+      timeline: '4 Weeks',
+      conversion: '+32%',
+      orders: '10K+/Mo'
+    },
+    client: 'EchoWear Studio',
+    year: '2023',
+    role: 'Brand Identity & E-Commerce',
+    deliverables: ['Storefront Design', 'Lookbook UI', 'Checkout Flow', 'Typography System'],
+    techStack: ['E-Commerce UI', 'Brand Identity', 'Figma', 'Lemon Squeezy', 'Visual Design'],
+    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&auto=format&fit=crop&q=80',
+    demoUrl: 'https://luzia.framer.website/works/echowear',
+    featured: true
+  },
+  {
+    id: 'neurosync',
+    title: 'NeuroSync',
+    category: 'Healthcare',
+    secondaryCategory: 'Mobile App',
+    tagline: 'Cognitive health tracking and daily mental wellness telemetry',
+    description: 'A cognitive health tracking application that integrates biometric telemetry and daily mental wellness routines with precision UI.',
+    longDescription: 'NeuroSync pairs with wearable EEG sensors to give neuroscientists and everyday users real-time insights into cognitive focus, stress mitigation, and sleep cycles.',
+    stats: {
+      timeline: '5 Weeks',
+      rating: '4.9 / 5.0',
+      activeUsers: '50K+'
+    },
+    client: 'NeuroSync Health',
+    year: '2023',
+    role: 'Product Design & Mobile System',
+    deliverables: ['iOS & Android App UI', 'Biometric Dashboards', 'Design System', 'Handoff Spec'],
+    techStack: ['Mobile App Design', 'iOS Guidelines', 'Design System', 'Telemetry Graphs', 'Figma'],
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&auto=format&fit=crop&q=80',
+    demoUrl: 'https://luzia.framer.website/works/neurosync',
+    featured: true
   }
 ];
 
-export const SKILLS_MATRIX = [
-  {
-    category: 'Frontend Engineering',
-    description: 'High-performance, type-safe interfaces built with modern UI frameworks and 60fps micro-interactions.',
-    skills: [
-      { name: 'React 19 / Next.js 15', level: 95 },
-      { name: 'TypeScript & JavaScript (ESNext)', level: 92 },
-      { name: 'Tailwind CSS & Design Systems', level: 96 },
-      { name: 'PWA & Web Performance (Lighthouse 100)', level: 94 }
-    ]
-  },
-  {
-    category: 'Backend & Cloud Infrastructure',
-    description: 'Scalable APIs, distributed database schemas, caching layers, and serverless edge functions.',
-    skills: [
-      { name: 'Node.js / Express & REST APIs', level: 88 },
-      { name: 'PostgreSQL & Prisma ORM', level: 86 },
-      { name: 'Redis Caching & Cloudflare Turnstile', level: 85 },
-      { name: 'Vercel, AWS & CI/CD Pipelines', level: 90 }
-    ]
-  },
-  {
-    category: 'Creative Tech & UI Systems',
-    description: 'Bespoke design token systems, canvas rendering, and high-conversion UX architecture.',
-    skills: [
-      { name: 'UI/UX Architecture & Figma-to-Code', level: 95 },
-      { name: 'SVG Circuits & Web Animations', level: 90 },
-      { name: 'Security (Cloudflare, CSP & Auth)', level: 88 },
-      { name: 'Cross-Browser & Mobile Touch UX', level: 96 }
-    ]
-  }
+export const CLIENT_LOGOS = [
+  { name: 'Planza', label: 'Planza' },
+  { name: 'Horizon', label: 'Horizon' },
+  { name: 'EchoWear', label: 'EchoWear' },
+  { name: 'LumeX', label: 'LumeX' },
+  { name: 'Pulma', label: 'Pulma' },
+  { name: 'NeuroSync', label: 'NeuroSync' },
+  { name: 'NovaTech', label: 'NovaTech' },
+  { name: 'VeroBank', label: 'VeroBank' }
 ];
 
 export const SERVICES = [
   {
-    id: 'fullstack',
-    title: 'Full-Stack Web Applications & SaaS',
-    tagline: 'End-to-end web products engineered for high concurrency, security, and scale.',
-    priceStarting: '$2,500',
-    timeline: '2-3 Weeks',
-    popular: true,
-    features: [
-      'Next.js 15 & React full-stack architecture',
-      'PostgreSQL, Redis & REST / GraphQL APIs',
-      'Cloudflare security & Turnstile integration',
-      'Automated testing & CI/CD deployment'
-    ]
+    id: 'branding',
+    title: 'Branding Design',
+    description: 'Crafting memorable brand identities that resonate with your target audience and stand the test of time.',
+    items: ['Logo design', 'Brand guideline', 'Brand strategy', 'Typography & Color', '+more']
   },
   {
-    id: 'frontend',
-    title: 'Creative Frontend & UI/UX Engineering',
-    tagline: 'Transform Figma designs into buttery-smooth, interactive web experiences.',
-    priceStarting: '$1,500',
-    timeline: '1-2 Weeks',
-    popular: false,
-    features: [
-      'Pixel-perfect translation of complex UI layouts',
-      'Fluid micro-interactions & SVG animations',
-      'Tailwind CSS design token system',
-      'Flawless cross-browser & mobile touch responsiveness'
-    ]
+    id: 'framer',
+    title: 'Framer Development',
+    description: 'Building fast, responsive, and SEO-optimized websites directly in Framer with custom animations and CMS.',
+    items: ['Landing page', 'Multipages', 'Web migration', 'CMS setup', '+more']
   },
   {
-    id: 'mvp',
-    title: 'Rapid Startup MVP Builder',
-    tagline: 'Launch your product to market in record time without cutting technical corners.',
-    priceStarting: '$3,200',
-    timeline: '10-14 Days',
-    popular: false,
-    features: [
-      'High-velocity delivery for founders & startups',
-      'Full product spec & modular code structure',
-      'Integrated authentication & database layer',
-      'Deployment on Vercel / AWS with CI/CD'
-    ]
-  },
-  {
-    id: 'optimization',
-    title: 'Performance & SEO Revamp',
-    tagline: 'Slash page load times, boost Google Core Web Vitals, and scale conversion.',
-    priceStarting: '$900',
-    timeline: '3-5 Days',
-    popular: false,
-    features: [
-      'Deep Lighthouse & Core Web Vitals diagnostic report',
-      'Bundle size reduction & image optimization',
-      'Technical SEO & semantic structured data',
-      'Edge CDN acceleration & caching'
-    ]
+    id: 'uiux',
+    title: 'UI/UX Design',
+    description: 'Designing intuitive, beautiful, and user-friendly digital products and SaaS web interfaces.',
+    items: ['Web & app design', 'Design system', 'Prototyping', 'User research', '+more']
   }
 ];
 
-export const EXPERIENCE = [
+export const HOW_IT_WORKS = [
   {
-    period: '2025 - PRESENT',
-    role: 'Lead Full-Stack Architect',
-    company: 'Oriflame Abuja (Swedish Beauty)',
-    projectUrl: 'https://saved-cancel.vercel.app/',
-    location: 'Abuja, Nigeria',
-    techStack: ['JavaScript', 'CSS3', 'Catalogue Drawer API', 'Responsive UI'],
-    description: 'Architected and deployed the official Oriflame Abuja luxury storefront. Built custom slide-out catalogue drawers, responsive consultation booking flows, and optimized performance to sub-second load times.'
+    step: '01',
+    title: 'Book a Call',
+    description: "We'll hop on a quick 15-minute call to discuss your goals, vision, and project scope."
   },
   {
-    period: '2025',
-    role: 'Full-Stack Software Engineer',
-    company: 'EduPortal — School Admin System',
-    projectUrl: 'https://school-portal-two-mu.vercel.app/',
-    location: 'Production Deployment',
-    techStack: ['JavaScript', 'Dashboard Architecture', 'Cloudflare Turnstile', 'Data Tables'],
-    description: 'Engineered comprehensive school management software for administrative operations. Built PCB circuit design interface, automated grade reporting, student billing tables, and Cloudflare Turnstile anti-bot security.'
+    step: '02',
+    title: 'Project Brief',
+    description: 'You provide the project details, inspiration, and content through our streamlined intake.'
   },
   {
-    period: '2025',
-    role: 'Frontend Engineer & UI Architect',
-    company: 'EduPortal — Student Portal',
-    projectUrl: 'https://school-portal-ecxr.vercel.app/',
-    location: 'Production Deployment',
-    techStack: ['PWA', 'JavaScript', 'CSS Design System', 'Cloudflare Turnstile'],
-    description: 'Designed and built the student self-service portal with mobile-first PWA capabilities. Enabled real-time grade checking, course timetables, tuition statements, and seamless student authentication.'
+    step: '03',
+    title: 'Develop',
+    description: 'I start designing and building the high-fidelity mockups, prototypes, and Framer site.'
   },
   {
-    period: '2024 - 2025',
-    role: 'Lead Web Developer',
-    company: 'ivoterngo Community Initiative',
-    projectUrl: 'https://legendary-system-psi.vercel.app/',
-    location: 'Abuja, Nigeria',
-    techStack: ['JavaScript', 'Intl-Tel-Input', 'Cloudflare Turnstile', 'Editorial UI'],
-    description: 'Built the volunteer recruitment and onboarding web platform for community cleaning operations. Integrated international phone number validation, automated volunteer dispatch flow, and responsive editorial UX.'
+    step: '04',
+    title: 'Deliver',
+    description: 'You review the complete project, we iterate based on your feedback, and finalize everything.'
+  },
+  {
+    step: '05',
+    title: 'Support',
+    description: 'I help you launch smoothly and provide post-launch support and guidance.'
   }
 ];
 
-export const STATS = [
-  { value: '50+', label: 'Projects Shipped', sub: 'SaaS, Storefronts & Portals' },
-  { value: '100/100', label: 'Lighthouse Score', sub: 'Core Web Vitals Optimized' },
-  { value: '5+ Yrs', label: 'Production Experience', sub: 'React, Next.js & Full-Stack' },
-  { value: '99.9%', label: 'Uptime & Reliability', sub: 'Enterprise Cloud Deployments' }
+export const WORK_EXPERIENCE = [
+  {
+    period: '2021 - Present',
+    role: 'Lead Product Designer',
+    company: 'NeusPay',
+    description: 'Leading end-to-end UX architecture and design systems for enterprise fintech solutions.'
+  },
+  {
+    period: '2019 – 2021',
+    role: 'Senior UI/UX Designer',
+    company: 'VoyageVista',
+    description: 'Designed responsive web applications and interactive travel booking flows across web & mobile.'
+  },
+  {
+    period: '2017 - 2019',
+    role: 'Digital Designer',
+    company: 'ZephyrGear',
+    description: 'Crafted brand identities, marketing launch pages, and high-conversion e-commerce product systems.'
+  },
+  {
+    period: '2015 - 2017',
+    role: 'Product Designer',
+    company: 'StratusCore',
+    description: 'Collaborated on SaaS cloud dashboard interfaces, user testing, and modular UI component libraries.'
+  },
+  {
+    period: '2013 - 2015',
+    role: 'UI Designer',
+    company: 'Syncora',
+    description: 'Built user flows, wireframes, and design systems for enterprise web portals.'
+  }
 ];
 
-export const CLIENT_LOGOS = [
-  { name: 'Oriflame', label: 'ORIFLAME ABUJA' },
-  { name: 'EduPortal Admin', label: 'EDUPORTAL ADMIN' },
-  { name: 'EduPortal Student', label: 'EDUPORTAL STUDENT' },
-  { name: 'ivoterngo', label: 'IVOTERNGO' }
+export const TESTIMONIALS = [
+  {
+    name: 'Sarah T',
+    role: 'Founder of NovaTech',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+    quote: "Carter delivered beyond our highest expectations. His attention to micro-interactions and layout hierarchy made our product feel like a world-class tier one company."
+  },
+  {
+    name: 'David Reynolds',
+    role: 'CEO of Horizon',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+    quote: "Working with Michael was effortless. He understood our brand voice immediately and delivered a Framer site that increased our conversion by 40%."
+  },
+  {
+    name: 'James Miller',
+    role: 'Founder of EchoWear',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
+    quote: "The level of visual finesse and speed of execution is unmatched. Carter is truly one of the best designers I've had the pleasure of working with."
+  },
+  {
+    name: 'Rosyid Qoim',
+    role: 'Marketing Director at Planza',
+    avatar: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80',
+    quote: "From day one, communication was crystal clear and the design output was pristine. He turned a chaotic idea into an award-worthy platform."
+  },
+  {
+    name: 'Emily Foster',
+    role: 'Head of Product at VeroBank',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
+    quote: "Carter doesn't just make things pretty—he solves real UX friction. Our customer feedback on the new interface has been overwhelmingly positive."
+  }
+];
+
+export const MY_STACKS = [
+  { name: 'Framer', purpose: 'Web Design & Interactive Sites', icon: '🎨' },
+  { name: 'Figma', purpose: 'UI/UX & Design Systems', icon: '📐' },
+  { name: 'Lemon Squeezy', purpose: 'E-Commerce & Digital Billing', icon: '🍋' },
+  { name: 'X (Twitter)', purpose: 'Design Community & Distribution', icon: '𝕏' },
+  { name: 'Contra', purpose: 'Independent Commissioning', icon: '⚡' },
+  { name: 'Slack', purpose: 'Real-Time Client Communication', icon: '💬' }
+];
+
+export const FAQS = [
+  {
+    question: 'What services do you offer?',
+    answer: 'I specialize in digital product design, UI/UX design, brand identity systems, and production Framer website development.'
+  },
+  {
+    question: 'How long does a typical project take?',
+    answer: 'Most website and branding projects take between 2 to 4 weeks depending on the scope and complexity.'
+  },
+  {
+    question: 'How does the payment structure work?',
+    answer: 'Typically, projects are split into 50% upfront deposit and 50% upon final delivery and project sign-off.'
+  },
+  {
+    question: 'Do you work with clients internationally?',
+    answer: 'Yes! I work with clients and startups globally across North America, Europe, Asia, and worldwide.'
+  },
+  {
+    question: 'Can you help migrate our existing site to Framer?',
+    answer: 'Absolutely. I specialize in migrating Figma designs or legacy websites into clean, responsive Framer experiences.'
+  }
 ];
