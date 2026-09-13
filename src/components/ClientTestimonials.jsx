@@ -1,6 +1,5 @@
 import React from 'react';
-import { Star } from 'lucide-react';
-import { CLIENT_LOGOS, TESTIMONIALS } from '../data/developerData';
+import { CLIENT_LOGOS } from '../data/developerData';
 
 export const ClientTestimonials = () => {
   return (
@@ -81,43 +80,6 @@ export const ClientTestimonials = () => {
 
           </div>
 
-        </div>
-
-        {/* Testimonials */}
-        <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-          {TESTIMONIALS.map((t, idx) => (
-            <div
-              key={idx}
-              className="spex-card p-4 sm:p-5 rounded-xl border border-white/[0.08] flex flex-col justify-between group"
-            >
-              <div>
-                <div className="flex items-center gap-1 text-spex-volt mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3 h-3 fill-spex-volt text-spex-volt" />
-                  ))}
-                </div>
-                <p className="text-xs sm:text-sm text-slate-300 italic leading-relaxed">
-                  "{t.quote}"
-                </p>
-              </div>
-
-              <div className="mt-4 pt-3 border-t border-white/[0.08] flex items-center gap-2.5">
-                <img
-                  src={t.avatar}
-                  alt={t.author}
-                  className="w-7 h-7 rounded-full object-cover border border-white/10"
-                />
-                <div>
-                  <h4 className="text-xs font-bold text-white group-hover:text-spex-volt transition-colors">
-                    {t.author}
-                  </h4>
-                  <p className="text-[10px] text-spex-muted font-mono">
-                    {t.role}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
 
       </div>
