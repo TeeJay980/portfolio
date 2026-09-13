@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ScrollToTop } from './components/ScrollToTop';
 import { LuziaNavbar } from './components/LuziaNavbar';
-import { LuziaHero } from './components/LuziaHero';
-import { LuziaClientStrip } from './components/LuziaClientStrip';
-import { LuziaProjects } from './components/LuziaProjects';
-import { LuziaBentoProof } from './components/LuziaBentoProof';
-import { ExperienceTimeline } from './components/ExperienceTimeline';
-import { LuziaWorkflow } from './components/LuziaWorkflow';
-import { LuziaFAQ } from './components/LuziaFAQ';
-import { DevFooter } from './components/DevFooter';
+import { HomePage } from './pages/HomePage';
+import { WorkPage } from './pages/WorkPage';
+import { AboutPage } from './pages/AboutPage';
+import { ContactPage } from './pages/ContactPage';
 import { ProjectModal } from './components/ProjectModal';
 import { ContactModal } from './components/ContactModal';
 import { CommandPalette } from './components/CommandPalette';
@@ -33,73 +31,85 @@ export function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F3F4F6] text-neutral-900 font-sans selection:bg-[#6E2CF4] selection:text-white relative">
-      
-      {/* Luzia Floating Navigation Bar */}
-      <LuziaNavbar
-        onOpenBooking={() => setIsContactOpen(true)}
-        onOpenPalette={() => setIsPaletteOpen(true)}
-        onOpenEmail={() => setIsEmailOpen(true)}
-      />
+    <BrowserRouter>
+      <ScrollToTop />
+      <div className="min-h-screen bg-[#F3F4F6] text-neutral-900 font-sans selection:bg-[#6E2CF4] selection:text-white relative">
+        
+        {/* Luzia Floating Navigation Bar */}
+        <LuziaNavbar
+          onOpenBooking={() => setIsContactOpen(true)}
+          onOpenPalette={() => setIsPaletteOpen(true)}
+        />
 
-      {/* 3-Column Split Luzia Hero */}
-      <LuziaHero
-        onOpenBooking={() => setIsContactOpen(true)}
-        onOpenEmail={() => setIsEmailOpen(true)}
-      />
+        {/* Multi-Page Routes */}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                onSelectProject={(project) => setSelectedProject(project)}
+                onOpenBooking={() => setIsContactOpen(true)}
+                onOpenEmail={() => setIsEmailOpen(true)}
+              />
+            }
+          />
+          <Route
+            path="/work"
+            element={
+              <WorkPage
+                onSelectProject={(project) => setSelectedProject(project)}
+                onOpenBooking={() => setIsContactOpen(true)}
+                onOpenEmail={() => setIsEmailOpen(true)}
+              />
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <AboutPage
+                onOpenBooking={() => setIsContactOpen(true)}
+                onOpenEmail={() => setIsEmailOpen(true)}
+              />
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <ContactPage
+                onOpenBooking={() => setIsContactOpen(true)}
+                onOpenEmail={() => setIsEmailOpen(true)}
+              />
+            }
+          />
+        </Routes>
 
-      {/* Monochromatic Client & Partner Strip */}
-      <LuziaClientStrip />
+        {/* Modals & Command Palette */}
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+          onOpenBooking={() => setIsContactOpen(true)}
+        />
 
-      {/* 2-Column Rounded Project Showcase with Filters */}
-      <LuziaProjects
-        onSelectProject={(project) => setSelectedProject(project)}
-      />
+        <ContactModal
+          isOpen={isContactOpen}
+          onClose={() => setIsContactOpen(false)}
+        />
 
-      {/* 3-Card Bento Proof & Metrics */}
-      <LuziaBentoProof />
+        <CommandPalette
+          isOpen={isPaletteOpen}
+          onClose={() => setIsPaletteOpen(false)}
+          onSelectProject={(project) => setSelectedProject(project)}
+          onOpenBooking={() => setIsContactOpen(true)}
+          onOpenEmail={() => setIsEmailOpen(true)}
+        />
 
-      {/* Work Experience Section (Preserved) */}
-      <ExperienceTimeline />
+        <EmailModal
+          isOpen={isEmailOpen}
+          onClose={() => setIsEmailOpen(false)}
+        />
 
-      {/* How It Works (Tactile Dark Texture Container) */}
-      <LuziaWorkflow />
-
-      {/* Interactive FAQ Accordion */}
-      <LuziaFAQ />
-
-      {/* Closing CTA & Minimal Footer */}
-      <DevFooter
-        onOpenBooking={() => setIsContactOpen(true)}
-        onOpenEmail={() => setIsEmailOpen(true)}
-      />
-
-      {/* Modals & Command Palette */}
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-        onOpenBooking={() => setIsContactOpen(true)}
-      />
-
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
-
-      <CommandPalette
-        isOpen={isPaletteOpen}
-        onClose={() => setIsPaletteOpen(false)}
-        onSelectProject={(project) => setSelectedProject(project)}
-        onOpenBooking={() => setIsContactOpen(true)}
-        onOpenEmail={() => setIsEmailOpen(true)}
-      />
-
-      <EmailModal
-        isOpen={isEmailOpen}
-        onClose={() => setIsEmailOpen(false)}
-      />
-
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

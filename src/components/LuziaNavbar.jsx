@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Search, Menu, X, MessageCircle } from 'lucide-react';
 import { WHATSAPP_URL } from '../config';
 
-export const LuziaNavbar = ({ onOpenBooking, onOpenPalette, onOpenEmail }) => {
+export const LuziaNavbar = ({ onOpenBooking, onOpenPalette }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [aboutHovered, setAboutHovered] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 15);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 15);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Work', href: '#projects' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Process', href: '#process' },
-    { name: 'FAQs', href: '#faqs' },
+    { name: 'Work', path: '/work' },
+    { name: 'About', path: '/about', hasPreview: true },
+    { name: 'Contact', path: '/contact' },
   ];
 
   return (
@@ -33,24 +33,63 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette, onOpenEmail }) => {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
-          {/* Left: Developer Name */}
-          <a
-            href="#"
+          {/* Left: Brand / Developer Name */}
+          <Link
+            to="/"
             className="flex items-center gap-2 group font-display font-bold text-sm sm:text-base tracking-tight text-[#0c0c0c] hover:opacity-80 transition-opacity"
           >
             <span>TERRENCE J. MARK</span>
-          </a>
+          </Link>
 
-          {/* Center: Clean Nav Links (gap-8 as on Luzia) */}
-          <nav className="hidden md:flex items-center gap-7 lg:gap-9">
+          {/* Center: Exact Nav Links (Work, About, Contact) */}
+          <nav className="hidden md:flex items-center gap-8 relative">
             {navLinks.map((link) => (
-              <a
+              <div
                 key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-[#111111] hover:text-neutral-500 transition-colors"
+                className="relative"
+                onMouseEnter={() => link.hasPreview && setAboutHovered(true)}
+                onMouseLeave={() => link.hasPreview && setAboutHovered(false)}
               >
-                {link.name}
-              </a>
+                <Link
+                  to={link.path}
+                  className={`text-sm font-medium transition-colors ${
+                    location.pathname === link.path
+                      ? 'text-[#0c0c0c] font-bold'
+                      : 'text-[#111111] hover:text-neutral-500'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+
+                {/* About Link Hover Card Preview (Luzia signature interaction) */}
+                {link.hasPreview && (
+                  <AnimatePresence>
+                    {aboutHovered && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 p-3 rounded-2xl bg-white/95 backdrop-blur-xl border border-black/[0.08] shadow-2xl z-50 pointer-events-none"
+                      >
+                        <div className="aspect-[4/3] rounded-xl overflow-hidden bg-neutral-900 mb-2">
+                          <img
+                            src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=400&auto=format&fit=crop&q=80"
+                            alt="TeeJay"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <p className="text-[11px] font-semibold text-neutral-900 leading-tight">
+                          TERRENCE J. MARK
+                        </p>
+                        <p className="text-[10px] text-neutral-500 mt-0.5">
+                          Full-Stack Architect • Abuja, NG
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                )}
+              </div>
             ))}
           </nav>
 
@@ -96,15 +135,15 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette, onOpenEmail }) => {
           >
             <div className="flex flex-col space-y-3">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.path}
                   onClick={() => setMobileMenuOpen(false)}
                   className="px-4 py-2.5 rounded-xl font-semibold text-sm text-neutral-800 hover:bg-neutral-100 flex items-center justify-between transition-colors"
                 >
                   <span>{link.name}</span>
                   <ArrowUpRight className="w-4 h-4 text-neutral-400" />
-                </a>
+                </Link>
               ))}
               <div className="pt-3 border-t border-black/[0.06] flex gap-2">
                 <button
