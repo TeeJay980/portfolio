@@ -264,10 +264,10 @@ export const TESTIMONIALS = [
 ];
 
 export const STATS = [
-  { value: '50+', label: 'Shipped Web Projects', sub: 'From SaaS MVPs to Global Storefronts' },
-  { value: '100/100', label: 'Lighthouse Performance', sub: 'Zero-Bloat, Core Web Vitals Optimized' },
-  { value: '5+ Yrs', label: 'Production Experience', sub: 'Modern React, Next.js & Full-Stack' },
-  { value: '99.9%', label: 'Uptime & Reliability', sub: 'Enterprise-grade Cloud Deployments' }
+  { value: '50+', label: 'Projects Shipped', sub: 'SaaS, Storefronts & Tools' },
+  { value: '100/100', label: 'Lighthouse Score', sub: 'Core Web Vitals Optimized' },
+  { value: '5+ Yrs', label: 'Production Experience', sub: 'React, Next.js & Full-Stack' },
+  { value: '99.9%', label: 'Uptime & Reliability', sub: 'Enterprise Cloud Deployments' }
 ];
 
 export const CLIENT_LOGOS = [

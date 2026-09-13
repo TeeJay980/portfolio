@@ -13,6 +13,7 @@ import {
   Search
 } from 'lucide-react';
 import { STATS } from '../data/developerData';
+import { GITHUB_URL } from '../config';
 
 const TITLES = [
   'THAT SCALE.',
@@ -30,46 +31,30 @@ export const TerminalHero = ({ onOpenBooking, onOpenPalette }) => {
   const isDeletingRef = useRef(false);
   const textRef = useRef(TITLES[0]);
 
-  const githubUrl = "https://github.com/TeeJay980";
-
-  // Rock-solid Typewriter Cycling through all phrases in strict sequential order
+  // Typewriter cycling all phrases sequentially
   useEffect(() => {
     let timerId;
-
     const tick = () => {
       const currentWord = TITLES[titleIndexRef.current];
       const isDeleting = isDeletingRef.current;
-
       if (isDeleting) {
         textRef.current = currentWord.substring(0, textRef.current.length - 1);
       } else {
         textRef.current = currentWord.substring(0, textRef.current.length + 1);
       }
-
       setTypedTitle(textRef.current);
-
       let speed = isDeleting ? 40 : 80;
-
       if (!isDeleting && textRef.current === currentWord) {
-        // Finished typing full phrase, pause before deleting
         speed = 2200;
         isDeletingRef.current = true;
       } else if (isDeleting && textRef.current === '') {
-        // Finished deleting phrase, advance to the NEXT phrase in sequence!
         isDeletingRef.current = false;
         titleIndexRef.current = (titleIndexRef.current + 1) % TITLES.length;
         speed = 400;
       }
-
       timerId = setTimeout(tick, speed);
     };
-
-    // Initial pause before typing animation starts
-    timerId = setTimeout(() => {
-      isDeletingRef.current = true;
-      tick();
-    }, 2000);
-
+    timerId = setTimeout(() => { isDeletingRef.current = true; tick(); }, 2000);
     return () => clearTimeout(timerId);
   }, []);
 
@@ -85,7 +70,6 @@ export default {
     accessibility: 'WCAG AAA',
     architecture: 'Modular & Type-Safe'
   },
-  
   async buildExperience(clientVision) {
     const system = await createArchitecture({
       frontend: 'Fluid 60fps Micro-interactions + Server Components',
@@ -112,39 +96,27 @@ interface SystemMetrics {
   };
 
   const marqueeWords = [
-    'FULL-STACK ARCHITECTURE',
-    'CREATIVE WEB DEVELOPMENT',
-    'NEXT.JS 15',
-    'REACT 19',
-    'ASTRO',
-    'TYPESCRIPT',
-    'TAILWIND CSS',
-    'THREE.JS / WEBGL',
-    '100/100 LIGHTHOUSE',
-    'HIGH-CONVERTING DESIGN'
+    'FULL-STACK ARCHITECTURE', 'CREATIVE WEB DEVELOPMENT', 'NEXT.JS 15', 'REACT 19',
+    'ASTRO', 'TYPESCRIPT', 'TAILWIND CSS', 'THREE.JS / WEBGL', '100/100 LIGHTHOUSE', 'HIGH-CONVERTING DESIGN'
   ];
 
   return (
     <section className="relative pt-24 sm:pt-36 pb-12 sm:pb-16 flex flex-col justify-between overflow-hidden">
-      
-      {/* Background Ambient Aura */}
+
+      {/* Single subtle background orb */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-spex-volt/5 rounded-full blur-[140px] pointer-events-none" />
 
-      {/* Grid Matrix Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] pointer-events-none" />
-
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 my-auto">
-        
-        {/* Top Tagline */}
+
         <div className="flex flex-col items-center text-center">
+          {/* Short status badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-spex-surface border border-white/10 text-xs font-mono mb-5 sm:mb-7 text-slate-300 shadow-sm">
             <span className="h-2 w-2 rounded-full bg-spex-volt animate-pulse" />
-            <span className="text-white font-medium text-xs sm:text-xs">FULL-STACK DEVELOPER • ABUJA</span>
+            <span className="text-white font-medium">FULL-STACK DEV</span>
             <span className="text-spex-muted">•</span>
-            <span className="text-spex-volt font-mono font-bold text-xs sm:text-xs">SPURX</span>
+            <span className="text-spex-volt font-bold">SPURX</span>
           </div>
 
-          {/* Main Spex Headline with Live Typewriter */}
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-black tracking-tight leading-[1.12] max-w-4xl text-white min-h-[90px] sm:min-h-[140px]">
             BUILDING DIGITAL EXPERIENCES <br className="hidden sm:inline" />
             <span className="text-spex-volt inline-flex items-baseline mt-1">
@@ -153,12 +125,11 @@ interface SystemMetrics {
             </span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="mt-4 sm:mt-6 text-sm sm:text-lg text-spex-muted max-w-2xl font-normal leading-relaxed">
-            I engineer full-stack web applications, design systems, and software products that combine surgical performance with bold aesthetics.
+          {/* Concise one-line subtitle */}
+          <p className="mt-4 sm:mt-6 text-sm sm:text-lg text-spex-muted max-w-xl font-normal leading-relaxed">
+            Full-stack web apps, design systems, and software products built for performance and scale.
           </p>
 
-          {/* Action CTAs */}
           <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3.5">
             <button
               onClick={onOpenBooking}
@@ -167,7 +138,6 @@ interface SystemMetrics {
               <span>Start a Project</span>
               <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
             </button>
-
             <button
               onClick={onOpenPalette}
               className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-full font-semibold text-xs sm:text-sm bg-white/10 hover:bg-white/15 border border-white/20 text-white transition-all transform hover:-translate-y-0.5 flex items-center gap-2 active:scale-95 shadow-sm"
@@ -175,74 +145,39 @@ interface SystemMetrics {
               <Search className="w-4 h-4 text-white" />
               <span>Explore (⌘K)</span>
             </button>
-
             <a
-              href={githubUrl}
+              href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 sm:p-3.5 rounded-full bg-white/5 border border-white/15 text-slate-300 hover:text-white hover:border-white transition-all active:scale-95"
-              title="GitHub Profile (@TeeJay980)"
+              title="GitHub (@TeeJay980)"
             >
               <Github className="w-4 h-4" />
             </a>
           </div>
         </div>
 
-        {/* Clean Code Inspector Showcase */}
+        {/* Code Inspector Card */}
         <div className="mt-10 sm:mt-12 max-w-3xl mx-auto">
           <div className="spex-card rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
-            
-            {/* Top Bar */}
             <div className="bg-[#0C0D11] px-4 py-2.5 border-b border-white/[0.08] flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-white/20 inline-block" />
                 <span className="w-2.5 h-2.5 rounded-full bg-white/20 inline-block" />
                 <span className="w-2.5 h-2.5 rounded-full bg-spex-volt inline-block" />
-                <span className="ml-2 text-xs font-mono text-spex-muted hidden sm:inline-block">
-                  spurx.engine.ts
-                </span>
+                <span className="ml-2 text-xs font-mono text-spex-muted hidden sm:inline-block">spurx.engine.ts</span>
               </div>
-
               <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setActiveTab('profile')}
-                  className={`px-3 py-1 rounded-md text-xs font-mono transition-all ${
-                    activeTab === 'profile'
-                      ? 'bg-white text-black font-semibold shadow-sm'
-                      : 'text-spex-muted hover:text-white'
-                  }`}
-                >
-                  profile.ts
-                </button>
-                <button
-                  onClick={() => setActiveTab('stack')}
-                  className={`px-3 py-1 rounded-md text-xs font-mono transition-all ${
-                    activeTab === 'stack'
-                      ? 'bg-white text-black font-semibold shadow-sm'
-                      : 'text-spex-muted hover:text-white'
-                  }`}
-                >
-                  infrastructure.ts
-                </button>
-
-                <button
-                  onClick={handleCopy}
-                  className="p-1.5 rounded-md text-spex-muted hover:text-white transition-colors ml-1"
-                  title="Copy code"
-                >
+                <button onClick={() => setActiveTab('profile')} className={`px-3 py-1 rounded-md text-xs font-mono transition-all ${activeTab === 'profile' ? 'bg-white text-black font-semibold' : 'text-spex-muted hover:text-white'}`}>profile.ts</button>
+                <button onClick={() => setActiveTab('stack')} className={`px-3 py-1 rounded-md text-xs font-mono transition-all ${activeTab === 'stack' ? 'bg-white text-black font-semibold' : 'text-spex-muted hover:text-white'}`}>infrastructure.ts</button>
+                <button onClick={handleCopy} className="p-1.5 rounded-md text-spex-muted hover:text-white transition-colors ml-1" title="Copy">
                   {copied ? <Check className="w-3.5 h-3.5 text-spex-volt" /> : <Copy className="w-3.5 h-3.5" />}
                 </button>
               </div>
             </div>
-
-            {/* Code Body */}
             <div className="p-4 sm:p-6 bg-[#090A0D] font-mono text-xs sm:text-[13px] text-slate-200 overflow-x-auto leading-relaxed max-h-60 sm:max-h-80 overflow-y-auto">
-              <pre className="whitespace-pre">
-                <code>{snippets[activeTab]}</code>
-              </pre>
+              <pre className="whitespace-pre"><code>{snippets[activeTab]}</code></pre>
             </div>
-
-            {/* Bottom Status */}
             <div className="bg-[#0C0D11] px-4 py-2 border-t border-white/[0.06] flex items-center justify-between text-[11px] font-mono text-spex-muted">
               <div className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-spex-volt" />
@@ -250,33 +185,22 @@ interface SystemMetrics {
               </div>
               <div className="text-spex-volt font-bold">100/100 LIGHTHOUSE READY</div>
             </div>
-
           </div>
         </div>
 
-        {/* Live Metrics Grid */}
-        <div className="mt-8 sm:mt-12 grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-5">
+        {/* Stats — always 4 cols on sm+ */}
+        <div className="mt-8 sm:mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-5">
           {STATS.map((stat, idx) => (
-            <div
-              key={idx}
-              className="spex-card p-4 sm:p-5 rounded-2xl border border-white/[0.08] hover:border-spex-volt/40 transition-all group shadow-sm"
-            >
-              <div className="text-2xl sm:text-3xl font-display font-black text-white group-hover:text-spex-volt transition-colors">
-                {stat.value}
-              </div>
-              <div className="text-xs sm:text-sm font-semibold text-slate-200 mt-1">
-                {stat.label}
-              </div>
-              <div className="text-[11px] sm:text-xs text-spex-muted font-mono mt-0.5 line-clamp-1">
-                {stat.sub}
-              </div>
+            <div key={idx} className="spex-card p-4 sm:p-5 rounded-2xl border border-white/[0.08] hover:border-spex-volt/40 transition-all group shadow-sm">
+              <div className="text-2xl sm:text-3xl font-display font-black text-white group-hover:text-spex-volt transition-colors">{stat.value}</div>
+              <div className="text-xs sm:text-sm font-semibold text-slate-200 mt-1">{stat.label}</div>
+              <div className="text-[11px] sm:text-xs text-spex-muted font-mono mt-0.5 line-clamp-1">{stat.sub}</div>
             </div>
           ))}
         </div>
-
       </div>
 
-      {/* Spex Signature Infinite Marquee Ticker */}
+      {/* Marquee Ticker */}
       <div className="mt-10 sm:mt-14 py-3 bg-spex-surface border-y border-white/[0.08] overflow-hidden whitespace-nowrap">
         <div className="inline-flex animate-marquee gap-8 items-center text-xs font-mono font-bold tracking-widest text-slate-300">
           {[...marqueeWords, ...marqueeWords].map((word, i) => (
@@ -287,7 +211,6 @@ interface SystemMetrics {
           ))}
         </div>
       </div>
-
     </section>
   );
 };
