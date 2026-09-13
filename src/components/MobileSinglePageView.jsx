@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SpurxLogo } from './SpurxLogo';
 import { DeviceDetectorBadge } from './DeviceDetectorBadge';
 import {
@@ -71,9 +71,12 @@ export const MobileSinglePageView = ({ onSelectProject, onOpenBooking, onOpenPal
               </div>
               <h1 className="text-2xl xs:text-3xl font-display font-black tracking-tight leading-tight mt-2 text-white">
                 BUILDING EXPERIENCES <br />
-                <span className="text-spex-volt inline-flex items-baseline">
-                  <span>{typedTitle || 'THAT SCALE.'}</span>
-                  <span className="w-1.5 h-6 bg-spex-volt inline-block ml-1 animate-pulse" />
+                {/* Fixed-height row — prevents layout shift */}
+                <span className="block h-[1.2em] overflow-hidden">
+                  <span className="text-spex-volt inline-flex items-baseline whitespace-nowrap">
+                    <span>{typedTitle || 'THAT SCALE.'}</span>
+                    <span className="w-[0.08em] h-[0.85em] bg-spex-volt inline-block ml-[0.1em] animate-pulse" />
+                  </span>
                 </span>
               </h1>
               <p className="text-xs text-spex-muted mt-1.5 leading-relaxed line-clamp-2">

@@ -117,11 +117,14 @@ interface SystemMetrics {
             <span className="text-spex-volt font-bold">SPURX</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-black tracking-tight leading-[1.12] max-w-4xl text-white min-h-[90px] sm:min-h-[140px]">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-black tracking-tight leading-[1.12] max-w-4xl text-white">
             BUILDING DIGITAL EXPERIENCES <br className="hidden sm:inline" />
-            <span className="text-spex-volt inline-flex items-baseline mt-1">
-              <span>{typedTitle}</span>
-              <span className="w-1.5 sm:w-2 h-7 sm:h-14 bg-spex-volt inline-block ml-1.5 animate-pulse" />
+            {/* Fixed-height row — prevents layout shift as phrases change length */}
+            <span className="block h-[1.2em] mt-1 overflow-hidden">
+              <span className="text-spex-volt inline-flex items-baseline whitespace-nowrap">
+                <span>{typedTitle}</span>
+                <span className="w-[0.08em] h-[0.85em] bg-spex-volt inline-block ml-[0.1em] animate-pulse" />
+              </span>
             </span>
           </h1>
 
