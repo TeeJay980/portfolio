@@ -22,19 +22,15 @@ export const SkillsMatrix = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-spex-surface border border-white/10 text-xs font-mono text-spex-muted mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-spex-volt" />
-              TECHNICAL STACK
+              CAPABILITIES
             </div>
             <h2 className="text-2xl sm:text-4xl font-display font-black text-white tracking-tight">
-              CORE CAPABILITIES & <br className="hidden sm:inline" />
-              <span className="text-spex-volt">
-                ENGINEERING MATRIX
-              </span>
+              CORE TECH STACK
             </h2>
+            <p className="text-spex-muted text-xs sm:text-sm mt-2 max-w-md leading-relaxed">
+              Selected technologies engineered for maximum throughput, low latency, and robust type safety.
+            </p>
           </div>
-
-          <p className="text-spex-muted max-w-md text-xs sm:text-sm leading-relaxed">
-            Zero-bloat engineering standards. Selected technologies engineered for maximum throughput, low latency, and robust type safety.
-          </p>
         </div>
 
         {/* 3-Column Skills Grid */}
@@ -49,7 +45,7 @@ export const SkillsMatrix = () => {
                   <div className="p-2.5 rounded-xl bg-spex-surface border border-white/10">
                     {getCategoryIcon(idx)}
                   </div>
-                  <span className="text-xs font-mono text-spex-muted">0{idx + 1} // DOMAIN</span>
+                  <span className="text-xs font-mono text-spex-muted">Domain 0{idx + 1}</span>
                 </div>
 
                 <h3 className="text-xl font-display font-bold text-white group-hover:text-spex-volt transition-colors">
@@ -81,34 +77,30 @@ export const SkillsMatrix = () => {
               <div className="mt-8 pt-4 border-t border-white/[0.08] flex items-center justify-between text-[11px] font-mono text-spex-muted">
                 <span className="flex items-center gap-1.5 text-emerald-400">
                   <CheckCircle2 className="w-3.5 h-3.5" />
-                  Production Verified
+                  Production Ready
                 </span>
-                <span>ENTERPRISE GRADE</span>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Spex Tooling Banner */}
-        <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-spex-surface border border-white/[0.08] flex flex-wrap items-center justify-around gap-6 text-center">
+        {/* Core Tooling Banner */}
+        <div className="mt-8 sm:mt-12 p-5 sm:p-6 rounded-2xl bg-spex-surface border border-white/[0.08] grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
           <div>
-            <div className="text-2xl sm:text-3xl font-display font-black text-white">Next.js 15</div>
-            <div className="text-xs text-spex-muted font-mono mt-1">App Router & RSC</div>
+            <div className="text-xl sm:text-2xl font-display font-black text-white">Next.js 15</div>
+            <div className="text-xs text-spex-muted font-mono mt-0.5">App Router & RSC</div>
           </div>
-          <div className="w-px h-10 bg-white/10 hidden sm:block" />
           <div>
-            <div className="text-2xl sm:text-3xl font-display font-black text-white">TypeScript</div>
-            <div className="text-xs text-spex-muted font-mono mt-1">Strict Type Safety</div>
+            <div className="text-xl sm:text-2xl font-display font-black text-white">TypeScript</div>
+            <div className="text-xs text-spex-muted font-mono mt-0.5">Strict Type Safety</div>
           </div>
-          <div className="w-px h-10 bg-white/10 hidden sm:block" />
           <div>
-            <div className="text-2xl sm:text-3xl font-display font-black text-white">PostgreSQL</div>
-            <div className="text-xs text-spex-muted font-mono mt-1">ACID Compliant DB</div>
+            <div className="text-xl sm:text-2xl font-display font-black text-white">PostgreSQL</div>
+            <div className="text-xs text-spex-muted font-mono mt-0.5">ACID Compliant DB</div>
           </div>
-          <div className="w-px h-10 bg-white/10 hidden sm:block" />
           <div>
-            <div className="text-2xl sm:text-3xl font-display font-black text-white">Tailwind CSS</div>
-            <div className="text-xs text-spex-muted font-mono mt-1">Design Token System</div>
+            <div className="text-xl sm:text-2xl font-display font-black text-white">Tailwind CSS</div>
+            <div className="text-xs text-spex-muted font-mono mt-0.5">Modern Design System</div>
           </div>
         </div>
 

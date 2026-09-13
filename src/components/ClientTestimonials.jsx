@@ -1,17 +1,17 @@
 import React from 'react';
-import { Star, Sparkles } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { CLIENT_LOGOS, TESTIMONIALS } from '../data/developerData';
 
 export const ClientTestimonials = () => {
   return (
-    <section id="about" className="py-12 sm:py-20 relative bg-spex-bg">
+    <section id="about" className="py-12 sm:py-20 relative bg-spex-bg border-t border-white/[0.08]">
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Client Marquee */}
+        {/* Client Logos Strip */}
         <div className="pb-6 sm:pb-8 border-b border-white/[0.08]">
           <p className="text-center text-[11px] font-mono text-spex-muted uppercase tracking-widest mb-4">
-            TRUSTED BY PRODUCT FOUNDERS & FAST-PACED TEAMS
+            TRUSTED BY TEAMS & PRODUCT FOUNDERS
           </p>
           <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-10 opacity-70 hover:opacity-100 transition-opacity">
             {CLIENT_LOGOS.map((client, i) => (
@@ -54,10 +54,10 @@ export const ClientTestimonials = () => {
           <div className="lg:col-span-7">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-spex-surface border border-white/10 text-[11px] font-mono text-spex-muted mb-2">
               <span className="w-1.5 h-1.5 rounded-full bg-spex-volt" />
-              THE PHILOSOPHY
+              PHILOSOPHY
             </div>
 
-            <h2 className="text-2xl sm:text-4xl font-display font-black text-white tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-black text-white tracking-tight leading-tight">
               PERFORMANCE IS A FEATURE. <br />
               <span className="text-spex-volt">
                 DESIGN IS THE DIFFERENTIATOR.
@@ -65,16 +65,16 @@ export const ClientTestimonials = () => {
             </h2>
 
             <p className="mt-3 text-spex-muted text-xs sm:text-sm leading-relaxed font-normal">
-              I bridge high-aesthetic creative design with bulletproof software engineering. Every web application I engineer is crafted with strict type safety, modular component architecture, and sub-second Core Web Vitals.
+              I bridge aesthetic creative design with bulletproof software engineering. Every web application is crafted with strict type safety, modular architecture, and sub-second Core Web Vitals.
             </p>
 
             <div className="mt-5 grid grid-cols-2 gap-3">
-              <div className="p-3 rounded-xl bg-spex-surface border border-white/[0.08]">
-                <div className="text-sm font-display font-bold text-white">Full-Stack Fluency</div>
+              <div className="p-3.5 rounded-xl bg-spex-surface border border-white/[0.08]">
+                <div className="text-xs sm:text-sm font-display font-bold text-white">Full-Stack Fluency</div>
                 <p className="text-[11px] text-spex-muted mt-0.5">Next.js 15, React, Node.js, Go, PostgreSQL & Redis.</p>
               </div>
-              <div className="p-3 rounded-xl bg-spex-surface border border-white/[0.08]">
-                <div className="text-sm font-display font-bold text-white">Zero Technical Debt</div>
+              <div className="p-3.5 rounded-xl bg-spex-surface border border-white/[0.08]">
+                <div className="text-xs sm:text-sm font-display font-bold text-white">Zero Technical Debt</div>
                 <p className="text-[11px] text-spex-muted mt-0.5">Modular TypeScript codebase with automated tests.</p>
               </div>
             </div>

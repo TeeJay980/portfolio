@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import { 
   ExternalLink, 
   Github, 
-  ArrowUpRight, 
-  Gauge, 
-  Layers,
-  Sparkles
+  ArrowUpRight 
 } from 'lucide-react';
 import { PROJECTS } from '../data/developerData';
 
@@ -19,7 +16,7 @@ export const ProjectsGrid = ({ onSelectProject }) => {
     : PROJECTS.filter(p => p.category === activeFilter);
 
   return (
-    <section id="projects" className="py-12 sm:py-20 relative bg-spex-bg">
+    <section id="projects" className="py-12 sm:py-20 relative bg-spex-bg border-t border-white/[0.08]">
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -28,14 +25,14 @@ export const ProjectsGrid = ({ onSelectProject }) => {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-spex-surface border border-white/10 text-xs font-mono text-spex-muted mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-spex-volt" />
-              SELECTED WORKS
+              WORKS
             </div>
             <h2 className="text-2xl sm:text-4xl font-display font-black text-white tracking-tight">
-              FEATURED SOFTWARE & <br className="hidden sm:inline" />
-              <span className="text-spex-volt">
-                DIGITAL PRODUCTS
-              </span>
+              FEATURED PROJECTS
             </h2>
+            <p className="text-spex-muted text-xs sm:text-sm mt-2 max-w-md">
+              Selected production applications, SaaS platforms, and client systems.
+            </p>
           </div>
 
           {/* Filter Tabs */}
@@ -56,7 +53,7 @@ export const ProjectsGrid = ({ onSelectProject }) => {
           </div>
         </div>
 
-        {/* Spex-Style Projects Grid */}
+        {/* Projects Grid */}
         <div className="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7">
           {filteredProjects.map((project) => (
             <div
@@ -86,11 +83,13 @@ export const ProjectsGrid = ({ onSelectProject }) => {
                     </span>
                   </div>
 
-                  <div className="absolute top-3 right-3 z-10">
-                    <span className="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold bg-spex-volt text-black">
-                      {project.stats.lighthouse} Performance
-                    </span>
-                  </div>
+                  {project.stats?.lighthouse && (
+                    <div className="absolute top-3 right-3 z-10">
+                      <span className="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold bg-spex-volt text-black">
+                        {project.stats.lighthouse} Score
+                      </span>
+                    </div>
+                  )}
 
                   {/* Hover Overlay Button */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">

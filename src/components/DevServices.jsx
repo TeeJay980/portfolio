@@ -22,7 +22,7 @@ export const DevServices = ({ onOpenBooking }) => {
   };
 
   return (
-    <section id="services" className="py-12 sm:py-20 relative bg-spex-bg">
+    <section id="services" className="py-12 sm:py-20 relative bg-spex-bg border-t border-white/[0.08]">
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -30,16 +30,13 @@ export const DevServices = ({ onOpenBooking }) => {
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-spex-surface border border-white/10 text-xs font-mono text-spex-muted mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-spex-volt" />
-            SERVICES & COLLABORATION
+            SERVICES
           </div>
           <h2 className="text-2xl sm:text-4xl font-display font-black text-white tracking-tight">
-            ENGINEERING & <br />
-            <span className="text-spex-volt">
-              SOFTWARE OFFERINGS
-            </span>
+            ENGINEERING OFFERINGS
           </h2>
           <p className="mt-3 text-spex-muted text-xs sm:text-sm leading-relaxed">
-            From early-stage product MVPs to enterprise frontend architectures, I ship high-converting software with zero technical debt.
+            High-converting software engineered with zero bloat and maximum performance.
           </p>
         </div>
 
@@ -66,24 +63,24 @@ export const DevServices = ({ onOpenBooking }) => {
                     {getIcon(service.id)}
                   </div>
                   <div className="text-right">
-                    <span className="text-[10px] text-spex-muted font-mono block uppercase">Starting from</span>
-                    <span className="text-lg font-mono font-black text-white">{service.priceStarting}</span>
+                    <span className="text-[10px] text-spex-muted font-mono block uppercase">From</span>
+                    <span className="text-base sm:text-lg font-mono font-black text-white">{service.priceStarting}</span>
                   </div>
                 </div>
 
                 <h3 className="text-lg font-display font-bold text-white group-hover:text-spex-volt transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-xs text-spex-muted mt-2 leading-relaxed">
+                <p className="text-xs text-spex-muted mt-1.5 leading-relaxed">
                   {service.tagline}
                 </p>
 
-                <div className="mt-4 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">
+                <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">
                   <Clock className="w-3 h-3 text-spex-volt" />
                   <span>{service.timeline}</span>
                 </div>
 
-                <div className="mt-6 space-y-2.5 pt-4 border-t border-white/[0.06]">
+                <div className="mt-5 space-y-2 pt-4 border-t border-white/[0.06]">
                   {service.features.map((feat, i) => (
                     <div key={i} className="flex items-start gap-2 text-xs text-slate-300">
                       <Check className="w-3.5 h-3.5 text-spex-volt mt-0.5 flex-shrink-0" />
@@ -93,7 +90,7 @@ export const DevServices = ({ onOpenBooking }) => {
                 </div>
               </div>
 
-              <div className="mt-8 pt-4 border-t border-white/[0.06]">
+              <div className="mt-6 pt-4 border-t border-white/[0.06]">
                 <button
                   onClick={onOpenBooking}
                   className={`w-full py-2.5 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 transition-all ${
