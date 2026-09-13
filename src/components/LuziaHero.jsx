@@ -1,96 +1,94 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Mail } from 'lucide-react';
-import { DEVELOPER_INFO } from '../data/developerData';
 
-export const LuziaHero = ({ onOpenBooking, onOpenEmail }) => {
+export const LuziaHero = ({ onOpenEmail }) => {
   return (
-    <section className="relative pt-28 sm:pt-36 pb-16 sm:pb-24 overflow-hidden">
+    <section className="relative pt-24 sm:pt-28 pb-10 sm:pb-16 overflow-hidden min-h-[580px] lg:min-h-[660px] flex items-end">
       
-      {/* Luzia Ambient Top Atmospheric Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[450px] bg-gradient-to-b from-blue-200/40 via-purple-100/25 to-transparent rounded-full blur-[140px] pointer-events-none" />
+      {/* Background Soft Atmospheric Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[450px] bg-gradient-to-b from-blue-100/40 via-purple-50/20 to-transparent rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-end">
+        {/* 3-Column Layout: Left Headline, Center Cutout Portrait, Right Bio & CTA */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end relative">
           
-          {/* Left Column (6 cols): Signature Two-Tone Headline */}
+          {/* Left Column (5 cols): Status Badge & Main Headline */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6"
+            className="lg:col-span-4 xl:col-span-5 pb-4 lg:pb-8 z-20"
           >
-            {/* Status Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/[0.06] text-xs font-semibold text-[#0c0c0c] shadow-sm mb-6">
+            {/* Availability Status Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-black/[0.06] text-xs font-medium text-[#555555] shadow-sm mb-5 sm:mb-6">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>{DEVELOPER_INFO.status}</span>
+              <span>2 projects left in March</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-display font-extrabold leading-[1.12] tracking-[-0.035em] text-[#0c0c0c]">
-              <span className="text-[#0c0c0c]">{DEVELOPER_INFO.shortName}</span> <span className="text-[#8e8e93] font-normal">is solving problems through</span> <span className="text-[#0c0c0c]">strategic design</span> <span className="text-[#8e8e93] font-normal">and</span> <span className="text-[#0c0c0c]">compelling visuals.</span>
+            {/* Headline */}
+            <h1 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[48px] font-display font-bold leading-[1.14] tracking-[-0.03em] text-[#111111]">
+              Carter is solving problems through strategic design and compelling visuals
             </h1>
           </motion.div>
 
-          {/* Center Column (3 cols): Framed Portrait */}
+          {/* Center Column (4 cols): Cutout Portrait with Smooth Gradient Bottom Blur */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-3 flex justify-center"
+            className="lg:col-span-4 xl:col-span-3 flex justify-center items-end relative z-10 -mb-4 lg:-mb-10"
           >
-            <div className="relative w-48 sm:w-56 aspect-[4/5] rounded-[32px] overflow-hidden bg-gradient-to-b from-white to-neutral-100 p-1.5 shadow-luzia border border-black/[0.06] group">
-              <div className="relative w-full h-full rounded-[26px] overflow-hidden bg-neutral-900">
-                <img
-                  src={DEVELOPER_INFO.portrait}
-                  alt={DEVELOPER_INFO.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-3 left-3 right-3 text-center">
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-white/95 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 shadow-sm inline-block">
-                    PRODUCT DESIGNER
-                  </span>
-                </div>
-              </div>
+            <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[440px] flex justify-center items-end">
+              <img
+                src="https://framerusercontent.com/images/3K0Y8LzK8gZ5t5Q9w8J1a0M.png"
+                alt="Michael Carter"
+                className="w-full h-auto object-contain select-none pointer-events-none drop-shadow-sm"
+                style={{
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 68%, rgba(0,0,0,0.4) 88%, rgba(0,0,0,0) 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 68%, rgba(0,0,0,0.4) 88%, rgba(0,0,0,0) 100%)'
+                }}
+              />
+              {/* Bottom Edge Fade Overlay */}
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#F3F4F6] via-[#F3F4F6]/70 to-transparent pointer-events-none" />
             </div>
           </motion.div>
 
-          {/* Right Column (3 cols): Bio & Action Buttons */}
+          {/* Right Column (3-4 cols): Bio & Email Button */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-3 flex flex-col justify-end"
+            className="lg:col-span-4 xl:col-span-4 pb-4 lg:pb-8 flex flex-col items-start lg:items-start z-20"
           >
-            <p className="text-xs sm:text-sm text-[#6c7179] font-normal leading-relaxed">
-              {DEVELOPER_INFO.heroBio}
+            <p className="text-sm sm:text-[15px] lg:text-base text-[#4b5563] font-normal leading-[1.65]">
+              As a digital product designer with a strong focus on visual design and Framer websites, he collaborates closely with teams to craft seamless, user-centered experiences. A reliable partner in bringing ideas to life
             </p>
 
-            <div className="mt-6 flex items-center gap-2.5">
+            <div className="mt-6">
               <motion.button
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.96 }}
                 onClick={onOpenEmail}
-                className="flex-1 py-3 px-5 rounded-full bg-[#0c0c0c] hover:bg-neutral-800 text-white font-semibold text-xs sm:text-sm shadow-sm transition-all flex items-center justify-center gap-2"
+                className="py-3 px-7 rounded-full bg-[#111111] hover:bg-neutral-800 text-white font-semibold text-sm shadow-[0_4px_14px_rgba(0,0,0,0.22)] hover:shadow-lg transition-all flex items-center justify-center"
               >
                 <span>Email Me</span>
-                <Mail className="w-3.5 h-3.5" />
               </motion.button>
-              <Link
-                to="/work"
-                className="py-3 px-5 rounded-full bg-white hover:bg-neutral-50 text-[#0c0c0c] border border-black/[0.08] font-semibold text-xs sm:text-sm shadow-sm transition-all flex items-center justify-center gap-1.5"
-              >
-                <span>All Works</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </Link>
             </div>
           </motion.div>
 
         </div>
 
       </div>
+
+      {/* "Made in Framer" Badge in bottom right corner */}
+      <div className="absolute bottom-4 right-6 z-20 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md border border-black/[0.08] shadow-sm text-xs font-semibold text-[#111111]">
+        <svg className="w-3.5 h-3.5 fill-black" viewBox="0 0 24 24">
+          <path d="M4 0h16v8h-8zM4 8h8l8 8H4zM4 16h8v8z" />
+        </svg>
+        <span className="text-[11px] font-sans">Made in Framer</span>
+      </div>
+
     </section>
   );
 };

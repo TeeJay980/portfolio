@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, Search, Menu, X } from 'lucide-react';
-import { DEVELOPER_INFO } from '../data/developerData';
+import { Search, Menu, X } from 'lucide-react';
 
 export const LuziaNavbar = ({ onOpenBooking, onOpenPalette }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -27,18 +26,18 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette }) => {
       <header
         className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
           scrolled
-            ? 'bg-[#F3F4F6]/90 backdrop-blur-xl border-b border-black/[0.05] py-3.5 sm:py-4 shadow-sm'
-            : 'bg-transparent py-4 sm:py-5'
+            ? 'bg-[#F3F4F6]/90 backdrop-blur-xl border-b border-black/[0.05] py-4 shadow-sm'
+            : 'bg-transparent py-5 sm:py-6'
         }`}
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
           
-          {/* Left: Brand / Designer Name */}
+          {/* Left: Brand Name (Title Case: Michael Carter) */}
           <Link
             to="/"
-            className="flex items-center gap-2 group font-display font-bold text-sm sm:text-base tracking-tight text-[#0c0c0c] hover:opacity-80 transition-opacity"
+            className="font-display font-bold text-lg sm:text-xl tracking-tight text-[#111111] hover:opacity-80 transition-opacity"
           >
-            <span>{DEVELOPER_INFO.name.toUpperCase()}</span>
+            Michael Carter
           </Link>
 
           {/* Center: Exact Nav Links (Work, About, Contact) */}
@@ -54,14 +53,14 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette }) => {
                   to={link.path}
                   className={`text-sm font-medium transition-colors ${
                     location.pathname === link.path
-                      ? 'text-[#0c0c0c] font-bold'
-                      : 'text-[#111111] hover:text-neutral-500'
+                      ? 'text-[#111111] font-semibold'
+                      : 'text-[#555555] hover:text-[#111111]'
                   }`}
                 >
                   {link.name}
                 </Link>
 
-                {/* About Link Hover Card Preview (Luzia signature interaction) */}
+                {/* About Link Hover Card Preview */}
                 {link.hasPreview && (
                   <AnimatePresence>
                     {aboutHovered && (
@@ -72,18 +71,18 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette }) => {
                         transition={{ duration: 0.2 }}
                         className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 p-3 rounded-2xl bg-white/95 backdrop-blur-xl border border-black/[0.08] shadow-2xl z-50 pointer-events-none"
                       >
-                        <div className="aspect-[4/3] rounded-xl overflow-hidden bg-neutral-900 mb-2">
+                        <div className="aspect-[4/3] rounded-xl overflow-hidden bg-neutral-100 mb-2">
                           <img
-                            src={DEVELOPER_INFO.portrait}
-                            alt={DEVELOPER_INFO.name}
-                            className="w-full h-full object-cover"
+                            src="https://framerusercontent.com/images/3K0Y8LzK8gZ5t5Q9w8J1a0M.png"
+                            alt="Michael Carter"
+                            className="w-full h-full object-cover object-top"
                           />
                         </div>
-                        <p className="text-[11px] font-semibold text-neutral-900 leading-tight">
-                          {DEVELOPER_INFO.name.toUpperCase()}
+                        <p className="text-[12px] font-bold text-neutral-900 leading-tight">
+                          Michael Carter
                         </p>
-                        <p className="text-[10px] text-neutral-500 mt-0.5">
-                          {DEVELOPER_INFO.role}
+                        <p className="text-[11px] text-neutral-500 mt-0.5">
+                          Digital Product Designer
                         </p>
                       </motion.div>
                     )}
@@ -93,31 +92,30 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette }) => {
             ))}
           </nav>
 
-          {/* Right: Search & Black Action Pill Button */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* Right: Search & Use For Free Button */}
+          <div className="flex items-center gap-3">
             <button
               onClick={onOpenPalette}
-              className="p-2 rounded-full bg-white/80 hover:bg-white text-neutral-700 hover:text-black border border-black/[0.06] shadow-sm transition-all"
+              className="p-2.5 rounded-full bg-white/80 hover:bg-white text-neutral-700 hover:text-black border border-black/[0.06] shadow-sm transition-all hidden sm:flex items-center justify-center"
               title="Search (⌘K)"
             >
-              <Search className="w-3.5 h-3.5" />
+              <Search className="w-4 h-4" />
             </button>
 
             <button
               onClick={onOpenBooking}
-              className="px-5 py-2.5 rounded-full bg-[#0c0c0c] hover:bg-neutral-800 text-white font-medium text-xs sm:text-sm shadow-sm hover:shadow-md transition-all transform hover:scale-[1.02] active:scale-95 flex items-center gap-1.5"
+              className="px-6 py-2.5 rounded-full bg-[#111111] hover:bg-neutral-800 text-white font-medium text-sm shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:shadow-lg transition-all transform hover:scale-[1.02] active:scale-95"
             >
-              <span>Get In Touch</span>
-              <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.2]" />
+              Use For Free
             </button>
 
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-full bg-white/80 border border-black/[0.06] text-neutral-900 shadow-sm"
+              className="md:hidden p-2.5 rounded-full bg-white/80 border border-black/[0.06] text-neutral-900 shadow-sm"
               aria-label="Toggle navigation"
             >
-              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
 
@@ -142,16 +140,14 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette }) => {
                   className="px-4 py-2.5 rounded-xl font-semibold text-sm text-neutral-800 hover:bg-neutral-100 flex items-center justify-between transition-colors"
                 >
                   <span>{link.name}</span>
-                  <ArrowUpRight className="w-4 h-4 text-neutral-400" />
                 </Link>
               ))}
               <div className="pt-3 border-t border-black/[0.06]">
                 <button
                   onClick={() => { setMobileMenuOpen(false); onOpenBooking(); }}
-                  className="w-full py-3 rounded-2xl bg-[#0c0c0c] text-white font-bold text-xs flex items-center justify-center gap-2"
+                  className="w-full py-3 rounded-full bg-[#111111] text-white font-bold text-sm shadow-md"
                 >
-                  <span>Get In Touch</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+                  Use For Free
                 </button>
               </div>
             </div>
