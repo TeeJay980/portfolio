@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ScrollToTop } from './components/ScrollToTop';
 import { LuziaNavbar } from './components/LuziaNavbar';
 import { HomePage } from './pages/HomePage';
@@ -63,6 +63,17 @@ export function App() {
               />
             }
           />
+          {/* Alias for /works */}
+          <Route
+            path="/works"
+            element={
+              <WorkPage
+                onSelectProject={(project) => setSelectedProject(project)}
+                onOpenBooking={() => setIsContactOpen(true)}
+                onOpenEmail={() => setIsEmailOpen(true)}
+              />
+            }
+          />
           <Route
             path="/about"
             element={
@@ -80,6 +91,11 @@ export function App() {
                 onOpenEmail={() => setIsEmailOpen(true)}
               />
             }
+          />
+          {/* Catch-all fallback */}
+          <Route
+            path="*"
+            element={<Navigate to="/" replace />}
           />
         </Routes>
 
