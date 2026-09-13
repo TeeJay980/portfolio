@@ -73,7 +73,10 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette }) => {
                       >
                         <div className="aspect-[4/3] rounded-xl overflow-hidden bg-neutral-100 mb-2">
                           <img
-                            src="https://framerusercontent.com/images/3K0Y8LzK8gZ5t5Q9w8J1a0M.png"
+                            src="/images/hero_carter.webp"
+                            onError={(e) => {
+                              e.currentTarget.src = 'https://framerusercontent.com/images/yHECzzvtCQT7X8sGipPGW5sEc.webp?width=2400&height=1904';
+                            }}
                             alt="Michael Carter"
                             className="w-full h-full object-cover object-top"
                           />

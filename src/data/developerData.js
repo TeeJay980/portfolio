@@ -9,12 +9,13 @@ export const DEVELOPER_INFO = {
   email: 'hello@michaelcarter.design',
   secondaryEmail: 'carter.design@studio.com',
   calUrl: 'https://cal.com/michaelcarter/15min',
-  heroHeadline: 'Carter is solving problems through strategic design and compelling visuals.',
-  heroBio: 'As a digital product designer with a strong focus on visual design and Framer websites, he collaborates closely with teams to craft seamless, user-centered experiences. A reliable partner in bringing ideas to life.',
+  heroHeadline: 'Carter is solving problems through strategic design and compelling visuals',
+  heroBio: 'As a digital product designer with a strong focus on visual design and Framer websites, he collaborates closely with teams to craft seamless, user-centered experiences. A reliable partner in bringing ideas to life',
   aboutStory: 'Michael Carter is a digital product designer with 5+ years of experience helping startups and established brands build intuitive, impactful digital experiences. From early design concepts to pixel-perfect Framer websites, Carter combines strategic thinking with aesthetic craftsmanship.',
   aboutSubStory: 'He works closely with founders and creative teams to transform complex challenges into clean, accessible products that users love.',
-  avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80',
-  portrait: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80'
+  avatar: '/images/hero_carter.webp',
+  portrait: '/images/hero_carter.webp',
+  cdnPortrait: 'https://framerusercontent.com/images/yHECzzvtCQT7X8sGipPGW5sEc.webp?width=2400&height=1904'
 };
 
 export const PROJECTS = [
@@ -36,7 +37,7 @@ export const PROJECTS = [
     role: 'Visual Design & Framer Dev',
     deliverables: ['Design System', 'Responsive Website', 'Interactive CMS', 'Custom Micro-animations'],
     techStack: ['Framer', 'Design Tokens', 'CMS Architecture', 'Figma Prototyping', 'Responsive UI'],
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80',
+    image: '/images/luzia_img_3.webp',
     demoUrl: 'https://luzia.framer.website/works/pulma',
     featured: true
   },
@@ -58,7 +59,7 @@ export const PROJECTS = [
     role: 'Product Design & UI System',
     deliverables: ['SaaS Platform UI', 'Design Tokens', 'Data Visualization', 'Interactive Wireframes'],
     techStack: ['Figma', 'UI/UX Design', 'Design System', 'Data Telemetry', 'Micro-interactions'],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80',
+    image: '/images/luzia_img_4.webp',
     demoUrl: 'https://luzia.framer.website/works/lumex',
     featured: true
   },
@@ -80,7 +81,7 @@ export const PROJECTS = [
     role: 'Brand Strategy & Framer Build',
     deliverables: ['Brand Identity', 'Event Management UI', 'Interactive Schedule', 'Mobile Viewport'],
     techStack: ['Framer', 'Figma', 'Interaction Design', 'Event Architecture', 'Brand Strategy'],
-    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&auto=format&fit=crop&q=80',
+    image: '/images/luzia_img_5.webp',
     demoUrl: 'https://luzia.framer.website/works/planza',
     featured: true
   },
@@ -102,7 +103,7 @@ export const PROJECTS = [
     role: 'UI/UX Design & Prototyping',
     deliverables: ['Desktop & Mobile Web', 'Dynamic Map UI', 'Itinerary Builder', 'Visual Direction'],
     techStack: ['Figma', 'Framer', 'Travel UI', 'Map Interactivity', 'Editorial Layouts'],
-    image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&auto=format&fit=crop&q=80',
+    image: '/images/luzia_img_6.webp',
     demoUrl: 'https://luzia.framer.website/works/horizon-atlas',
     featured: true
   },
@@ -124,7 +125,7 @@ export const PROJECTS = [
     role: 'Brand Identity & E-Commerce',
     deliverables: ['Storefront Design', 'Lookbook UI', 'Checkout Flow', 'Typography System'],
     techStack: ['E-Commerce UI', 'Brand Identity', 'Figma', 'Lemon Squeezy', 'Visual Design'],
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&auto=format&fit=crop&q=80',
+    image: '/images/luzia_img_7.webp',
     demoUrl: 'https://luzia.framer.website/works/echowear',
     featured: true
   },
@@ -146,7 +147,7 @@ export const PROJECTS = [
     role: 'Product Design & Mobile System',
     deliverables: ['iOS & Android App UI', 'Biometric Dashboards', 'Design System', 'Handoff Spec'],
     techStack: ['Mobile App Design', 'iOS Guidelines', 'Design System', 'Telemetry Graphs', 'Figma'],
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&auto=format&fit=crop&q=80',
+    image: '/images/luzia_img_22.webp',
     demoUrl: 'https://luzia.framer.website/works/neurosync',
     featured: true
   }

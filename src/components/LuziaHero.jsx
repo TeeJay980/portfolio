@@ -41,8 +41,11 @@ export const LuziaHero = ({ onOpenEmail }) => {
           >
             <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[440px] flex justify-center items-end">
               <img
-                src="https://framerusercontent.com/images/3K0Y8LzK8gZ5t5Q9w8J1a0M.png"
-                alt="Michael Carter"
+                src="/images/hero_carter.webp"
+                onError={(e) => {
+                  e.currentTarget.src = 'https://framerusercontent.com/images/yHECzzvtCQT7X8sGipPGW5sEc.webp?width=2400&height=1904';
+                }}
+                alt="Michael Carter, Digital Product Designer"
                 className="w-full h-auto object-contain select-none pointer-events-none drop-shadow-sm"
                 style={{
                   maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 68%, rgba(0,0,0,0.4) 88%, rgba(0,0,0,0) 100%)',
