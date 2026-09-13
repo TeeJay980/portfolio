@@ -99,8 +99,8 @@ interface SystemMetrics {
 
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-black tracking-tight leading-[1.12] max-w-4xl text-white">
             BUILDING DIGITAL EXPERIENCES <br className="hidden sm:inline" />
-            {/* Fixed-height clip window — phrase slides up into view, never causes layout shift */}
-            <span className="block h-[1.2em] mt-1 overflow-hidden">
+            {/* clip-path clips only vertically — no horizontal text cutoff */}
+            <span className="block h-[1.2em] mt-1" style={{ clipPath: 'inset(0 -50vw)' }}>
               <span
                 key={animKey}
                 className="text-spex-volt inline-flex items-baseline whitespace-nowrap"

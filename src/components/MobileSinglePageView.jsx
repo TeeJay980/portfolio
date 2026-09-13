@@ -62,8 +62,8 @@ export const MobileSinglePageView = ({ onSelectProject, onOpenBooking, onOpenPal
               </div>
               <h1 className="text-2xl xs:text-3xl font-display font-black tracking-tight leading-tight mt-2 text-white">
                 BUILDING EXPERIENCES <br />
-                {/* Fixed-height clip window — phrase slides up into view */}
-                <span className="block h-[1.2em] overflow-hidden">
+                {/* clip-path clips only vertically — no horizontal text cutoff */}
+                <span className="block h-[1.2em]" style={{ clipPath: 'inset(0 -50vw)' }}>
                   <span
                     key={animKey}
                     className="text-spex-volt inline-flex items-baseline whitespace-nowrap"
