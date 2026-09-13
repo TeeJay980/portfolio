@@ -16,26 +16,17 @@ export const MobileSinglePageView = ({ onSelectProject, onOpenBooking, onOpenPal
   const [activeTab, setActiveTab] = useState('overview');
   const [projectIndex, setProjectIndex] = useState(0);
   const [serviceIndex, setServiceIndex] = useState(0);
-  const [typedTitle, setTypedTitle] = useState('');
 
-  // Typewriter effect
+  // Phrase cycling — same slide-up approach as desktop
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [animKey, setAnimKey] = useState(0);
+
   useEffect(() => {
-    let currentText = '';
-    let isDeleting = false;
-    let wordIndex = 0;
-    let timer;
-    const typeLoop = () => {
-      const fullWord = TITLES[wordIndex];
-      if (isDeleting) { currentText = fullWord.substring(0, currentText.length - 1); }
-      else { currentText = fullWord.substring(0, currentText.length + 1); }
-      setTypedTitle(currentText);
-      let speed = isDeleting ? 40 : 80;
-      if (!isDeleting && currentText === fullWord) { speed = 1800; isDeleting = true; }
-      else if (isDeleting && currentText === '') { isDeleting = false; wordIndex = (wordIndex + 1) % TITLES.length; speed = 400; }
-      timer = setTimeout(typeLoop, speed);
-    };
-    timer = setTimeout(typeLoop, 400);
-    return () => clearTimeout(timer);
+    const interval = setInterval(() => {
+      setPhraseIndex(prev => (prev + 1) % TITLES.length);
+      setAnimKey(prev => prev + 1);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   const currentProject = PROJECTS[projectIndex];
@@ -71,10 +62,14 @@ export const MobileSinglePageView = ({ onSelectProject, onOpenBooking, onOpenPal
               </div>
               <h1 className="text-2xl xs:text-3xl font-display font-black tracking-tight leading-tight mt-2 text-white">
                 BUILDING EXPERIENCES <br />
-                {/* Fixed-height row — prevents layout shift */}
+                {/* Fixed-height clip window — phrase slides up into view */}
                 <span className="block h-[1.2em] overflow-hidden">
-                  <span className="text-spex-volt inline-flex items-baseline whitespace-nowrap">
-                    <span>{typedTitle || 'THAT SCALE.'}</span>
+                  <span
+                    key={animKey}
+                    className="text-spex-volt inline-flex items-baseline whitespace-nowrap"
+                    style={{ animation: 'slideUpIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards' }}
+                  >
+                    <span>{TITLES[phraseIndex]}</span>
                     <span className="w-[0.08em] h-[0.85em] bg-spex-volt inline-block ml-[0.1em] animate-pulse" />
                   </span>
                 </span>

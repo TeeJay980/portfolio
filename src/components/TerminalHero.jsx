@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ArrowUpRight, 
   Github, 
@@ -25,37 +25,17 @@ const TITLES = [
 export const TerminalHero = ({ onOpenBooking, onOpenPalette }) => {
   const [activeTab, setActiveTab] = useState('profile');
   const [copied, setCopied] = useState(false);
-  const [typedTitle, setTypedTitle] = useState(TITLES[0]);
 
-  const titleIndexRef = useRef(0);
-  const isDeletingRef = useRef(false);
-  const textRef = useRef(TITLES[0]);
+  // Phrase cycling — index + animKey together re-trigger the CSS slideUpIn animation
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [animKey, setAnimKey] = useState(0);
 
-  // Typewriter cycling all phrases sequentially
   useEffect(() => {
-    let timerId;
-    const tick = () => {
-      const currentWord = TITLES[titleIndexRef.current];
-      const isDeleting = isDeletingRef.current;
-      if (isDeleting) {
-        textRef.current = currentWord.substring(0, textRef.current.length - 1);
-      } else {
-        textRef.current = currentWord.substring(0, textRef.current.length + 1);
-      }
-      setTypedTitle(textRef.current);
-      let speed = isDeleting ? 40 : 80;
-      if (!isDeleting && textRef.current === currentWord) {
-        speed = 2200;
-        isDeletingRef.current = true;
-      } else if (isDeleting && textRef.current === '') {
-        isDeletingRef.current = false;
-        titleIndexRef.current = (titleIndexRef.current + 1) % TITLES.length;
-        speed = 400;
-      }
-      timerId = setTimeout(tick, speed);
-    };
-    timerId = setTimeout(() => { isDeletingRef.current = true; tick(); }, 2000);
-    return () => clearTimeout(timerId);
+    const interval = setInterval(() => {
+      setPhraseIndex(prev => (prev + 1) % TITLES.length);
+      setAnimKey(prev => prev + 1);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   const snippets = {
@@ -119,10 +99,14 @@ interface SystemMetrics {
 
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-black tracking-tight leading-[1.12] max-w-4xl text-white">
             BUILDING DIGITAL EXPERIENCES <br className="hidden sm:inline" />
-            {/* Fixed-height row — prevents layout shift as phrases change length */}
+            {/* Fixed-height clip window — phrase slides up into view, never causes layout shift */}
             <span className="block h-[1.2em] mt-1 overflow-hidden">
-              <span className="text-spex-volt inline-flex items-baseline whitespace-nowrap">
-                <span>{typedTitle}</span>
+              <span
+                key={animKey}
+                className="text-spex-volt inline-flex items-baseline whitespace-nowrap"
+                style={{ animation: 'slideUpIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards' }}
+              >
+                <span>{TITLES[phraseIndex]}</span>
                 <span className="w-[0.08em] h-[0.85em] bg-spex-volt inline-block ml-[0.1em] animate-pulse" />
               </span>
             </span>

@@ -64,3 +64,14 @@
     border-color: rgba(255, 255, 255, 0.08);
   }
 }
+
+@keyframes slideUpIn {
+  from {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
