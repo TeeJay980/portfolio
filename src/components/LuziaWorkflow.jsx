@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ArrowRight } from 'lucide-react';
 
 export const LuziaWorkflow = () => {
   const steps = [
@@ -13,24 +12,25 @@ export const LuziaWorkflow = () => {
 
   return (
     <section id="process" className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto bg-neutral-950 text-white rounded-[32px] p-6 sm:p-12 lg:p-16 relative overflow-hidden border border-white/10 shadow-2xl">
+      <div className="max-w-6xl mx-auto bg-[#0c0c0c] text-white rounded-[32px] sm:rounded-[36px] p-6 sm:p-12 lg:p-16 relative overflow-hidden border border-white/[0.08] shadow-[0_0_60px_rgba(59,130,246,0.12)]">
         
-        {/* Glow */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#6E2CF4]/20 rounded-full blur-3xl pointer-events-none" />
+        {/* Ambient Blue Edge Glow */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="relative z-10">
           <div className="max-w-xl mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs font-mono text-[#6E2CF4] border border-white/10 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#6E2CF4] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs font-mono text-neutral-300 border border-white/10 mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
               HOW IT WORKS
             </div>
-            <h2 className="text-2xl sm:text-4xl font-display font-black text-white tracking-tight">
-              A structured process designed for <span className="text-[#6E2CF4]">speed & quality.</span>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight leading-[1.15]">
+              A structured process <br />
+              <span className="text-[#888888] font-normal">designed for speed & quality.</span>
             </h2>
           </div>
 
-          {/* Steps Timeline */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 sm:gap-6">
+          {/* Steps Timeline Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 sm:gap-5">
             {steps.map((step, idx) => (
               <motion.div
                 key={step.num}
@@ -38,12 +38,14 @@ export const LuziaWorkflow = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="p-5 rounded-2xl bg-white/[0.04] border border-white/[0.08] hover:border-white/20 transition-all flex flex-col justify-between"
+                className="p-5 sm:p-6 rounded-[24px] bg-[#141518] border border-white/[0.06] hover:border-white/15 transition-all flex flex-col justify-between"
               >
                 <div>
-                  <span className="text-xs font-mono text-[#6E2CF4] font-extrabold">{step.num}</span>
-                  <h3 className="text-base font-display font-bold text-white mt-3">{step.title}</h3>
-                  <p className="text-xs text-neutral-400 mt-2 leading-relaxed">{step.desc}</p>
+                  <div className="w-7 h-7 rounded-full bg-[#222328] flex items-center justify-center text-xs font-mono font-bold text-neutral-300 mb-4">
+                    {step.num}
+                  </div>
+                  <h3 className="text-base font-display font-bold text-white leading-snug">{step.title}</h3>
+                  <p className="text-xs text-[#888888] mt-2.5 leading-relaxed font-normal">{step.desc}</p>
                 </div>
               </motion.div>
             ))}

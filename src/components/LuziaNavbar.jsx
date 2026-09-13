@@ -1,74 +1,65 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, Search, Mail, MessageCircle, Menu, X } from 'lucide-react';
+import { ArrowUpRight, Search, Menu, X, MessageCircle } from 'lucide-react';
 import { WHATSAPP_URL } from '../config';
 
 export const LuziaNavbar = ({ onOpenBooking, onOpenPalette, onOpenEmail }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('works');
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 15);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Work', href: '#projects', id: 'projects' },
-    { name: 'Services', href: '#services', id: 'services' },
-    { name: 'Experience', href: '#experience', id: 'experience' },
-    { name: 'Process', href: '#process', id: 'process' },
-    { name: 'FAQs', href: '#faqs', id: 'faqs' },
+    { name: 'Work', href: '#projects' },
+    { name: 'Services', href: '#services' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Process', href: '#process' },
+    { name: 'FAQs', href: '#faqs' },
   ];
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 py-3 sm:py-4 px-4 sm:px-6 lg:px-8 transition-all duration-300 pointer-events-none">
-        <div className="max-w-6xl mx-auto flex items-center justify-between pointer-events-auto">
+      <header
+        className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
+          scrolled
+            ? 'bg-[#F3F4F6]/90 backdrop-blur-xl border-b border-black/[0.05] py-3.5 sm:py-4 shadow-sm'
+            : 'bg-transparent py-4 sm:py-5'
+        }`}
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
-          {/* Logo / Developer Name */}
-          <motion.a
+          {/* Left: Developer Name */}
+          <a
             href="#"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2.5 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full border border-black/[0.07] shadow-sm hover:shadow transition-all group"
+            className="flex items-center gap-2 group font-display font-bold text-sm sm:text-base tracking-tight text-[#0c0c0c] hover:opacity-80 transition-opacity"
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-[#6E2CF4] animate-pulse" />
-            <span className="font-display font-extrabold text-xs sm:text-sm tracking-tight text-neutral-900 group-hover:text-[#6E2CF4] transition-colors">
-              TERRENCE J. MARK
-            </span>
-          </motion.a>
+            <span>TERRENCE J. MARK</span>
+          </a>
 
-          {/* Desktop Floating Pill Nav */}
-          <motion.nav
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="hidden md:flex items-center gap-1 bg-white/90 backdrop-blur-md px-2 py-1.5 rounded-full border border-black/[0.07] shadow-sm"
-          >
+          {/* Center: Clean Nav Links (gap-8 as on Luzia) */}
+          <nav className="hidden md:flex items-center gap-7 lg:gap-9">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => setActiveSection(link.id)}
-                className="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-600 hover:text-neutral-950 hover:bg-neutral-100 transition-all"
+                className="text-sm font-medium text-[#111111] hover:text-neutral-500 transition-colors"
               >
                 {link.name}
               </a>
             ))}
-          </motion.nav>
+          </nav>
 
-          {/* Right Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2"
-          >
+          {/* Right: Search & Black Action Pill Button */}
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={onOpenPalette}
-              className="p-2.5 rounded-full bg-white/90 backdrop-blur-md border border-black/[0.07] text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 shadow-sm transition-all"
+              className="p-2 rounded-full bg-white/80 hover:bg-white text-neutral-700 hover:text-black border border-black/[0.06] shadow-sm transition-all"
               title="Search (⌘K)"
             >
               <Search className="w-3.5 h-3.5" />
@@ -76,7 +67,7 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette, onOpenEmail }) => {
 
             <button
               onClick={onOpenBooking}
-              className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-neutral-950 hover:bg-neutral-800 text-white font-semibold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all flex items-center gap-1.5 active:scale-95"
+              className="px-5 py-2.5 rounded-full bg-[#0c0c0c] hover:bg-neutral-800 text-white font-medium text-xs sm:text-sm shadow-sm hover:shadow-md transition-all transform hover:scale-[1.02] active:scale-95 flex items-center gap-1.5"
             >
               <span>Get In Touch</span>
               <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.2]" />
@@ -85,11 +76,12 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette, onOpenEmail }) => {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 rounded-full bg-white/90 backdrop-blur-md border border-black/[0.07] text-neutral-900 shadow-sm"
+              className="md:hidden p-2 rounded-full bg-white/80 border border-black/[0.06] text-neutral-900 shadow-sm"
+              aria-label="Toggle navigation"
             >
               {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
-          </motion.div>
+          </div>
 
         </div>
       </header>
@@ -101,7 +93,7 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette, onOpenEmail }) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-x-4 top-20 z-40 p-5 rounded-3xl bg-white/98 backdrop-blur-2xl border border-black/[0.08] shadow-2xl md:hidden"
+            className="fixed inset-x-4 top-20 z-50 p-6 rounded-[28px] bg-white/98 backdrop-blur-2xl border border-black/[0.08] shadow-2xl md:hidden"
           >
             <div className="flex flex-col space-y-3">
               {navLinks.map((link) => (
@@ -118,7 +110,7 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette, onOpenEmail }) => {
               <div className="pt-3 border-t border-black/[0.06] flex gap-2">
                 <button
                   onClick={() => { setMobileMenuOpen(false); onOpenBooking(); }}
-                  className="flex-1 py-3 rounded-2xl bg-neutral-950 text-white font-bold text-xs flex items-center justify-center gap-2"
+                  className="flex-1 py-3 rounded-2xl bg-[#0c0c0c] text-white font-bold text-xs flex items-center justify-center gap-2"
                 >
                   <span>Start Project</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
