@@ -4,16 +4,16 @@
 
 @layer base {
   body {
-    background-color: #08080A;
-    color: #F5F6F8;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #F3F4F6;
+    color: #111111;
+    font-family: 'Instrument Sans', 'Plus Jakarta Sans', sans-serif;
     overflow-x: hidden;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Barlow', 'Plus Jakarta Sans', sans-serif;
-    letter-spacing: -0.03em;
+    font-family: 'Instrument Sans', sans-serif;
+    letter-spacing: -0.035em;
   }
 
   /* Custom scrollbar */
@@ -21,57 +21,29 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #08080A;
+    background: #F3F4F6;
   }
   ::-webkit-scrollbar-thumb {
-    background: #232530;
+    background: #D1D5DB;
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #E7FE00;
+    background: #6E2CF4;
   }
 }
 
 @layer utilities {
-  .spex-glass {
-    background: rgba(15, 16, 21, 0.75);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+  .luzia-glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .luzia-dark-glass {
+    background: rgba(14, 15, 20, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .spex-card {
-    background: #0F1015;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .spex-card:hover {
-    border-color: rgba(231, 254, 0, 0.35);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(231, 254, 0, 0.15);
-  }
-
-  .spex-volt-glow {
-    box-shadow: 0 0 25px -4px rgba(231, 254, 0, 0.35);
-  }
-
-  .spex-text-glow {
-    text-shadow: 0 0 20px rgba(231, 254, 0, 0.4);
-  }
-
-  .border-hairline {
-    border-color: rgba(255, 255, 255, 0.08);
-  }
-}
-
-@keyframes slideUpIn {
-  from {
-    transform: translateY(110%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0%);
-    opacity: 1;
   }
 }

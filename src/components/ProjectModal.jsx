@@ -1,143 +1,120 @@
 import React, { useEffect } from 'react';
-import { 
-  X, 
-  ExternalLink, 
-  Github, 
-  Gauge, 
-  ArrowUpRight 
-} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, ExternalLink, Github, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { GITHUB_URL } from '../config';
 
 export const ProjectModal = ({ project, onClose, onOpenBooking }) => {
-  // Close on Escape key press
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-    };
-
-    if (project) {
-      window.addEventListener('keydown', handleKeyDown);
-    }
+    const handleKeyDown = (e) => { if (e.key === 'Escape') onClose(); };
+    if (project) window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [project, onClose]);
 
-  if (!project) return null;
-
   return (
-    <div 
-      onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md overflow-y-auto animate-in fade-in duration-200"
-    >
-      <div 
-        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto my-auto bg-spex-surface p-6 sm:p-8 rounded-2xl border border-white/20 shadow-[0_25px_80px_rgba(0,0,0,0.95)] text-slate-100"
-        onClick={(e) => e.stopPropagation()}
-      >
-        
-        {/* Prominent High-Contrast Close Button */}
-        <button
-          onClick={onClose}
-          className="sticky top-0 float-right -mt-2 -mr-2 sm:-mt-3 sm:-mr-3 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all hover:scale-110 active:scale-95 z-20 shadow-lg backdrop-blur-md"
-          aria-label="Close project modal"
-          title="Close (ESC)"
-        >
-          <X className="w-5 h-5 text-white stroke-[2.2]" />
-        </button>
-
-        {/* Top Header */}
-        <div className="flex items-center gap-2 mb-3">
-          <span className="px-3 py-1 rounded-md text-xs font-mono font-bold bg-white/10 text-white">
-            {project.category}
-          </span>
-          <span className="text-xs font-mono text-spex-muted">• {project.year}</span>
-        </div>
-
-        <h3 className="text-2xl sm:text-4xl font-display font-black text-white tracking-tight">
-          {project.title}
-        </h3>
-        <p className="text-sm sm:text-base text-spex-volt font-medium mt-1">
-          {project.tagline}
-        </p>
-
-        {/* Project Image */}
-        <div className="my-6 rounded-xl overflow-hidden aspect-video border border-white/10 bg-spex-bg">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover"
+    <AnimatePresence>
+      {project && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 bg-black/60 backdrop-blur-md"
           />
-        </div>
 
-        {/* Metrics */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-6">
-          {Object.entries(project.stats).map(([key, value]) => (
-            <div key={key} className="p-3.5 rounded-xl bg-spex-bg border border-white/[0.08] text-center">
-              <div className="text-xs font-mono text-spex-muted uppercase tracking-wider">{key}</div>
-              <div className="text-xl font-mono font-black text-spex-volt mt-0.5">
-                {value}
+          {/* Modal Content */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto my-auto bg-white p-6 sm:p-8 rounded-[32px] border border-black/[0.08] shadow-2xl text-neutral-900 z-10"
+          >
+            <button
+              onClick={onClose}
+              className="absolute top-5 right-5 p-2 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-600 transition-all active:scale-95"
+              aria-label="Close modal"
+              title="Close (ESC)"
+            >
+              <X className="w-4 h-4 stroke-[2.5]" />
+            </button>
+
+            {/* Project Image Banner */}
+            <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden bg-neutral-100 mb-6 shadow-sm">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute top-3 left-3">
+                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 backdrop-blur-md text-neutral-900 shadow-sm">
+                  {project.category}
+                </span>
               </div>
             </div>
-          ))}
-        </div>
 
-        {/* Description */}
-        <div className="space-y-4 text-sm text-slate-300 leading-relaxed">
-          <h4 className="text-base font-display font-bold text-white">
-            Architecture & Engineering Breakdown
-          </h4>
-          <p>{project.longDescription}</p>
-        </div>
+            {/* Title & Info */}
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-neutral-900">
+              {project.title}
+            </h3>
+            <p className="text-sm font-semibold text-[#6E2CF4] mt-1">
+              {project.tagline}
+            </p>
 
-        {/* Tech Stack */}
-        <div className="my-6 pt-4 border-t border-white/[0.08]">
-          <div className="text-xs font-mono text-spex-muted uppercase mb-3">Tech Stack:</div>
-          <div className="flex flex-wrap gap-2">
-            {project.techStack.map((tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1 rounded-lg text-xs font-mono bg-spex-bg text-slate-200 border border-white/[0.08]"
+            <p className="mt-4 text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
+              {project.longDescription || project.description}
+            </p>
+
+            {/* Tech Stack */}
+            <div className="mt-5 pt-4 border-t border-neutral-100">
+              <h4 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-2">Technologies Used</h4>
+              <div className="flex flex-wrap gap-2">
+                {project.techStack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 rounded-full text-xs font-medium bg-neutral-100 text-neutral-800 border border-black/[0.04]"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="mt-8 pt-5 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-2xl bg-[#6E2CF4] hover:bg-[#5E20E0] text-white font-bold text-xs flex items-center gap-1.5 shadow-md active:scale-95 transition-all"
+                >
+                  <span>Open Live Website</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+                <a
+                  href={project.githubUrl || GITHUB_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-2xl bg-neutral-100 hover:bg-neutral-200 text-neutral-700 transition-all active:scale-95"
+                  title="GitHub Source"
+                >
+                  <Github className="w-4 h-4" />
+                </a>
+              </div>
+
+              <button
+                onClick={() => { onClose(); onOpenBooking(); }}
+                className="text-xs font-bold text-neutral-900 hover:text-[#6E2CF4] transition-colors"
               >
-                {tech}
-              </span>
-            ))}
-          </div>
+                Start a similar project →
+              </button>
+            </div>
+          </motion.div>
         </div>
-
-        {/* Modal Actions */}
-        <div className="mt-8 pt-4 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <a
-              href={project.demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm bg-white text-black shadow-lg flex items-center gap-2 hover:bg-slate-100 transition-all border border-white"
-            >
-              <ExternalLink className="w-4 h-4 text-black stroke-[2.2]" />
-              Live Demo
-            </a>
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-full font-semibold text-xs sm:text-sm bg-spex-bg border border-white/10 text-slate-300 hover:text-white flex items-center gap-2"
-            >
-              <Github className="w-4 h-4" />
-              GitHub
-            </a>
-          </div>
-
-          <button
-            onClick={() => {
-              onClose();
-              onOpenBooking();
-            }}
-            className="text-xs sm:text-sm font-semibold text-spex-volt hover:underline flex items-center gap-1"
-          >
-            Build similar project <ArrowUpRight className="w-3.5 h-3.5" />
-          </button>
-        </div>
-
-      </div>
-    </div>
+      )}
+    </AnimatePresence>
   );
 };

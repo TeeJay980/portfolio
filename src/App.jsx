@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar } from './components/Navbar';
-import { TerminalHero } from './components/TerminalHero';
-import { ProjectsGrid } from './components/ProjectsGrid';
-import { ProjectModal } from './components/ProjectModal';
-import { SkillsMatrix } from './components/SkillsMatrix';
-import { DevServices } from './components/DevServices';
+import { LuziaNavbar } from './components/LuziaNavbar';
+import { LuziaHero } from './components/LuziaHero';
+import { LuziaProjects } from './components/LuziaProjects';
+import { LuziaBentoProof } from './components/LuziaBentoProof';
+import { LuziaServices } from './components/LuziaServices';
 import { ExperienceTimeline } from './components/ExperienceTimeline';
-import { ClientTestimonials } from './components/ClientTestimonials';
+import { LuziaWorkflow } from './components/LuziaWorkflow';
+import { LuziaFAQ } from './components/LuziaFAQ';
 import { DevFooter } from './components/DevFooter';
+import { ProjectModal } from './components/ProjectModal';
 import { ContactModal } from './components/ContactModal';
-import { FloatingContactDock } from './components/FloatingContactDock';
 import { CommandPalette } from './components/CommandPalette';
 import { EmailModal } from './components/EmailModal';
 
@@ -33,63 +33,61 @@ export function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-spex-bg text-slate-100 font-sans selection:bg-spex-volt selection:text-black relative">
+    <div className="min-h-screen bg-[#F3F4F6] text-neutral-900 font-sans selection:bg-[#6E2CF4] selection:text-white relative">
       
-      {/* Navigation Bar */}
-      <Navbar
+      {/* Luzia Floating Navigation Bar */}
+      <LuziaNavbar
         onOpenBooking={() => setIsContactOpen(true)}
         onOpenPalette={() => setIsPaletteOpen(true)}
         onOpenEmail={() => setIsEmailOpen(true)}
       />
 
-      {/* Hero with Interactive Terminal & Typewriter */}
-      <TerminalHero
+      {/* 3-Column Split Luzia Hero */}
+      <LuziaHero
         onOpenBooking={() => setIsContactOpen(true)}
-        onOpenPalette={() => setIsPaletteOpen(true)}
+        onOpenEmail={() => setIsEmailOpen(true)}
       />
 
-      {/* Projects Showcase Bento Grid */}
-      <ProjectsGrid
+      {/* 2-Column Rounded Project Showcase */}
+      <LuziaProjects
         onSelectProject={(project) => setSelectedProject(project)}
       />
 
-      {/* Skills & Tech Stack Matrix */}
-      <SkillsMatrix />
+      {/* 3-Card Bento Proof & Metrics */}
+      <LuziaBentoProof />
 
-      {/* Development Services & Collaboration Models */}
-      <DevServices
+      {/* 3-Card Services Grid with Electric Purple Highlight */}
+      <LuziaServices
         onOpenBooking={() => setIsContactOpen(true)}
       />
 
-      {/* Work Experience Timeline */}
+      {/* Work Experience Section (Preserved) */}
       <ExperienceTimeline />
 
-      {/* Client Testimonials & Engineering Philosophy */}
-      <ClientTestimonials />
+      {/* How It Works (Workflow in Dark Container) */}
+      <LuziaWorkflow />
 
-      {/* Footer */}
+      {/* Interactive FAQ Accordion */}
+      <LuziaFAQ />
+
+      {/* Closing CTA & Minimal Footer */}
       <DevFooter
         onOpenBooking={() => setIsContactOpen(true)}
         onOpenEmail={() => setIsEmailOpen(true)}
       />
 
-      {/* Floating Action Dock (WhatsApp + Email) */}
-      <FloatingContactDock onOpenEmail={() => setIsEmailOpen(true)} />
-
-      {/* Project Deep-Dive Modal (Mobile & Desktop) */}
+      {/* Modals & Command Palette */}
       <ProjectModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}
         onOpenBooking={() => setIsContactOpen(true)}
       />
 
-      {/* Contact & Project Estimator Modal (Mobile & Desktop) */}
       <ContactModal
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
       />
 
-      {/* Command Palette (Cmd + K) */}
       <CommandPalette
         isOpen={isPaletteOpen}
         onClose={() => setIsPaletteOpen(false)}
@@ -98,7 +96,6 @@ export function App() {
         onOpenEmail={() => setIsEmailOpen(true)}
       />
 
-      {/* Email Account Picker & Pre-filled Inquiry Modal */}
       <EmailModal
         isOpen={isEmailOpen}
         onClose={() => setIsEmailOpen(false)}
