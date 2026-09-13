@@ -4,7 +4,6 @@ import { LuziaHero } from './components/LuziaHero';
 import { LuziaClientStrip } from './components/LuziaClientStrip';
 import { LuziaProjects } from './components/LuziaProjects';
 import { LuziaBentoProof } from './components/LuziaBentoProof';
-import { LuziaServices } from './components/LuziaServices';
 import { ExperienceTimeline } from './components/ExperienceTimeline';
 import { LuziaWorkflow } from './components/LuziaWorkflow';
 import { LuziaFAQ } from './components/LuziaFAQ';
@@ -59,11 +58,6 @@ export function App() {
 
       {/* 3-Card Bento Proof & Metrics */}
       <LuziaBentoProof />
-
-      {/* 3-Card Services Grid with Electric Purple Highlight */}
-      <LuziaServices
-        onOpenBooking={() => setIsContactOpen(true)}
-      />
 
       {/* Work Experience Section (Preserved) */}
       <ExperienceTimeline />

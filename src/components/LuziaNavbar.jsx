@@ -17,7 +17,6 @@ export const LuziaNavbar = ({ onOpenBooking, onOpenPalette, onOpenEmail }) => {
 
   const navLinks = [
     { name: 'Work', href: '#projects' },
-    { name: 'Services', href: '#services' },
     { name: 'Experience', href: '#experience' },
     { name: 'Process', href: '#process' },
     { name: 'FAQs', href: '#faqs' },
