@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LuziaNavbar } from './components/LuziaNavbar';
 import { LuziaHero } from './components/LuziaHero';
+import { LuziaClientStrip } from './components/LuziaClientStrip';
 import { LuziaProjects } from './components/LuziaProjects';
 import { LuziaBentoProof } from './components/LuziaBentoProof';
 import { LuziaServices } from './components/LuziaServices';
@@ -48,7 +49,10 @@ export function App() {
         onOpenEmail={() => setIsEmailOpen(true)}
       />
 
-      {/* 2-Column Rounded Project Showcase */}
+      {/* Monochromatic Client & Partner Strip */}
+      <LuziaClientStrip />
+
+      {/* 2-Column Rounded Project Showcase with Filters */}
       <LuziaProjects
         onSelectProject={(project) => setSelectedProject(project)}
       />
@@ -64,7 +68,7 @@ export function App() {
       {/* Work Experience Section (Preserved) */}
       <ExperienceTimeline />
 
-      {/* How It Works (Workflow in Dark Container) */}
+      {/* How It Works (Tactile Dark Texture Container) */}
       <LuziaWorkflow />
 
       {/* Interactive FAQ Accordion */}
