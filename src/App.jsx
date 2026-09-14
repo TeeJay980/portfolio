@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import { ScrollToTop } from './components/ScrollToTop';
 import { LuziaNavbar } from './components/LuziaNavbar';
+import { PageTransition } from './components/PageTransition';
 import { HomePage } from './pages/HomePage';
 import { WorkPage } from './pages/WorkPage';
 import { AboutPage } from './pages/AboutPage';
@@ -10,6 +12,83 @@ import { ProjectModal } from './components/ProjectModal';
 import { ContactModal } from './components/ContactModal';
 import { CommandPalette } from './components/CommandPalette';
 import { EmailModal } from './components/EmailModal';
+
+function AnimatedRoutes({
+  onSelectProject,
+  onOpenBooking,
+  onOpenEmail
+}) {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={
+            <PageTransition>
+              <HomePage
+                onSelectProject={onSelectProject}
+                onOpenBooking={onOpenBooking}
+                onOpenEmail={onOpenEmail}
+              />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/work"
+          element={
+            <PageTransition>
+              <WorkPage
+                onSelectProject={onSelectProject}
+                onOpenBooking={onOpenBooking}
+                onOpenEmail={onOpenEmail}
+              />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/works"
+          element={
+            <PageTransition>
+              <WorkPage
+                onSelectProject={onSelectProject}
+                onOpenBooking={onOpenBooking}
+                onOpenEmail={onOpenEmail}
+              />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <PageTransition>
+              <AboutPage
+                onOpenBooking={onOpenBooking}
+                onOpenEmail={onOpenEmail}
+              />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <PageTransition>
+              <ContactPage
+                onOpenBooking={onOpenBooking}
+                onOpenEmail={onOpenEmail}
+              />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="*"
+          element={<Navigate to="/" replace />}
+        />
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
 export function App() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -41,63 +120,12 @@ export function App() {
           onOpenPalette={() => setIsPaletteOpen(true)}
         />
 
-        {/* Multi-Page Routes */}
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                onSelectProject={(project) => setSelectedProject(project)}
-                onOpenBooking={() => setIsContactOpen(true)}
-                onOpenEmail={() => setIsEmailOpen(true)}
-              />
-            }
-          />
-          <Route
-            path="/work"
-            element={
-              <WorkPage
-                onSelectProject={(project) => setSelectedProject(project)}
-                onOpenBooking={() => setIsContactOpen(true)}
-                onOpenEmail={() => setIsEmailOpen(true)}
-              />
-            }
-          />
-          {/* Alias for /works */}
-          <Route
-            path="/works"
-            element={
-              <WorkPage
-                onSelectProject={(project) => setSelectedProject(project)}
-                onOpenBooking={() => setIsContactOpen(true)}
-                onOpenEmail={() => setIsEmailOpen(true)}
-              />
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <AboutPage
-                onOpenBooking={() => setIsContactOpen(true)}
-                onOpenEmail={() => setIsEmailOpen(true)}
-              />
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <ContactPage
-                onOpenBooking={() => setIsContactOpen(true)}
-                onOpenEmail={() => setIsEmailOpen(true)}
-              />
-            }
-          />
-          {/* Catch-all fallback */}
-          <Route
-            path="*"
-            element={<Navigate to="/" replace />}
-          />
-        </Routes>
+        {/* Multi-Page Routes with AnimatePresence */}
+        <AnimatedRoutes
+          onSelectProject={(project) => setSelectedProject(project)}
+          onOpenBooking={() => setIsContactOpen(true)}
+          onOpenEmail={() => setIsEmailOpen(true)}
+        />
 
         {/* Modals & Command Palette */}
         <ProjectModal
