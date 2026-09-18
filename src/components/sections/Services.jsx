@@ -31,11 +31,14 @@ const cardVariants = {
   },
 };
 
-const hoverProps = {
-  whileHover: {
-    y: -2,
-    transition: { type: 'spring', stiffness: 350, damping: 25 },
-  },
+const imageVariants = {
+  rest: { scale: 1, transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } },
+  hover: { scale: 1.06, transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } },
+};
+
+const arrowVariants = {
+  rest: { x: 0, y: 0 },
+  hover: { x: 3, y: -3, transition: { type: 'spring', stiffness: 400, damping: 20 } },
 };
 
 export const Services = ({ onOpenBooking }) => {
@@ -48,7 +51,7 @@ export const Services = ({ onOpenBooking }) => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.25 }}
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E7E7E5] text-xs font-medium text-[#111111] shadow-sm">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#EBEBEA] text-xs font-medium text-[#111111] shadow-sm">
           <span className="w-1.5 h-1.5 rounded-full bg-[#111111]" />
           <span>Services</span>
         </div>
@@ -69,8 +72,10 @@ export const Services = ({ onOpenBooking }) => {
         {/* ════════ BLOCK 1: Branding Design ════════ */}
         <motion.div
           variants={cardVariants}
-          {...hoverProps}
-          className="bg-white rounded-[24px] p-8 border border-[#E7E7E5] transition-shadow hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-default"
+          initial="rest"
+          animate="rest"
+          whileHover="hover"
+          className="group relative cursor-pointer overflow-hidden rounded-[24px] bg-white border border-[#EBEBEA] hover:border-[#D2D2CF] transition-colors duration-300 p-8"
         >
           {/* Top bar */}
           <div className="flex items-center justify-between gap-4">
@@ -80,10 +85,12 @@ export const Services = ({ onOpenBooking }) => {
 
             <button
               onClick={onOpenBooking}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#F2F2F0] hover:bg-[#E7E7E5] text-[#111111] text-xs font-semibold transition-colors shadow-sm group"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#F4F4F3] group-hover:bg-[#EAEAE8] text-[#111111] text-xs font-semibold transition-colors duration-300 shadow-sm"
             >
               <span>Start a Project</span>
-              <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.2] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <motion.span variants={arrowVariants} className="inline-flex">
+                <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.2]" />
+              </motion.span>
             </button>
           </div>
 
@@ -97,7 +104,7 @@ export const Services = ({ onOpenBooking }) => {
             {['Logo design', 'Brand guideline', 'Brand strategy', '+more'].map((tag, idx) => (
               <span
                 key={idx}
-                className="bg-[#F2F2F0] hover:bg-[#E7E7E5] text-[#333333] rounded-full text-xs px-3 py-1.5 font-medium transition-colors cursor-pointer select-none"
+                className="bg-[#F4F4F3] group-hover:bg-[#EAEAE8] text-[#333333] rounded-full text-xs px-3 py-1.5 font-medium transition-colors duration-300 select-none"
               >
                 {tag}
               </span>
@@ -109,9 +116,10 @@ export const Services = ({ onOpenBooking }) => {
             {['/images/luzia_img_13.png', '/images/luzia_img_14.png', '/images/luzia_img_15.png'].map((imgSrc, i) => (
               <div
                 key={i}
-                className="rounded-2xl overflow-hidden h-56 sm:h-64 w-40 sm:w-48 border border-[#E7E7E5] flex-shrink-0 bg-[#F2F2F0] shadow-sm hover:scale-[1.02] transition-transform duration-200"
+                className="rounded-2xl overflow-hidden h-56 sm:h-64 w-40 sm:w-48 border border-[#EBEBEA] flex-shrink-0 bg-[#F4F4F3] relative"
               >
-                <img
+                <motion.img
+                  variants={imageVariants}
                   src={imgSrc}
                   alt="Example work of branding design"
                   className="w-full h-full object-cover"
@@ -125,8 +133,10 @@ export const Services = ({ onOpenBooking }) => {
         {/* ════════ BLOCK 2: Framer Development ════════ */}
         <motion.div
           variants={cardVariants}
-          {...hoverProps}
-          className="bg-white rounded-[24px] p-8 border border-[#E7E7E5] transition-shadow hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-default"
+          initial="rest"
+          animate="rest"
+          whileHover="hover"
+          className="group relative cursor-pointer overflow-hidden rounded-[24px] bg-white border border-[#EBEBEA] hover:border-[#D2D2CF] transition-colors duration-300 p-8"
         >
           {/* Top bar */}
           <div className="flex items-center justify-between gap-4">
@@ -136,10 +146,12 @@ export const Services = ({ onOpenBooking }) => {
 
             <button
               onClick={onOpenBooking}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#F2F2F0] hover:bg-[#E7E7E5] text-[#111111] text-xs font-semibold transition-colors shadow-sm group"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#F4F4F3] group-hover:bg-[#EAEAE8] text-[#111111] text-xs font-semibold transition-colors duration-300 shadow-sm"
             >
               <span>Start a Project</span>
-              <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.2] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <motion.span variants={arrowVariants} className="inline-flex">
+                <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.2]" />
+              </motion.span>
             </button>
           </div>
 
@@ -153,7 +165,7 @@ export const Services = ({ onOpenBooking }) => {
             {['Landing page', 'Multipages', 'Web migration', '+more'].map((tag, idx) => (
               <span
                 key={idx}
-                className="bg-[#F2F2F0] hover:bg-[#E7E7E5] text-[#333333] rounded-full text-xs px-3 py-1.5 font-medium transition-colors cursor-pointer select-none"
+                className="bg-[#F4F4F3] group-hover:bg-[#EAEAE8] text-[#333333] rounded-full text-xs px-3 py-1.5 font-medium transition-colors duration-300 select-none"
               >
                 {tag}
               </span>
@@ -165,9 +177,10 @@ export const Services = ({ onOpenBooking }) => {
             {['/images/luzia_img_8.png', '/images/luzia_img_4.webp', '/images/luzia_img_9.png'].map((imgSrc, i) => (
               <div
                 key={i}
-                className="rounded-2xl overflow-hidden h-56 sm:h-64 w-40 sm:w-48 border border-[#E7E7E5] flex-shrink-0 bg-[#F2F2F0] shadow-sm hover:scale-[1.02] transition-transform duration-200"
+                className="rounded-2xl overflow-hidden h-56 sm:h-64 w-40 sm:w-48 border border-[#EBEBEA] flex-shrink-0 bg-[#F4F4F3] relative"
               >
-                <img
+                <motion.img
+                  variants={imageVariants}
                   src={imgSrc}
                   alt="Example work of framer development"
                   className="w-full h-full object-cover"
@@ -181,8 +194,10 @@ export const Services = ({ onOpenBooking }) => {
         {/* ════════ BLOCK 3: UI/UX Design ════════ */}
         <motion.div
           variants={cardVariants}
-          {...hoverProps}
-          className="bg-white rounded-[24px] p-8 border border-[#E7E7E5] transition-shadow hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-default"
+          initial="rest"
+          animate="rest"
+          whileHover="hover"
+          className="group relative cursor-pointer overflow-hidden rounded-[24px] bg-white border border-[#EBEBEA] hover:border-[#D2D2CF] transition-colors duration-300 p-8"
         >
           {/* Top bar */}
           <div className="flex items-center justify-between gap-4">
@@ -192,10 +207,12 @@ export const Services = ({ onOpenBooking }) => {
 
             <button
               onClick={onOpenBooking}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#F2F2F0] hover:bg-[#E7E7E5] text-[#111111] text-xs font-semibold transition-colors shadow-sm group"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#F4F4F3] group-hover:bg-[#EAEAE8] text-[#111111] text-xs font-semibold transition-colors duration-300 shadow-sm"
             >
               <span>Start a Project</span>
-              <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.2] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <motion.span variants={arrowVariants} className="inline-flex">
+                <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.2]" />
+              </motion.span>
             </button>
           </div>
 
@@ -209,7 +226,7 @@ export const Services = ({ onOpenBooking }) => {
             {['Web & app design', 'Design system', 'Prototyping', '+more'].map((tag, idx) => (
               <span
                 key={idx}
-                className="bg-[#F2F2F0] hover:bg-[#E7E7E5] text-[#333333] rounded-full text-xs px-3 py-1.5 font-medium transition-colors cursor-pointer select-none"
+                className="bg-[#F4F4F3] group-hover:bg-[#EAEAE8] text-[#333333] rounded-full text-xs px-3 py-1.5 font-medium transition-colors duration-300 select-none"
               >
                 {tag}
               </span>
@@ -221,9 +238,10 @@ export const Services = ({ onOpenBooking }) => {
             {['/images/luzia_img_10.png', '/images/luzia_img_11.png', '/images/luzia_img_12.png'].map((imgSrc, i) => (
               <div
                 key={i}
-                className="rounded-2xl overflow-hidden h-56 sm:h-64 w-40 sm:w-48 border border-[#E7E7E5] flex-shrink-0 bg-[#F2F2F0] shadow-sm hover:scale-[1.02] transition-transform duration-200"
+                className="rounded-2xl overflow-hidden h-56 sm:h-64 w-40 sm:w-48 border border-[#EBEBEA] flex-shrink-0 bg-[#F4F4F3] relative"
               >
-                <img
+                <motion.img
+                  variants={imageVariants}
                   src={imgSrc}
                   alt="Example work of ui ux design"
                   className="w-full h-full object-cover"
