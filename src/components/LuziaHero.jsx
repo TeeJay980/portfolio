@@ -15,16 +15,22 @@ export const LuziaHero = ({ onOpenEmail }) => {
     >
       {/* ── Atmospheric background gradients ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
           className="absolute -top-20 left-1/2 -translate-x-1/2 w-[900px] h-[500px]"
           style={{
             background:
-              'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(190,210,255,0.38) 0%, transparent 70%)',
+              'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(190,210,255,0.42) 0%, transparent 70%)',
           }}
         />
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[280px] blur-[90px]"
-          style={{ background: 'rgba(116,48,247,0.1)' }}
+          style={{ background: 'rgba(116,48,247,0.12)' }}
         />
       </div>
 
@@ -36,18 +42,17 @@ export const LuziaHero = ({ onOpenEmail }) => {
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 items-end">
 
           {/* LEFT — Badge + Headline (staggered) */}
-          <motion.div
-            variants={sectionContainer}
-            initial="hidden"
-            animate="show"
-            transition={{ staggerChildren: 0.12, delayChildren: 0.05 }}
-            className="lg:col-span-4 pb-10 lg:pb-14 z-20 order-2 lg:order-1"
-          >
+          <div className="lg:col-span-4 pb-10 lg:pb-14 z-20 order-2 lg:order-1">
             {/* Availability badge */}
             <motion.div
-              variants={sectionItem}
-              initial="hidden"
-              animate="visible"
+              initial={{ opacity: 0, y: 22, scale: 0.94 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                type: 'spring',
+                stiffness: 220,
+                damping: 20,
+                delay: 0.15,
+              }}
               className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/[0.07] shadow-sm text-xs font-medium text-[#555] mb-5 sm:mb-6"
             >
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
@@ -56,21 +61,31 @@ export const LuziaHero = ({ onOpenEmail }) => {
 
             {/* Headline */}
             <motion.h1
-              variants={sectionItem}
-              initial="hidden"
-              animate="visible"
+              initial={{ opacity: 0, y: 38 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.85,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.28,
+              }}
               className="text-[34px] sm:text-[42px] lg:text-[46px] xl:text-[52px] font-display font-bold leading-[1.1] tracking-[-0.035em] text-[#111111]"
             >
               Carter is solving problems through strategic design and compelling visuals
             </motion.h1>
-          </motion.div>
+          </div>
 
           {/* CENTER — Large portrait rising from below */}
           <div className="lg:col-span-4 flex justify-center items-end z-10 order-1 lg:order-2 relative">
             <motion.div
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ ...heroSpring, delay: 0.18 }}
+              initial={{ opacity: 0, y: 140, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                type: 'spring',
+                stiffness: 45,
+                damping: 14,
+                mass: 1.1,
+                delay: 0.08,
+              }}
               className="relative w-full flex justify-center items-end"
               style={{ maxWidth: '520px' }}
             >
@@ -95,17 +110,15 @@ export const LuziaHero = ({ onOpenEmail }) => {
           </div>
 
           {/* RIGHT — Bio + Email CTA (staggered) */}
-          <motion.div
-            variants={sectionContainer}
-            initial="hidden"
-            animate="show"
-            transition={{ staggerChildren: 0.12, delayChildren: 0.35 }}
-            className="lg:col-span-4 pb-10 lg:pb-14 flex flex-col items-start z-20 order-3"
-          >
+          <div className="lg:col-span-4 pb-10 lg:pb-14 flex flex-col items-start z-20 order-3">
             <motion.p
-              variants={sectionItem}
-              initial="hidden"
-              animate="visible"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.85,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.42,
+              }}
               className="text-sm sm:text-[15px] text-[#4b5563] font-normal leading-[1.72] max-w-[280px] lg:max-w-xs"
             >
               As a digital product designer with a strong focus on visual design
@@ -115,9 +128,14 @@ export const LuziaHero = ({ onOpenEmail }) => {
             </motion.p>
 
             <motion.div
-              variants={sectionItem}
-              initial="hidden"
-              animate="visible"
+              initial={{ opacity: 0, y: 24, scale: 0.92 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                type: 'spring',
+                stiffness: 240,
+                damping: 18,
+                delay: 0.56,
+              }}
               className="mt-7"
             >
               <motion.button
@@ -128,16 +146,16 @@ export const LuziaHero = ({ onOpenEmail }) => {
                 Email Me
               </motion.button>
             </motion.div>
-          </motion.div>
+          </div>
 
         </div>
       </div>
 
       {/* ── "Made in Framer" badge ── */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.1, duration: 0.5 }}
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.85 }}
         className="absolute bottom-5 right-6 z-30 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md border border-black/[0.08] shadow-sm"
       >
         <svg className="w-3.5 h-3.5 fill-black flex-shrink-0" viewBox="0 0 24 24">
