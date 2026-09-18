@@ -103,6 +103,22 @@ export const Services = ({ onOpenBooking }) => {
               </span>
             ))}
           </div>
+
+          {/* Portrait Thumbnail Showcase */}
+          <div className="mt-6 flex items-center gap-4 overflow-x-auto pb-2 scrollbar-none">
+            {['/images/luzia_img_13.png', '/images/luzia_img_14.png', '/images/luzia_img_15.png'].map((imgSrc, i) => (
+              <div
+                key={i}
+                className="rounded-2xl overflow-hidden h-56 sm:h-64 w-40 sm:w-48 border border-[#E7E7E5] flex-shrink-0 bg-[#F2F2F0] shadow-sm hover:scale-[1.02] transition-transform duration-200"
+              >
+                <img
+                  src={imgSrc}
+                  alt="Example work of branding design"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
         </motion.div>
 
 
@@ -144,12 +160,12 @@ export const Services = ({ onOpenBooking }) => {
             ))}
           </div>
 
-          {/* Thumbnail row below tags */}
+          {/* Portrait Thumbnail Showcase */}
           <div className="mt-6 flex items-center gap-4 overflow-x-auto pb-2 scrollbar-none">
             {['/images/luzia_img_8.png', '/images/luzia_img_4.webp', '/images/luzia_img_9.png'].map((imgSrc, i) => (
               <div
                 key={i}
-                className="rounded-xl overflow-hidden h-36 w-60 border border-[#E7E7E5] flex-shrink-0 bg-[#F2F2F0] shadow-sm hover:scale-[1.02] transition-transform duration-200"
+                className="rounded-2xl overflow-hidden h-56 sm:h-64 w-40 sm:w-48 border border-[#E7E7E5] flex-shrink-0 bg-[#F2F2F0] shadow-sm hover:scale-[1.02] transition-transform duration-200"
               >
                 <img
                   src={imgSrc}
@@ -200,12 +216,12 @@ export const Services = ({ onOpenBooking }) => {
             ))}
           </div>
 
-          {/* Thumbnail row below tags */}
+          {/* Portrait Thumbnail Showcase */}
           <div className="mt-6 flex items-center gap-4 overflow-x-auto pb-2 scrollbar-none">
             {['/images/luzia_img_10.png', '/images/luzia_img_11.png', '/images/luzia_img_12.png'].map((imgSrc, i) => (
               <div
                 key={i}
-                className="rounded-xl overflow-hidden h-36 w-60 border border-[#E7E7E5] flex-shrink-0 bg-[#F2F2F0] shadow-sm hover:scale-[1.02] transition-transform duration-200"
+                className="rounded-2xl overflow-hidden h-56 sm:h-64 w-40 sm:w-48 border border-[#E7E7E5] flex-shrink-0 bg-[#F2F2F0] shadow-sm hover:scale-[1.02] transition-transform duration-200"
               >
                 <img
                   src={imgSrc}
