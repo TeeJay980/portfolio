@@ -77,22 +77,18 @@ export const LuziaHero = ({ onOpenEmail }) => {
               <img
                 src="/images/tj_hero.png"
                 alt="TJ - Digital Product Designer"
-                className="w-full h-auto object-contain select-none pointer-events-none block mix-blend-multiply"
+                className="w-full h-auto object-contain select-none pointer-events-none block drop-shadow-[0_15px_30px_rgba(0,0,0,0.05)]"
                 style={{
                   maxHeight: '80vh',
-                  maskImage:
-                    'linear-gradient(to bottom, black 65%, rgba(0,0,0,0.8) 82%, transparent 100%)',
-                  WebkitMaskImage:
-                    'linear-gradient(to bottom, black 65%, rgba(0,0,0,0.8) 82%, transparent 100%)',
                 }}
               />
               {/* Floor fade */}
               <div
                 className="absolute inset-x-0 bottom-0 pointer-events-none"
                 style={{
-                  height: '32%',
+                  height: '28%',
                   background:
-                    'linear-gradient(to top, #F3F4F6 20%, rgba(243,244,246,0.6) 65%, transparent 100%)',
+                    'linear-gradient(to top, #F3F4F6 15%, rgba(243,244,246,0.7) 55%, transparent 100%)',
                 }}
               />
             </motion.div>
