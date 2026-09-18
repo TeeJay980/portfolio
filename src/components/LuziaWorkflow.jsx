@@ -27,17 +27,22 @@ export const LuziaWorkflow = () => {
             {HOW_IT_WORKS.map((step, idx) => (
               <motion.div
                 key={step.step}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="p-5 sm:p-6 rounded-[24px] bg-[#141416] border border-white/[0.07] hover:border-white/20 transition-all flex flex-col justify-between shadow-md"
+                viewport={{ once: true, amount: 0.2 }}
+                whileHover={{
+                  y: -5,
+                  borderColor: 'rgba(255, 255, 255, 0.28)',
+                  backgroundColor: 'rgba(20, 20, 24, 0.95)'
+                }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className="p-5 sm:p-6 rounded-[24px] bg-[#141416] border border-white/[0.07] transition-all flex flex-col justify-between shadow-md group cursor-pointer"
               >
                 <div>
-                  <div className="w-8 h-8 rounded-full bg-[#202024] flex items-center justify-center text-xs font-mono font-bold text-neutral-300 mb-4">
+                  <div className="w-8 h-8 rounded-full bg-[#202024] group-hover:bg-white group-hover:text-black flex items-center justify-center text-xs font-mono font-bold text-neutral-300 transition-colors duration-300 mb-4">
                     {step.step}
                   </div>
-                  <h3 className="text-base font-display font-bold text-white leading-snug">{step.title}</h3>
+                  <h3 className="text-base font-display font-bold text-white leading-snug group-hover:text-blue-300 transition-colors duration-300">{step.title}</h3>
                   <p className="text-xs text-[#8e8e93] mt-2.5 leading-relaxed font-normal">{step.description}</p>
                 </div>
               </motion.div>

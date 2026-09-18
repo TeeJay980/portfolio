@@ -16,7 +16,13 @@ export const LuziaProjects = ({ onSelectProject }) => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header with Category Filter Pills */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-12"
+        >
           <div>
             <h2 className="text-2xl sm:text-4xl font-display font-black tracking-tight text-[#0c0c0c]">
               Selected Works
@@ -32,9 +38,9 @@ export const LuziaProjects = ({ onSelectProject }) => {
               <button
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
                   activeFilter === cat
-                    ? 'bg-[#0c0c0c] text-white shadow-sm'
+                    ? 'bg-[#0c0c0c] text-white shadow-sm scale-[1.02]'
                     : 'bg-white text-neutral-600 hover:text-black border border-black/[0.06] hover:bg-neutral-50'
                 }`}
               >
@@ -42,20 +48,24 @@ export const LuziaProjects = ({ onSelectProject }) => {
               </button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* 2-Column Grid with Luzia rounded-[32px] cards */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           <AnimatePresence>
-            {filteredProjects.map((project) => (
+            {filteredProjects.map((project, idx) => (
               <motion.div
                 key={project.id}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
                 whileHover={{ y: -6 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                transition={{
+                  duration: 0.5,
+                  delay: (idx % 2) * 0.1,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
                 className="bg-white rounded-[32px] p-4 sm:p-5 border border-black/[0.06] shadow-luzia hover:shadow-luzia-hover transition-all duration-300 flex flex-col justify-between group cursor-pointer"
                 onClick={() => onSelectProject(project)}
               >
@@ -65,7 +75,7 @@ export const LuziaProjects = ({ onSelectProject }) => {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
                       loading="lazy"
                     />
 
@@ -84,9 +94,9 @@ export const LuziaProjects = ({ onSelectProject }) => {
                       )}
                     </div>
 
-                    {/* View Button */}
-                    <div className="absolute top-3.5 right-3.5 z-10 p-2.5 rounded-full bg-black/80 hover:bg-black text-white transition-all transform hover:scale-105 shadow-md active:scale-95">
-                      <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                    {/* View Button with Arrow Displacement */}
+                    <div className="absolute top-3.5 right-3.5 z-10 p-2.5 rounded-full bg-black/80 hover:bg-black text-white transition-all duration-300 transform group-hover:scale-110 shadow-md">
+                      <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
                   </div>
 
@@ -125,10 +135,11 @@ export const LuziaProjects = ({ onSelectProject }) => {
                   </div>
                 </div>
 
-                {/* Bottom Actions */}
+                {/* Bottom Actions with Arrow Displacement */}
                 <div className="mt-5 pt-3.5 border-t border-neutral-100 flex items-center justify-between px-1">
-                  <span className="text-xs font-bold text-[#0c0c0c] group-hover:underline">
-                    View Project Case
+                  <span className="text-xs font-bold text-[#0c0c0c] flex items-center gap-1 group-hover:underline">
+                    <span>View Project Case</span>
+                    <ArrowUpRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
 
                   <span className="text-xs font-semibold text-neutral-400 group-hover:text-neutral-900 transition-colors">

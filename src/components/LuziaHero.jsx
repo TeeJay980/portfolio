@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export const LuziaHero = ({ onOpenEmail }) => {
   return (
-    <section className="relative pt-24 sm:pt-28 pb-10 sm:pb-16 overflow-hidden min-h-[580px] lg:min-h-[660px] flex items-end">
+    <section className="relative pt-28 sm:pt-32 lg:pt-36 pb-0 overflow-hidden min-h-[620px] lg:min-h-[720px] flex items-end">
       
       {/* Background Soft Atmospheric Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[450px] bg-gradient-to-b from-blue-100/40 via-purple-50/20 to-transparent rounded-full blur-[140px] pointer-events-none" />
@@ -14,42 +14,62 @@ export const LuziaHero = ({ onOpenEmail }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end relative">
           
           {/* Left Column (5 cols): Status Badge & Main Headline */}
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-4 xl:col-span-5 pb-4 lg:pb-8 z-20"
-          >
+          <div className="lg:col-span-4 xl:col-span-5 pb-4 lg:pb-8 z-20">
             {/* Availability Status Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-black/[0.06] text-xs font-medium text-[#555555] shadow-sm mb-5 sm:mb-6">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                type: 'spring',
+                stiffness: 100,
+                damping: 18,
+                delay: 0.05,
+              }}
+              className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-black/[0.06] text-xs font-medium text-[#555555] shadow-sm mb-5 sm:mb-6"
+            >
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>2 projects left in March</span>
-            </div>
+            </motion.div>
 
             {/* Headline */}
-            <h1 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[48px] font-display font-bold leading-[1.14] tracking-[-0.03em] text-[#111111]">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                type: 'spring',
+                stiffness: 100,
+                damping: 18,
+                delay: 0.15,
+              }}
+              className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[48px] font-display font-bold leading-[1.14] tracking-[-0.03em] text-[#111111]"
+            >
               Carter is solving problems through strategic design and compelling visuals
-            </h1>
-          </motion.div>
+            </motion.h1>
+          </div>
 
           {/* Center Column (4 cols): Cutout Portrait with Smooth Gradient Bottom Blur */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, scale: 0.94, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{
+              type: 'spring',
+              stiffness: 90,
+              damping: 18,
+              delay: 0.25,
+            }}
             className="lg:col-span-4 xl:col-span-3 flex justify-center items-end relative z-10 -mb-4 lg:-mb-10"
           >
             <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[440px] flex justify-center items-end">
               <img
-                src="/images/hero_carter.webp"
+                src="/images/luzia_img_1.png"
                 onError={(e) => {
                   e.currentTarget.src = 'https://framerusercontent.com/images/yHECzzvtCQT7X8sGipPGW5sEc.webp?width=2400&height=1904';
                 }}
                 alt="Michael Carter, Digital Product Designer"
-                className="w-full h-auto object-contain select-none pointer-events-none drop-shadow-sm"
+                className="w-full h-auto object-contain select-none pointer-events-none"
                 style={{
-                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 68%, rgba(0,0,0,0.4) 88%, rgba(0,0,0,0) 100%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 68%, rgba(0,0,0,0.4) 88%, rgba(0,0,0,0) 100%)'
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%)'
                 }}
               />
               {/* Bottom Edge Fade Overlay */}
@@ -61,7 +81,12 @@ export const LuziaHero = ({ onOpenEmail }) => {
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{
+              type: 'spring',
+              stiffness: 100,
+              damping: 18,
+              delay: 0.35,
+            }}
             className="lg:col-span-4 xl:col-span-4 pb-4 lg:pb-8 flex flex-col items-start lg:items-start z-20"
           >
             <p className="text-sm sm:text-[15px] lg:text-base text-[#4b5563] font-normal leading-[1.65]">
@@ -70,10 +95,11 @@ export const LuziaHero = ({ onOpenEmail }) => {
 
             <div className="mt-6">
               <motion.button
-                whileHover={{ scale: 1.03 }}
+                whileHover={{ scale: 1.04, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.25)' }}
                 whileTap={{ scale: 0.96 }}
+                transition={{ duration: 0.2 }}
                 onClick={onOpenEmail}
-                className="py-3 px-7 rounded-full bg-[#111111] hover:bg-neutral-800 text-white font-semibold text-sm shadow-[0_4px_14px_rgba(0,0,0,0.22)] hover:shadow-lg transition-all flex items-center justify-center"
+                className="py-3 px-7 rounded-full bg-[#111111] hover:bg-neutral-800 text-white font-semibold text-sm shadow-[0_4px_14px_rgba(0,0,0,0.22)] transition-all flex items-center justify-center"
               >
                 <span>Email Me</span>
               </motion.button>

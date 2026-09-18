@@ -76,9 +76,10 @@ export const DevFooter = ({ onOpenBooking, onOpenEmail }) => {
               <Link
                 key={link.name}
                 to={link.path}
-                className="text-xs sm:text-sm font-medium text-neutral-600 hover:text-black transition-colors"
+                className="text-xs sm:text-sm font-medium text-neutral-600 hover:text-black transition-colors relative py-0.5 group"
               >
-                {link.name}
+                <span>{link.name}</span>
+                <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#111111] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </Link>
             ))}
           </div>
@@ -91,9 +92,10 @@ export const DevFooter = ({ onOpenBooking, onOpenEmail }) => {
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-medium text-neutral-500 hover:text-black transition-colors"
+                className="text-xs font-medium text-neutral-500 hover:text-black transition-colors relative py-0.5 group"
               >
-                {s.name}
+                <span>{s.name}</span>
+                <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#111111] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </a>
             ))}
           </div>
