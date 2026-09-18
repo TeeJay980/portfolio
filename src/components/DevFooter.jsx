@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Mail } from 'lucide-react';
 import { TWITTER_URL, THREADS_URL, INSTAGRAM_URL, YOUTUBE_URL } from '../config';
+import { buttonHover, snappySpring } from '../lib/motion';
 
 export const DevFooter = ({ onOpenBooking, onOpenEmail }) => {
   const footerNav = [
@@ -47,19 +48,17 @@ export const DevFooter = ({ onOpenBooking, onOpenEmail }) => {
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
+                {...buttonHover}
                 onClick={onOpenBooking}
-                className="px-6 py-3.5 rounded-full bg-white text-[#0c0c0c] hover:bg-neutral-100 font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg transition-all"
+                className="px-6 py-3.5 rounded-full bg-white text-[#0c0c0c] hover:bg-neutral-100 font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg"
               >
                 <span>Book a Call</span>
                 <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
+                {...buttonHover}
                 onClick={onOpenEmail}
-                className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white font-semibold text-xs sm:text-sm border border-white/20 flex items-center gap-2 transition-all"
+                className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white font-semibold text-xs sm:text-sm border border-white/20 flex items-center gap-2"
               >
                 <Mail className="w-4 h-4" />
                 <span>Email Me</span>

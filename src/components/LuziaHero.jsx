@@ -1,123 +1,160 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import {
+  sectionContainer,
+  sectionItem,
+  heroSpring,
+  buttonHover,
+} from '../lib/motion';
 
 export const LuziaHero = ({ onOpenEmail }) => {
   return (
-    <section className="relative pt-28 sm:pt-32 lg:pt-36 pb-0 overflow-hidden min-h-[620px] lg:min-h-[720px] flex items-end">
-      
-      {/* Background Soft Atmospheric Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[450px] bg-gradient-to-b from-blue-100/40 via-purple-50/20 to-transparent rounded-full blur-[140px] pointer-events-none" />
+    <section
+      className="relative w-full overflow-hidden bg-[#F3F4F6]"
+      style={{ minHeight: '90vh' }}
+    >
+      {/* ── Atmospheric background gradients ── */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div
+          className="absolute -top-20 left-1/2 -translate-x-1/2 w-[900px] h-[500px]"
+          style={{
+            background:
+              'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(190,210,255,0.38) 0%, transparent 70%)',
+          }}
+        />
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[280px] blur-[90px]"
+          style={{ background: 'rgba(116,48,247,0.1)' }}
+        />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full relative z-10">
-        
-        {/* 3-Column Layout: Left Headline, Center Cutout Portrait, Right Bio & CTA */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end relative">
-          
-          {/* Left Column (5 cols): Status Badge & Main Headline */}
-          <div className="lg:col-span-4 xl:col-span-5 pb-4 lg:pb-8 z-20">
-            {/* Availability Status Pill */}
+      {/* ── 3-column layout ── */}
+      <div
+        className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 w-full"
+        style={{ minHeight: '90vh', display: 'flex', alignItems: 'flex-end' }}
+      >
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 items-end">
+
+          {/* LEFT — Badge + Headline (staggered) */}
+          <motion.div
+            variants={sectionContainer}
+            initial="hidden"
+            animate="show"
+            transition={{ staggerChildren: 0.12, delayChildren: 0.05 }}
+            className="lg:col-span-4 pb-10 lg:pb-14 z-20 order-2 lg:order-1"
+          >
+            {/* Availability badge */}
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                type: 'spring',
-                stiffness: 100,
-                damping: 18,
-                delay: 0.05,
-              }}
-              className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-black/[0.06] text-xs font-medium text-[#555555] shadow-sm mb-5 sm:mb-6"
+              variants={sectionItem}
+              initial="hidden"
+              animate="visible"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/[0.07] shadow-sm text-xs font-medium text-[#555] mb-5 sm:mb-6"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
               <span>2 projects left in March</span>
             </motion.div>
 
             {/* Headline */}
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                type: 'spring',
-                stiffness: 100,
-                damping: 18,
-                delay: 0.15,
-              }}
-              className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[48px] font-display font-bold leading-[1.14] tracking-[-0.03em] text-[#111111]"
+              variants={sectionItem}
+              initial="hidden"
+              animate="visible"
+              className="text-[34px] sm:text-[42px] lg:text-[46px] xl:text-[52px] font-display font-bold leading-[1.1] tracking-[-0.035em] text-[#111111]"
             >
               Carter is solving problems through strategic design and compelling visuals
             </motion.h1>
-          </div>
+          </motion.div>
 
-          {/* Center Column (4 cols): Cutout Portrait with Smooth Gradient Bottom Blur */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.94, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{
-              type: 'spring',
-              stiffness: 90,
-              damping: 18,
-              delay: 0.25,
-            }}
-            className="lg:col-span-4 xl:col-span-3 flex justify-center items-end relative z-10 -mb-4 lg:-mb-10"
-          >
-            <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[440px] flex justify-center items-end">
+          {/* CENTER — Large portrait rising from below */}
+          <div className="lg:col-span-4 flex justify-center items-end z-10 order-1 lg:order-2 relative">
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ ...heroSpring, delay: 0.18 }}
+              className="relative w-full flex justify-center items-end"
+              style={{ maxWidth: '500px' }}
+            >
               <img
                 src="/images/luzia_img_1.png"
                 onError={(e) => {
-                  e.currentTarget.src = 'https://framerusercontent.com/images/yHECzzvtCQT7X8sGipPGW5sEc.webp?width=2400&height=1904';
+                  e.currentTarget.src =
+                    'https://framerusercontent.com/images/yHECzzvtCQT7X8sGipPGW5sEc.webp?width=2400&height=1904';
                 }}
                 alt="Michael Carter, Digital Product Designer"
-                className="w-full h-auto object-contain select-none pointer-events-none"
+                className="w-full h-auto object-contain select-none pointer-events-none block"
                 style={{
-                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%)'
+                  maxHeight: '78vh',
+                  maskImage:
+                    'linear-gradient(to bottom, black 55%, rgba(0,0,0,0.7) 78%, transparent 100%)',
+                  WebkitMaskImage:
+                    'linear-gradient(to bottom, black 55%, rgba(0,0,0,0.7) 78%, transparent 100%)',
                 }}
               />
-              {/* Bottom Edge Fade Overlay */}
-              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#F3F4F6] via-[#F3F4F6]/70 to-transparent pointer-events-none" />
-            </div>
-          </motion.div>
+              {/* Floor fade */}
+              <div
+                className="absolute inset-x-0 bottom-0 pointer-events-none"
+                style={{
+                  height: '38%',
+                  background:
+                    'linear-gradient(to top, #F3F4F6 25%, rgba(243,244,246,0.6) 60%, transparent 100%)',
+                }}
+              />
+            </motion.div>
+          </div>
 
-          {/* Right Column (3-4 cols): Bio & Email Button */}
+          {/* RIGHT — Bio + Email CTA (staggered) */}
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              type: 'spring',
-              stiffness: 100,
-              damping: 18,
-              delay: 0.35,
-            }}
-            className="lg:col-span-4 xl:col-span-4 pb-4 lg:pb-8 flex flex-col items-start lg:items-start z-20"
+            variants={sectionContainer}
+            initial="hidden"
+            animate="show"
+            transition={{ staggerChildren: 0.12, delayChildren: 0.35 }}
+            className="lg:col-span-4 pb-10 lg:pb-14 flex flex-col items-start z-20 order-3"
           >
-            <p className="text-sm sm:text-[15px] lg:text-base text-[#4b5563] font-normal leading-[1.65]">
-              As a digital product designer with a strong focus on visual design and Framer websites, he collaborates closely with teams to craft seamless, user-centered experiences. A reliable partner in bringing ideas to life
-            </p>
+            <motion.p
+              variants={sectionItem}
+              initial="hidden"
+              animate="visible"
+              className="text-sm sm:text-[15px] text-[#4b5563] font-normal leading-[1.72] max-w-[280px] lg:max-w-xs"
+            >
+              As a digital product designer with a strong focus on visual design
+              and Framer websites, he collaborates closely with teams to craft
+              seamless, user-centered experiences. A reliable partner in bringing
+              ideas to life.
+            </motion.p>
 
-            <div className="mt-6">
+            <motion.div
+              variants={sectionItem}
+              initial="hidden"
+              animate="visible"
+              className="mt-7"
+            >
               <motion.button
-                whileHover={{ scale: 1.04, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.25)' }}
-                whileTap={{ scale: 0.96 }}
-                transition={{ duration: 0.2 }}
+                {...buttonHover}
                 onClick={onOpenEmail}
-                className="py-3 px-7 rounded-full bg-[#111111] hover:bg-neutral-800 text-white font-semibold text-sm shadow-[0_4px_14px_rgba(0,0,0,0.22)] transition-all flex items-center justify-center"
+                className="py-3.5 px-8 rounded-full bg-[#111111] text-white font-semibold text-sm shadow-[0_4px_16px_rgba(0,0,0,0.22)] hover:bg-neutral-800 transition-colors"
               >
-                <span>Email Me</span>
+                Email Me
               </motion.button>
-            </div>
+            </motion.div>
           </motion.div>
 
         </div>
-
       </div>
 
-      {/* "Made in Framer" Badge in bottom right corner */}
-      <div className="absolute bottom-4 right-6 z-20 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md border border-black/[0.08] shadow-sm text-xs font-semibold text-[#111111]">
-        <svg className="w-3.5 h-3.5 fill-black" viewBox="0 0 24 24">
+      {/* ── "Made in Framer" badge ── */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.1, duration: 0.5 }}
+        className="absolute bottom-5 right-6 z-30 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md border border-black/[0.08] shadow-sm"
+      >
+        <svg className="w-3.5 h-3.5 fill-black flex-shrink-0" viewBox="0 0 24 24">
           <path d="M4 0h16v8h-8zM4 8h8l8 8H4zM4 16h8v8z" />
         </svg>
-        <span className="text-[11px] font-sans">Made in Framer</span>
-      </div>
-
+        <span className="text-[11px] font-sans font-semibold text-[#111]">
+          Made in Framer
+        </span>
+      </motion.div>
     </section>
   );
 };
