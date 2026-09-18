@@ -2,8 +2,8 @@ import React from 'react';
 import { LuziaHero } from '../components/LuziaHero';
 import { LuziaClientStrip } from '../components/LuziaClientStrip';
 import { LuziaProjects } from '../components/LuziaProjects';
-import { LuziaBentoProof } from '../components/LuziaBentoProof';
-import { LuziaServices } from '../components/LuziaServices';
+import { RecognitionSocialProof } from '../components/sections/RecognitionSocialProof';
+import { Services } from '../components/sections/Services';
 import { LuziaWorkflow } from '../components/LuziaWorkflow';
 import { LuziaFAQ } from '../components/LuziaFAQ';
 import { DevFooter } from '../components/DevFooter';
@@ -17,8 +17,8 @@ export const HomePage = ({ onSelectProject, onOpenBooking, onOpenEmail }) => {
       />
       <LuziaClientStrip />
       <LuziaProjects onSelectProject={onSelectProject} />
-      <LuziaBentoProof />
-      <LuziaServices onOpenBooking={onOpenBooking} />
+      <RecognitionSocialProof />
+      <Services onOpenBooking={onOpenBooking} />
       <LuziaWorkflow />
       <LuziaFAQ />
       <DevFooter
@@ -28,3 +28,5 @@ export const HomePage = ({ onSelectProject, onOpenBooking, onOpenEmail }) => {
     </>
   );
 };
+
+export default HomePage;
