@@ -17,7 +17,7 @@ export const LuziaFAQ = () => {
 
   return (
     <section id="faqs" className="py-12 sm:py-20 relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1140px] mx-auto px-6">
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
@@ -29,15 +29,15 @@ export const LuziaFAQ = () => {
             viewport={viewport}
             className="lg:col-span-4"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-black/[0.06] text-xs font-semibold text-neutral-800 shadow-sm mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-black" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E7E7E5] text-xs font-semibold text-[#111111] shadow-sm mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#111111]" />
               COMMON QUESTIONS
             </div>
-            <h2 className="text-2xl sm:text-4xl font-display font-black tracking-tight text-neutral-900">
+            <h2 className="text-2xl sm:text-4xl font-display font-black tracking-tight text-[#111111]">
               Frequently Asked <br />
-              <span className="text-neutral-400 font-normal">Questions.</span>
+              <span className="text-[#888888] font-normal">Questions.</span>
             </h2>
-            <p className="text-xs sm:text-sm text-neutral-600 mt-3 leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#666665] mt-3 leading-relaxed">
               Everything you need to know about working together, delivery timelines, and project scopes.
             </p>
           </motion.div>
@@ -57,7 +57,7 @@ export const LuziaFAQ = () => {
                   key={idx}
                   variants={sectionItem}
                   layout
-                  className="bg-white rounded-2xl border border-black/[0.06] shadow-sm overflow-hidden"
+                  className="bg-white rounded-2xl border border-[#E7E7E5] shadow-sm overflow-hidden"
                 >
                   {/* Question row */}
                   <motion.button

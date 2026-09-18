@@ -29,7 +29,7 @@ export const LuziaProjects = ({ onSelectProject }) => {
 
   return (
     <section id="projects" className="py-12 sm:py-20 relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1140px] mx-auto px-6">
 
         {/* ── Section header + filter pills ── */}
         <motion.div
@@ -40,10 +40,10 @@ export const LuziaProjects = ({ onSelectProject }) => {
           className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-12"
         >
           <div>
-            <h2 className="text-2xl sm:text-4xl font-display font-black tracking-tight text-[#0c0c0c]">
+            <h2 className="text-2xl sm:text-4xl font-display font-black tracking-tight text-[#111111]">
               Selected Works
             </h2>
-            <p className="text-xs sm:text-sm text-[#6c7179] mt-1">
+            <p className="text-xs sm:text-sm text-[#666665] mt-1">
               A curation of digital products, Framer websites, and SaaS platforms.
             </p>
           </div>
@@ -59,8 +59,8 @@ export const LuziaProjects = ({ onSelectProject }) => {
                 transition={snappySpring}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-semibold ${
                   activeFilter === cat
-                    ? 'bg-[#0c0c0c] text-white shadow-sm'
-                    : 'bg-white text-neutral-600 hover:text-black border border-black/[0.06] hover:bg-neutral-50'
+                    ? 'bg-[#111111] text-white shadow-sm'
+                    : 'bg-white text-neutral-600 hover:text-black border border-[#E7E7E5] hover:bg-neutral-50'
                 }`}
               >
                 {cat}
@@ -85,9 +85,9 @@ export const LuziaProjects = ({ onSelectProject }) => {
                 layout
                 variants={sectionItem}
                 exit={{ opacity: 0, scale: 0.96, transition: { duration: 0.2 } }}
-                whileHover={{ y: -6 }}
+                whileHover={{ y: -4 }}
                 transition={snappySpring}
-                className="bg-white rounded-[32px] p-4 sm:p-5 border border-black/[0.06] shadow-luzia hover:shadow-luzia-hover flex flex-col justify-between group cursor-pointer"
+                className="bg-white rounded-[24px] p-4 sm:p-5 border border-[#E7E7E5] shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between group cursor-pointer"
                 onClick={() => onSelectProject(project)}
               >
                 <div>
