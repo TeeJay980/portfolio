@@ -72,31 +72,27 @@ export const LuziaHero = ({ onOpenEmail }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ ...heroSpring, delay: 0.18 }}
               className="relative w-full flex justify-center items-end"
-              style={{ maxWidth: '500px' }}
+              style={{ maxWidth: '520px' }}
             >
               <img
-                src="/images/luzia_img_1.png"
-                onError={(e) => {
-                  e.currentTarget.src =
-                    'https://framerusercontent.com/images/yHECzzvtCQT7X8sGipPGW5sEc.webp?width=2400&height=1904';
-                }}
-                alt="Michael Carter, Digital Product Designer"
-                className="w-full h-auto object-contain select-none pointer-events-none block"
+                src="/images/tj_hero.png"
+                alt="TJ - Digital Product Designer"
+                className="w-full h-auto object-contain select-none pointer-events-none block mix-blend-multiply"
                 style={{
-                  maxHeight: '78vh',
+                  maxHeight: '80vh',
                   maskImage:
-                    'linear-gradient(to bottom, black 55%, rgba(0,0,0,0.7) 78%, transparent 100%)',
+                    'linear-gradient(to bottom, black 65%, rgba(0,0,0,0.8) 82%, transparent 100%)',
                   WebkitMaskImage:
-                    'linear-gradient(to bottom, black 55%, rgba(0,0,0,0.7) 78%, transparent 100%)',
+                    'linear-gradient(to bottom, black 65%, rgba(0,0,0,0.8) 82%, transparent 100%)',
                 }}
               />
               {/* Floor fade */}
               <div
                 className="absolute inset-x-0 bottom-0 pointer-events-none"
                 style={{
-                  height: '38%',
+                  height: '32%',
                   background:
-                    'linear-gradient(to top, #F3F4F6 25%, rgba(243,244,246,0.6) 60%, transparent 100%)',
+                    'linear-gradient(to top, #F3F4F6 20%, rgba(243,244,246,0.6) 65%, transparent 100%)',
                 }}
               />
             </motion.div>
