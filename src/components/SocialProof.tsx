@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Award, ArrowUpRight, Star } from "lucide-react";
 import Image from "next/image";
-import { springPreset } from "@/lib/motion";
 
 export default function SocialProof() {
   const logos = [
@@ -20,14 +19,14 @@ export default function SocialProof() {
       <div className="max-w-[1140px] mx-auto px-6 space-y-6">
         {/* ROW 1: Awwwards Nominee Card */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 md:p-8 rounded-[24px] bg-white border border-[#E7E7E5] shadow-[0_8px_30px_rgba(0,0,0,0.02)]"
+          initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 md:p-8 rounded-[24px] bg-white border border-[#E7E7E5] shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-colors duration-300 hover:border-[#D2D2CF]"
         >
           <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#F2F2F0] text-[#111111]">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#F4F4F3] text-[#111111]">
               <Award className="h-6 w-6" />
             </div>
             <div>
@@ -35,7 +34,7 @@ export default function SocialProof() {
                 <h3 className="text-lg md:text-xl font-semibold text-[#111111] tracking-[-0.025em]">
                   Awwwards Site of the Day Nominee
                 </h3>
-                <span className="rounded-full bg-[#F2F2F0] px-2.5 py-0.5 text-xs font-medium text-[#333333]">
+                <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-2.5 py-0.5 text-xs font-medium text-[#333333]">
                   2025
                 </span>
               </div>
@@ -49,20 +48,20 @@ export default function SocialProof() {
             href="https://awwwards.com"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 self-start sm:self-center text-sm font-medium text-[#111111] hover:text-[#666665] transition-colors"
+            className="group inline-flex items-center gap-1.5 self-start sm:self-center text-sm font-medium text-[#111111] hover:text-[#666665] transition-colors active:scale-[0.97]"
           >
             <span>View Certificate</span>
-            <ArrowUpRight className="h-4 w-4" />
+            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </motion.div>
 
         {/* ROW 2: Samantha's Testimonial Card */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="rounded-[28px] bg-white border border-[#E7E7E5] p-8 md:p-12 shadow-[0_8px_30px_rgba(0,0,0,0.02)] space-y-8"
+          initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="rounded-[28px] bg-white border border-[#E7E7E5] p-8 md:p-12 shadow-[0_8px_30px_rgba(0,0,0,0.02)] space-y-8 transition-colors duration-300 hover:border-[#D2D2CF]"
         >
           {/* Star rating */}
           <div className="flex items-center gap-1 text-[#111111]">
@@ -78,7 +77,7 @@ export default function SocialProof() {
 
           {/* Author Profile */}
           <div className="flex items-center gap-4 pt-2">
-            <div className="relative h-12 w-12 overflow-hidden rounded-full border border-[#E7E7E5] bg-[#F2F2F0]">
+            <div className="relative h-12 w-12 overflow-hidden rounded-full border border-[#E7E7E5] bg-[#F4F4F3]">
               <Image
                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
                 alt="Samantha Vance"
@@ -94,16 +93,16 @@ export default function SocialProof() {
         </motion.div>
 
         {/* ROW 3: Metrics & Partner Logos Split */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-6"
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Metrics Block (7 cols) */}
-          <div className="lg:col-span-7 rounded-[28px] bg-white border border-[#E7E7E5] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.02)] flex flex-col justify-between">
-            <span className="rounded-full bg-[#F2F2F0] px-3.5 py-1 text-xs font-medium text-[#333333] w-fit mb-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 rounded-[28px] bg-white border border-[#E7E7E5] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.02)] flex flex-col justify-between transition-colors duration-300 hover:border-[#D2D2CF]"
+          >
+            <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3.5 py-1 text-xs font-medium text-[#333333] w-fit mb-6">
               Track Record
             </span>
 
@@ -135,12 +134,18 @@ export default function SocialProof() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Logos Block (5 cols) */}
-          <div className="lg:col-span-5 rounded-[28px] bg-white border border-[#E7E7E5] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.02)] flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 rounded-[28px] bg-white border border-[#E7E7E5] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.02)] flex flex-col justify-between transition-colors duration-300 hover:border-[#D2D2CF]"
+          >
             <div className="flex items-center justify-between mb-6">
-              <span className="rounded-full bg-[#F2F2F0] px-3.5 py-1 text-xs font-medium text-[#333333]">
+              <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3.5 py-1 text-xs font-medium text-[#333333]">
                 Collaborations
               </span>
               <span className="text-xs text-[#666665]">Trusted by many</span>
@@ -150,14 +155,14 @@ export default function SocialProof() {
               {logos.map((logo) => (
                 <div
                   key={logo}
-                  className="text-sm font-semibold tracking-wider text-[#888888] hover:text-[#111111] transition-colors"
+                  className="text-sm font-semibold tracking-wider text-[#888888] hover:text-[#111111] transition-colors cursor-default"
                 >
                   {logo}
                 </div>
               ))}
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -12,8 +12,9 @@ export const springPreset: Transition = {
   mass: 0.8,
 };
 
-// Smooth cubic bezier easing preset
+// Smooth cubic bezier easing presets
 export const easePreset = [0.25, 1, 0.5, 1] as const;
+export const smoothEntranceEase = [0.16, 1, 0.3, 1] as const;
 
 // Transition presets
 export const smoothTransition: Transition = {
@@ -26,65 +27,25 @@ export const slowTransition: Transition = {
   ease: easePreset,
 };
 
-// Card nested image zoom variants
-export const cardImageVariants: Variants = {
-  rest: {
-    scale: 1,
-    transition: {
-      duration: 0.6,
-      ease: easePreset,
-    },
+// Scroll reveal variants with subtle blur & spring entrance
+export const scrollRevealVariants: Variants = {
+  initial: {
+    opacity: 0,
+    y: 24,
+    filter: "blur(4px)",
   },
-  hover: {
-    scale: 1.05,
-    transition: {
-      duration: 0.6,
-      ease: easePreset,
-    },
-  },
-};
-
-// Card icon / button translate variants
-export const cardArrowVariants: Variants = {
-  rest: {
-    x: 0,
-    y: 0,
-    transition: {
-      duration: 0.3,
-      ease: easePreset,
-    },
-  },
-  hover: {
-    x: 2,
-    y: -2,
-    transition: {
-      duration: 0.3,
-      ease: easePreset,
-    },
-  },
-};
-
-// Staggered container animations
-export const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-// Fade up item animations
-export const fadeUpVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
+  whileInView: {
     opacity: 1,
     y: 0,
+    filter: "blur(0px)",
     transition: {
-      duration: 0.6,
-      ease: easePreset,
+      duration: 0.65,
+      ease: smoothEntranceEase,
     },
   },
+};
+
+export const viewportConfig = {
+  once: true,
+  amount: 0.2,
 };

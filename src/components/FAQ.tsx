@@ -47,28 +47,37 @@ export default function FAQ() {
   return (
     <section id="faq" className="py-12 md:py-16">
       <div className="max-w-[1140px] mx-auto px-6 space-y-8">
-        {/* Section Header */}
-        <div>
-          <span className="rounded-full bg-[#F2F2F0] px-3.5 py-1.5 text-xs font-medium text-[#333333]">
+        {/* Section Header with Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3.5 py-1.5 text-xs font-medium text-[#333333]">
             Common Questions
           </span>
           <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.025em] text-[#111111] mt-3">
             Frequently Asked Questions
           </h2>
-        </div>
+        </motion.div>
 
         {/* Accordion List */}
         <div className="space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.65, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
                 className="overflow-hidden rounded-[24px] border border-[#E7E7E5] bg-white transition-colors duration-300 hover:border-[#D2D2CF] shadow-[0_8px_30px_rgba(0,0,0,0.02)]"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="flex w-full items-center justify-between p-6 md:p-8 text-left transition-colors"
+                  className="flex w-full items-center justify-between p-6 md:p-8 text-left transition-colors active:scale-[0.99]"
                 >
                   <span className="text-lg md:text-xl font-medium tracking-[-0.02em] text-[#111111]">
                     {faq.question}
@@ -76,7 +85,7 @@ export default function FAQ() {
                   <motion.div
                     animate={{ rotate: isOpen ? 45 : 0 }}
                     transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#F2F2F0] text-[#111111]"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#F4F4F3] text-[#111111]"
                   >
                     <Plus className="h-5 w-5" />
                   </motion.div>
@@ -97,7 +106,7 @@ export default function FAQ() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             );
           })}
         </div>

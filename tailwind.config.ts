@@ -68,6 +68,9 @@ const config: Config = {
         subtle: "0 4px 20px rgba(0, 0, 0, 0.03)",
         elevation: "0 12px 36px rgba(0, 0, 0, 0.06)",
       },
+      scale: {
+        "108": "1.08",
+      },
     },
   },
   plugins: [],

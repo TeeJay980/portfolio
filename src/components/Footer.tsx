@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, Mail } from "lucide-react";
-import Link from "next/link";
-import { springPreset } from "@/lib/motion";
 
 export default function Footer() {
   const links = [
@@ -16,8 +14,14 @@ export default function Footer() {
   return (
     <footer id="contact" className="pt-12 pb-16 md:pt-16 md:pb-24">
       <div className="max-w-[1140px] mx-auto px-6 space-y-12">
-        {/* Contact Banner Card */}
-        <div className="rounded-[28px] border border-[#E7E7E5] bg-[#111111] text-white p-8 md:p-14 shadow-xl">
+        {/* Contact Banner Card with Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          className="rounded-[28px] border border-[#E7E7E5] bg-[#111111] text-white p-8 md:p-14 shadow-xl"
+        >
           <div className="max-w-2xl space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-[#00C047] animate-pulse" />
@@ -33,20 +37,17 @@ export default function Footer() {
             </p>
 
             <div className="pt-2">
-              <motion.a
+              <a
                 href="mailto:michael@carterdesign.com"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={springPreset}
-                className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-medium text-[#111111] transition-colors hover:bg-[#F2F2F0] shadow-md"
+                className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-medium text-[#111111] transition-all duration-200 hover:bg-[#F2F2F0] shadow-md active:scale-[0.97]"
               >
                 <Mail className="h-4 w-4" />
                 <span>michael@carterdesign.com</span>
-                <ArrowUpRight className="h-4 w-4" />
-              </motion.a>
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[#E7E7E5] text-sm text-[#666665]">

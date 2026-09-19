@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import { cardArrowVariants, cardImageVariants } from "@/lib/motion";
 
 interface Project {
   id: string;
@@ -53,43 +52,47 @@ export default function FeaturedWorks() {
   return (
     <section id="work" className="py-12 md:py-16">
       <div className="max-w-[1140px] mx-auto px-6">
-        {/* Section Header */}
-        <div className="flex items-end justify-between mb-8">
+        {/* Section Header with Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          className="flex items-end justify-between mb-8"
+        >
           <div>
-            <span className="rounded-full bg-[#F2F2F0] px-3.5 py-1.5 text-xs font-medium text-[#333333]">
+            <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3.5 py-1.5 text-xs font-medium text-[#333333]">
               Featured Works
             </span>
             <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.025em] text-[#111111] mt-3">
               Selected client cases & products
             </h2>
           </div>
-        </div>
+        </motion.div>
 
         {/* 2x2 Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <motion.article
               key={project.id}
-              initial="rest"
-              whileHover="hover"
-              animate="rest"
+              initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.65, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="group relative cursor-pointer rounded-[24px] border border-[#E7E7E5] bg-white p-4 transition-colors duration-300 hover:border-[#D2D2CF] shadow-[0_8px_30px_rgba(0,0,0,0.02)]"
             >
-              {/* Image Frame with Framer Motion nested zoom */}
+              {/* Image Frame */}
               <div className="relative w-full h-[360px] md:h-[420px] overflow-hidden rounded-[20px] bg-[#F4F4F3]">
-                <motion.div
-                  variants={cardImageVariants}
-                  className="w-full h-full relative"
-                >
-                  <Image
-                    src={project.imageSrc}
-                    alt={project.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover object-center"
-                    priority
-                  />
-                </motion.div>
+                <Image
+                  src={project.imageSrc}
+                  alt={project.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-108"
+                  priority={index < 2}
+                />
+                {/* Soft overlay on hover */}
+                <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/5 pointer-events-none z-10" />
               </div>
 
               {/* Card Footer */}
@@ -102,7 +105,7 @@ export default function FeaturedWorks() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-[#F2F2F0] px-3 py-1 text-xs font-medium text-[#333333]"
+                        className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3 py-1 text-xs font-medium text-[#333333]"
                       >
                         {tag}
                       </span>
@@ -110,13 +113,10 @@ export default function FeaturedWorks() {
                   </div>
                 </div>
 
-                {/* Round Circular Arrow Button */}
-                <motion.div
-                  variants={cardArrowVariants}
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#E7E7E5] bg-white text-[#111111] group-hover:bg-[#111111] group-hover:text-white group-hover:border-[#111111] transition-colors duration-200 shadow-sm"
-                >
+                {/* Arrow Badge Reaction */}
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#E7E7E5] bg-white text-[#111111] group-hover:bg-[#111111] group-hover:text-white group-hover:border-[#111111] transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shadow-sm active:scale-[0.97]">
                   <ArrowUpRight className="h-5 w-5" />
-                </motion.div>
+                </div>
               </div>
             </motion.article>
           ))}

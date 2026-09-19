@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import { springPreset, cardImageVariants } from "@/lib/motion";
 
 interface ServiceCardData {
   id: string;
@@ -86,26 +85,31 @@ export default function Services() {
   return (
     <section id="services" className="py-12 md:py-16">
       <div className="max-w-[1140px] mx-auto px-6 space-y-8">
-        {/* Section Header */}
-        <div>
-          <span className="rounded-full bg-[#F2F2F0] px-3.5 py-1.5 text-xs font-medium text-[#333333]">
+        {/* Section Header with Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3.5 py-1.5 text-xs font-medium text-[#333333]">
             Capabilities
           </span>
           <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.025em] text-[#111111] mt-3">
             Services built for scale and craft
           </h2>
-        </div>
+        </motion.div>
 
         {/* Stacked White Cards */}
         <div className="space-y-6">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <motion.article
               key={service.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="w-full rounded-[28px] border border-[#E7E7E5] bg-white p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-colors duration-300 hover:border-[#D2D2CF]"
+              initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.65, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="group w-full rounded-[28px] border border-[#E7E7E5] bg-white p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-colors duration-300 hover:border-[#D2D2CF]"
             >
               {/* Top Bar: Title + CTA */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -113,16 +117,13 @@ export default function Services() {
                   {service.title}
                 </h3>
 
-                <motion.a
+                <a
                   href="#contact"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={springPreset}
-                  className="inline-flex items-center gap-2 self-start sm:self-center rounded-full border border-[#E7E7E5] bg-white px-4 py-2 text-xs font-medium text-[#111111] transition-colors hover:bg-[#111111] hover:text-white shadow-sm"
+                  className="group/btn inline-flex items-center gap-2 self-start sm:self-center rounded-full border border-[#E7E7E5] bg-white px-4 py-2 text-xs font-medium text-[#111111] transition-all duration-200 hover:bg-[#111111] hover:text-white hover:border-[#111111] shadow-sm active:scale-[0.97]"
                 >
                   <span>Start a Project</span>
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </motion.a>
+                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                </a>
               </div>
 
               {/* Middle: Description & Tags */}
@@ -135,7 +136,7 @@ export default function Services() {
                   {service.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-[#F2F2F0] px-3 py-1 text-xs font-medium text-[#333333]"
+                      className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3 py-1 text-xs font-medium text-[#333333]"
                     >
                       {tag}
                     </span>
@@ -148,15 +149,17 @@ export default function Services() {
                 {service.thumbnails.map((thumb, idx) => (
                   <div
                     key={idx}
-                    className="group relative h-[220px] w-full overflow-hidden rounded-[18px] bg-[#F4F4F3] border border-[#E7E7E5]"
+                    className="group/thumb relative h-[220px] w-full overflow-hidden rounded-[18px] bg-[#F4F4F3] border border-[#E7E7E5]"
                   >
                     <Image
                       src={thumb.src}
                       alt={thumb.alt}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
+                      className="w-full h-full object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover/thumb:scale-108"
                     />
+                    {/* Soft overlay on hover */}
+                    <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover/thumb:bg-black/5 pointer-events-none z-10" />
                   </div>
                 ))}
               </div>
