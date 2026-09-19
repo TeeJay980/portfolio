@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #F8F8F7;
+  --bg-card: #FFFFFF;
+  --border-card: #E7E7E5;
+  --border-hover: #D2D2CF;
+  --text-heading: #111111;
+  --text-body: #666665;
+  --badge-bg: #F2F2F0;
+  --badge-text: #333333;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #F8F8F7;
+  color: #111111;
+  font-family: var(--font-plus-jakarta), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Selection & Focus Styles */
+::selection {
+  background-color: #111111;
+  color: #FFFFFF;
+}
+
+/* Utilities for Luzia Design System */
+@layer utilities {
+  .luzia-container {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .luzia-display {
+    letter-spacing: -0.025em;
+  }
+}
