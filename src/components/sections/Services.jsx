@@ -1,258 +1,124 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+"use client";
 
-const headerVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
+import React from "react";
+import { ArrowUpRight } from "lucide-react";
+
+const SERVICES_DATA = [
+  {
+    id: "branding",
+    title: "Branding Design",
+    description:
+      "A strong brand is more than just a logo—it's the foundation of how your audience perceives you. I create cohesive and impactful brand identities that ensure consistency across all touchpoints",
+    tags: ["Logo design", "Brand guideline", "Brand strategy", "+more"],
+    thumbnails: [
+      "/images/luzia_img_13.png",
+      "/images/luzia_img_14.png",
+      "/images/luzia_img_15.png",
+    ],
   },
-};
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.05,
-    },
+  {
+    id: "framer",
+    title: "Framer Development",
+    description:
+      "Transforming designs into fully responsive, interactive websites with Framer. Whether it's a landing page or a full-scale web experience, I build fast, modern sites optimized for seamless performance",
+    tags: ["Landing page", "Multipages", "Web migration", "+more"],
+    thumbnails: [
+      "/images/luzia_img_8.png",
+      "/images/luzia_img_4.webp",
+      "/images/luzia_img_9.png",
+    ],
   },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
+  {
+    id: "uiux",
+    title: "UI/UX Design",
+    description:
+      "Designing user-centered experiences that are both functional and visually engaging. From concept to final prototype, I focus on intuitive interfaces that enhance experiences and usability",
+    tags: ["Web & app design", "Design system", "Prototyping", "+more"],
+    thumbnails: [
+      "/images/luzia_img_10.png",
+      "/images/luzia_img_11.png",
+      "/images/luzia_img_12.png",
+    ],
   },
-};
+];
 
-const imageVariants = {
-  rest: { scale: 1, transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } },
-  hover: { scale: 1.06, transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } },
-};
-
-const arrowVariants = {
-  rest: { x: 0, y: 0 },
-  hover: { x: 3, y: -3, transition: { type: 'spring', stiffness: 400, damping: 20 } },
-};
-
-export const Services = ({ onOpenBooking }) => {
+export function Services({ onOpenBooking }) {
   return (
-    <section id="services" className="max-w-[1140px] mx-auto px-6 my-16">
+    <section id="services" className="max-w-[1140px] mx-auto px-6 py-24">
       {/* ── Section Header ── */}
-      <motion.div
-        variants={headerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.25 }}
-      >
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#EBEBEA] text-xs font-medium text-[#111111] shadow-sm">
+      <div className="mb-12">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E7E7E5] text-xs font-medium text-[#111111] shadow-sm mb-4">
           <span className="w-1.5 h-1.5 rounded-full bg-[#111111]" />
           <span>Services</span>
         </div>
 
-        <h2 className="text-3xl md:text-4xl font-normal text-[#111111] tracking-[-0.02em] max-w-3xl mt-4 leading-[1.25]">
-          Design solutions that elevate brands and create seamless user experiences. I help bring ideas to life with strategy and creativity
+        <h2 className="text-3xl md:text-4xl font-normal text-[#111111] tracking-[-0.02em] max-w-3xl leading-[1.25]">
+          Design solutions that elevate brands and create seamless user
+          experiences. I help bring ideas to life with strategy and creativity
         </h2>
-      </motion.div>
+      </div>
 
-      {/* ── 3 Stacked Service Blocks ── */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
-        className="flex flex-col gap-4 mt-10"
-      >
-        {/* ════════ BLOCK 1: Branding Design ════════ */}
-        <motion.div
-          variants={cardVariants}
-          initial="rest"
-          animate="rest"
-          whileHover="hover"
-          className="group relative cursor-pointer overflow-hidden rounded-[24px] bg-white border border-[#EBEBEA] hover:border-[#D2D2CF] transition-colors duration-300 p-8"
-        >
-          {/* Top bar */}
-          <div className="flex items-center justify-between gap-4">
-            <h3 className="text-2xl font-medium text-[#111111] tracking-tight">
-              Branding Design
-            </h3>
+      {/* ── Service Cards Stack ── */}
+      <div className="flex flex-col">
+        {SERVICES_DATA.map((service) => (
+          <div
+            key={service.id}
+            className="group relative w-full rounded-[28px] border border-[#E7E7E5] bg-white p-8 md:p-10 mb-6 overflow-hidden transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+          >
+            {/* 1. TOP BAR */}
+            <div className="flex items-center justify-between gap-4">
+              <h3 className="text-2xl md:text-3xl font-semibold text-[#111111] tracking-tight">
+                {service.title}
+              </h3>
 
-            <button
-              onClick={onOpenBooking}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#F4F4F3] group-hover:bg-[#EAEAE8] text-[#111111] text-xs font-semibold transition-colors duration-300 shadow-sm"
-            >
-              <span>Start a Project</span>
-              <motion.span variants={arrowVariants} className="inline-flex">
-                <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.2]" />
-              </motion.span>
-            </button>
-          </div>
-
-          {/* Description */}
-          <p className="text-sm text-[#666665] leading-relaxed max-w-2xl mt-3 font-normal">
-            A strong brand is more than just a logo—it&apos;s the foundation of how your audience perceives you. I create cohesive and impactful brand identities that ensure consistency across all touchpoints
-          </p>
-
-          {/* Horizontal pill tags */}
-          <div className="mt-6 flex flex-wrap gap-2">
-            {['Logo design', 'Brand guideline', 'Brand strategy', '+more'].map((tag, idx) => (
-              <span
-                key={idx}
-                className="bg-[#F4F4F3] group-hover:bg-[#EAEAE8] text-[#333333] rounded-full text-xs px-3 py-1.5 font-medium transition-colors duration-300 select-none"
+              <button
+                onClick={onOpenBooking}
+                className="inline-flex items-center gap-1.5 border border-[#E7E7E5] px-4 py-2 rounded-full text-xs font-medium bg-white text-[#111111] transition-all duration-200 hover:bg-[#111111] hover:text-white hover:border-[#111111] shadow-sm flex-shrink-0"
               >
-                {tag}
-              </span>
-            ))}
+                <span>Start a Project</span>
+                <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </button>
+            </div>
+
+            {/* 2. CONTENT & DESCRIPTION */}
+            <p className="text-[#666665] text-sm md:text-base max-w-2xl mt-4 leading-relaxed font-normal">
+              {service.description}
+            </p>
+
+            {/* 3. TAG PILLS */}
+            <div className="flex flex-wrap gap-2 mt-6">
+              {service.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="bg-[#F4F4F3] text-[#444443] text-xs px-3.5 py-1.5 rounded-full font-medium select-none"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* 4. PREVIEW THUMBNAILS (3-column responsive grid spanning full width) */}
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+              {service.thumbnails.map((imgSrc, idx) => (
+                <div
+                  key={idx}
+                  className="relative h-[220px] md:h-[260px] w-full rounded-[18px] overflow-hidden bg-[#F4F4F3] border border-[#EBEBEA] group/thumb cursor-pointer"
+                >
+                  <img
+                    src={imgSrc}
+                    alt={`${service.title} example preview ${idx + 1}`}
+                    className="w-full h-full object-cover object-center transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover/thumb:scale-[1.08]"
+                  />
+                  {/* Subtle dark tint on hover */}
+                  <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover/thumb:bg-black/5" />
+                </div>
+              ))}
+            </div>
           </div>
-
-          {/* Portrait Thumbnail Showcase */}
-          <div className="mt-6 flex items-center gap-4 overflow-x-auto pb-2 scrollbar-none">
-            {['/images/luzia_img_13.png', '/images/luzia_img_14.png', '/images/luzia_img_15.png'].map((imgSrc, i) => (
-              <div
-                key={i}
-                className="rounded-2xl overflow-hidden h-56 sm:h-64 w-40 sm:w-48 border border-[#EBEBEA] flex-shrink-0 bg-[#F4F4F3] relative"
-              >
-                <motion.img
-                  variants={imageVariants}
-                  src={imgSrc}
-                  alt="Example work of branding design"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-
-        {/* ════════ BLOCK 2: Framer Development ════════ */}
-        <motion.div
-          variants={cardVariants}
-          initial="rest"
-          animate="rest"
-          whileHover="hover"
-          className="group relative cursor-pointer overflow-hidden rounded-[24px] bg-white border border-[#EBEBEA] hover:border-[#D2D2CF] transition-colors duration-300 p-8"
-        >
-          {/* Top bar */}
-          <div className="flex items-center justify-between gap-4">
-            <h3 className="text-2xl font-medium text-[#111111] tracking-tight">
-              Framer Development
-            </h3>
-
-            <button
-              onClick={onOpenBooking}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#F4F4F3] group-hover:bg-[#EAEAE8] text-[#111111] text-xs font-semibold transition-colors duration-300 shadow-sm"
-            >
-              <span>Start a Project</span>
-              <motion.span variants={arrowVariants} className="inline-flex">
-                <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.2]" />
-              </motion.span>
-            </button>
-          </div>
-
-          {/* Description */}
-          <p className="text-sm text-[#666665] leading-relaxed max-w-2xl mt-3 font-normal">
-            Transforming designs into fully responsive, interactive websites with Framer. Whether it&apos;s a landing page or a full-scale web experience, I build fast, modern sites optimized for seamless performance
-          </p>
-
-          {/* Horizontal pill tags */}
-          <div className="mt-6 flex flex-wrap gap-2">
-            {['Landing page', 'Multipages', 'Web migration', '+more'].map((tag, idx) => (
-              <span
-                key={idx}
-                className="bg-[#F4F4F3] group-hover:bg-[#EAEAE8] text-[#333333] rounded-full text-xs px-3 py-1.5 font-medium transition-colors duration-300 select-none"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          {/* Portrait Thumbnail Showcase */}
-          <div className="mt-6 flex items-center gap-4 overflow-x-auto pb-2 scrollbar-none">
-            {['/images/luzia_img_8.png', '/images/luzia_img_4.webp', '/images/luzia_img_9.png'].map((imgSrc, i) => (
-              <div
-                key={i}
-                className="rounded-2xl overflow-hidden h-56 sm:h-64 w-40 sm:w-48 border border-[#EBEBEA] flex-shrink-0 bg-[#F4F4F3] relative"
-              >
-                <motion.img
-                  variants={imageVariants}
-                  src={imgSrc}
-                  alt="Example work of framer development"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-
-        {/* ════════ BLOCK 3: UI/UX Design ════════ */}
-        <motion.div
-          variants={cardVariants}
-          initial="rest"
-          animate="rest"
-          whileHover="hover"
-          className="group relative cursor-pointer overflow-hidden rounded-[24px] bg-white border border-[#EBEBEA] hover:border-[#D2D2CF] transition-colors duration-300 p-8"
-        >
-          {/* Top bar */}
-          <div className="flex items-center justify-between gap-4">
-            <h3 className="text-2xl font-medium text-[#111111] tracking-tight">
-              UI/UX Design
-            </h3>
-
-            <button
-              onClick={onOpenBooking}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#F4F4F3] group-hover:bg-[#EAEAE8] text-[#111111] text-xs font-semibold transition-colors duration-300 shadow-sm"
-            >
-              <span>Start a Project</span>
-              <motion.span variants={arrowVariants} className="inline-flex">
-                <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.2]" />
-              </motion.span>
-            </button>
-          </div>
-
-          {/* Description */}
-          <p className="text-sm text-[#666665] leading-relaxed max-w-2xl mt-3 font-normal">
-            Designing user-centered experiences that are both functional and visually engaging. From concept to final prototype, I focus on intuitive interfaces that enhance experiences and usability
-          </p>
-
-          {/* Horizontal pill tags */}
-          <div className="mt-6 flex flex-wrap gap-2">
-            {['Web & app design', 'Design system', 'Prototyping', '+more'].map((tag, idx) => (
-              <span
-                key={idx}
-                className="bg-[#F4F4F3] group-hover:bg-[#EAEAE8] text-[#333333] rounded-full text-xs px-3 py-1.5 font-medium transition-colors duration-300 select-none"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          {/* Portrait Thumbnail Showcase */}
-          <div className="mt-6 flex items-center gap-4 overflow-x-auto pb-2 scrollbar-none">
-            {['/images/luzia_img_10.png', '/images/luzia_img_11.png', '/images/luzia_img_12.png'].map((imgSrc, i) => (
-              <div
-                key={i}
-                className="rounded-2xl overflow-hidden h-56 sm:h-64 w-40 sm:w-48 border border-[#EBEBEA] flex-shrink-0 bg-[#F4F4F3] relative"
-              >
-                <motion.img
-                  variants={imageVariants}
-                  src={imgSrc}
-                  alt="Example work of ui ux design"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      </motion.div>
+        ))}
+      </div>
     </section>
   );
-};
+}
 
 export default Services;
