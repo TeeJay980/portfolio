@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Globe, Layers, Sparkles, ExternalLink, Lock } from "lucide-react";
 
@@ -8,6 +9,7 @@ export default function FeaturedWorks() {
     title: "Oriflame Central Store Abuja",
     url: "https://saved-cancel.vercel.app/",
     domain: "saved-cancel.vercel.app",
+    testimonialsUrl: "https://saved-cancel.vercel.app/#featured-reviews",
     category: "Featured Client Project",
     summary:
       "A bespoke, interactive digital storefront and product catalogue engineered for Oriflame Central Store Abuja. Features an automated hero fragrance showcase, interactive slide-out product drawer with live quantity steppers, a personalized body & wellness routine quiz, and direct WhatsApp commerce integration.",
@@ -44,9 +46,14 @@ export default function FeaturedWorks() {
           className="group relative rounded-[28px] border border-[#E7E7E5] bg-white p-5 sm:p-7 md:p-8 transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-            {/* Visual Live Browser Mockup (7 Cols) */}
+            {/* Visual Browser Mockup with Testimonials Section Picture (7 Cols) */}
             <div className="lg:col-span-7">
-              <div className="relative w-full rounded-[20px] overflow-hidden border border-[#E7E7E5] bg-[#F8F8F7] shadow-sm">
+              <a
+                href={project.testimonialsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative w-full rounded-[20px] overflow-hidden border border-[#E7E7E5] bg-[#F8F8F7] shadow-sm group/preview"
+              >
                 {/* Browser Chrome Header */}
                 <div className="flex items-center justify-between px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#EFEFEF] border-b border-[#E7E7E5]">
                   <div className="flex items-center gap-1.5">
@@ -56,44 +63,37 @@ export default function FeaturedWorks() {
                   </div>
 
                   {/* Address Bar */}
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white text-[11px] sm:text-xs text-[#666665] border border-[#E0E0DE] hover:text-[#111111] transition-colors max-w-[200px] sm:max-w-[320px] truncate"
-                  >
+                  <div className="flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white text-[11px] sm:text-xs text-[#666665] border border-[#E0E0DE] max-w-[200px] sm:max-w-[320px] truncate">
                     <Lock className="h-3 w-3 text-[#00C047] shrink-0" />
-                    <span className="truncate">{project.domain}</span>
+                    <span className="truncate">{project.domain}/#featured-reviews</span>
                     <ExternalLink className="h-2.5 w-2.5 shrink-0 opacity-60" />
-                  </a>
+                  </div>
 
                   <div className="w-8 sm:w-12 text-right">
                     <span className="h-2 w-2 rounded-full bg-[#00C047] animate-pulse inline-block" />
                   </div>
                 </div>
 
-                {/* Live Preview Iframe Container */}
-                <div className="relative h-[280px] sm:h-[360px] md:h-[420px] w-full bg-white overflow-hidden">
-                  <iframe
-                    src={project.url}
-                    title="Oriflame Abuja Website Preview"
-                    className="w-full h-full border-0 pointer-events-auto"
-                    loading="lazy"
-                    sandbox="allow-scripts allow-same-origin allow-popups"
+                {/* Picture of Website Testimonials Section */}
+                <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full bg-[#F4F4F3] overflow-hidden">
+                  <Image
+                    src="/images/oriflame_testimonials.jpg"
+                    alt="Oriflame Abuja Website - Testimonials & Customer Experiences"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 700px"
+                    className="object-cover object-top transition-transform duration-500 ease-out group-hover/preview:scale-[1.03]"
+                    priority
                   />
 
-                  {/* Floating click to open badge */}
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 rounded-full bg-[#111111]/90 backdrop-blur-md text-white px-3.5 py-1.5 text-xs font-medium hover:bg-[#111111] transition-all shadow-md active:scale-95"
-                  >
-                    <span>Open Live Site</span>
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
+                  {/* Hover Overlay Badge */}
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="flex items-center gap-2 rounded-full bg-[#111111]/90 backdrop-blur-md text-white px-5 py-2.5 text-xs sm:text-sm font-medium shadow-xl transform translate-y-2 group-hover/preview:translate-y-0 transition-transform duration-300">
+                      <span>View Testimonials Section</span>
+                      <ArrowUpRight className="h-4 w-4" />
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
 
             {/* Content & Details Panel (5 Cols) */}
