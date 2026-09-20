@@ -1,142 +1,91 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 
-interface ServiceCardData {
-  id: string;
+interface ServiceItem {
   title: string;
-  description: string;
+  desc: string;
   tags: string[];
-  thumbnails: {
-    src: string;
-    alt: string;
-  }[];
+  mockupImages: string[];
 }
 
-const services: ServiceCardData[] = [
+const servicesData: ServiceItem[] = [
   {
-    id: "branding-design",
     title: "Branding Design",
-    description:
-      "Crafting memorable identity systems, logo marks, typography guidelines, and comprehensive design manuals that differentiate your brand in crowded markets.",
-    tags: ["Visual Identity", "Brand Strategy", "Design Guidelines", "Typography"],
-    thumbnails: [
-      {
-        src: "/images/luzia_13.png",
-        alt: "Brand identity assets",
-      },
-      {
-        src: "/images/luzia_14.png",
-        alt: "Typography guide",
-      },
-      {
-        src: "/images/luzia_15.png",
-        alt: "Brand applications",
-      },
+    desc: "A strong brand is more than just a logo—it's the foundation of how your audience perceives you. I create cohesive and impactful brand identities that ensure consistency across all touchpoints.",
+    tags: ["Logo design", "Brand guideline", "Brand strategy", "+more"],
+    mockupImages: [
+      "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=600&q=80",
+      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&q=80",
     ],
   },
   {
-    id: "framer-development",
     title: "Framer Development",
-    description:
-      "Transforming high-fidelity prototypes into blazing-fast, responsive, SEO-optimized, and fluidly animated web experiences using Framer and Next.js.",
-    tags: ["Custom Components", "Fluid Interactions", "CMS Integration", "SEO Tuning"],
-    thumbnails: [
-      {
-        src: "/images/luzia_16.png",
-        alt: "Web interaction design",
-      },
-      {
-        src: "/images/luzia_17.png",
-        alt: "Responsive layout system",
-      },
-      {
-        src: "/images/luzia_18.png",
-        alt: "Animation engineering",
-      },
+    desc: "Transforming designs into fully responsive, interactive websites with Framer. Whether it's a landing page or a full-scale web experience, I build fast, modern sites optimized for seamless performance.",
+    tags: ["Landing page", "Multipages", "Web migration", "+more"],
+    mockupImages: [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
+      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=600&q=80",
     ],
   },
   {
-    id: "uiux-design",
     title: "UI/UX Design",
-    description:
-      "End-to-end product design from user research and wireframing to high-impact UI design systems and interactive prototypes for SaaS platforms and consumer mobile apps.",
-    tags: ["User Research", "Wireframing", "Design System", "Interactive Prototyping"],
-    thumbnails: [
-      {
-        src: "/images/luzia_19.png",
-        alt: "SaaS dashboard UI",
-      },
-      {
-        src: "/images/luzia_20.png",
-        alt: "Mobile app flow",
-      },
-      {
-        src: "/images/luzia_22.webp",
-        alt: "Component library",
-      },
+    desc: "Designing user-centered experiences that are both functional and visually engaging. From concept to final prototype, I focus on intuitive interfaces that enhance experiences and usability.",
+    tags: ["Web & app design", "Design system", "Prototyping", "+more"],
+    mockupImages: [
+      "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=600&q=80",
+      "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=600&q=80",
     ],
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="py-12 md:py-16">
-      <div className="max-w-[1140px] mx-auto px-6 space-y-8">
-        {/* Section Header with Scroll Reveal */}
-        <motion.div
-          initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3.5 py-1.5 text-xs font-medium text-[#333333]">
-            Capabilities
-          </span>
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.025em] text-[#111111] mt-3">
-            Services built for scale and craft
-          </h2>
-        </motion.div>
+    <section id="services" className="py-24 px-6 max-w-[1140px] mx-auto">
+      {/* Section Header */}
+      <div className="mb-14">
+        <span className="inline-block px-3.5 py-1 rounded-full text-xs font-medium bg-[#FFFFFF] border border-[#E7E7E5] text-[#111111]">
+          Services
+        </span>
+        <h2 className="mt-4 text-3xl md:text-4xl font-normal text-[#111111] tracking-[-0.03em] max-w-2xl leading-tight">
+          Design solutions that elevate brands and create seamless user experiences.
+        </h2>
+      </div>
 
-        {/* Stacked Full-Width Cards */}
-        <div className="space-y-6">
-          {services.map((service, index) => (
-            <motion.article
-              key={service.id}
-              initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.65, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full rounded-[28px] border border-[#E7E7E5] bg-white p-8 md:p-10 mb-6 relative overflow-hidden transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] group"
-            >
-              {/* Top Bar: Title + CTA */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <h3 className="text-2xl md:text-3xl font-medium tracking-[-0.025em] text-[#111111]">
-                  {service.title}
-                </h3>
+      {/* Stacked Bento Cards */}
+      <div className="flex flex-col gap-6">
+        {servicesData.map((svc) => (
+          <div
+            key={svc.title}
+            className="group rounded-[28px] border border-[#E7E7E5] bg-[#FFFFFF] p-8 md:p-10 transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.03)]"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Left Column: Details & CTA */}
+              <div className="lg:col-span-6 flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-2xl font-semibold text-[#111111] tracking-tight">
+                      {svc.title}
+                    </h3>
+                    <a
+                      href="#contact"
+                      className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#E7E7E5] text-xs font-medium text-[#111111] transition-colors hover:bg-[#111111] hover:text-white"
+                    >
+                      <span>Start a Project</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </a>
+                  </div>
+                  <p className="mt-4 text-[#666665] text-sm md:text-base leading-relaxed">
+                    {svc.desc}
+                  </p>
+                </div>
 
-                <a
-                  href="#contact"
-                  className="group/btn inline-flex items-center gap-2 self-start sm:self-center rounded-full border border-[#E7E7E5] bg-white px-4 py-2 text-xs font-medium text-[#111111] transition-all duration-200 hover:bg-[#111111] hover:text-white hover:border-[#111111] shadow-sm active:scale-[0.97]"
-                >
-                  <span>Start a Project</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                </a>
-              </div>
-
-              {/* Middle: Description & Tags */}
-              <div className="mt-4 space-y-4 max-w-3xl">
-                <p className="text-base text-[#666665] leading-relaxed">
-                  {service.description}
-                </p>
-
-                <div className="flex flex-wrap items-center gap-2 pt-1">
-                  {service.tags.map((tag) => (
+                {/* Tag Pills */}
+                <div className="mt-8 flex flex-wrap gap-2">
+                  {svc.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3 py-1 text-xs font-medium text-[#333333]"
+                      className="px-3 py-1 rounded-full text-xs text-[#444443] bg-[#F4F4F3]"
                     >
                       {tag}
                     </span>
@@ -144,28 +93,24 @@ export default function Services() {
                 </div>
               </div>
 
-              {/* Bottom: 3-column full-width responsive thumbnail showcase */}
-              <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
-                {service.thumbnails.map((thumb, idx) => (
+              {/* Right Column: Visual Mockup Showcase */}
+              <div className="lg:col-span-6 grid grid-cols-2 gap-4 h-[240px]">
+                {svc.mockupImages.map((imgUrl, idx) => (
                   <div
                     key={idx}
-                    className="relative h-[220px] md:h-[250px] w-full rounded-[18px] overflow-hidden bg-[#F4F4F3] border border-[#EBEBEA] group/thumb cursor-pointer"
+                    className="relative w-full h-full rounded-[18px] overflow-hidden bg-[#F4F4F3] border border-[#EBEBEA]"
                   >
-                    <Image
-                      src={thumb.src}
-                      alt={thumb.alt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="w-full h-full object-cover object-center transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover/thumb:scale-108"
+                    <img
+                      src={imgUrl}
+                      alt={svc.title}
+                      className="w-full h-full object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-106"
                     />
-                    {/* Soft overlay on hover */}
-                    <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover/thumb:bg-black/5 pointer-events-none z-10" />
                   </div>
                 ))}
               </div>
-            </motion.article>
-          ))}
-        </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

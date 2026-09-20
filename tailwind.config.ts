@@ -69,6 +69,7 @@ const config: Config = {
         elevation: "0 12px 36px rgba(0, 0, 0, 0.06)",
       },
       scale: {
+        "106": "1.06",
         "108": "1.08",
       },
     },
