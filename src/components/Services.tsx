@@ -24,15 +24,15 @@ const services: ServiceCardData[] = [
     tags: ["Visual Identity", "Brand Strategy", "Design Guidelines", "Typography"],
     thumbnails: [
       {
-        src: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=600&q=80",
+        src: "/images/luzia_13.png",
         alt: "Brand identity assets",
       },
       {
-        src: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+        src: "/images/luzia_14.png",
         alt: "Typography guide",
       },
       {
-        src: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80",
+        src: "/images/luzia_15.png",
         alt: "Brand applications",
       },
     ],
@@ -45,15 +45,15 @@ const services: ServiceCardData[] = [
     tags: ["Custom Components", "Fluid Interactions", "CMS Integration", "SEO Tuning"],
     thumbnails: [
       {
-        src: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=600&q=80",
+        src: "/images/luzia_16.png",
         alt: "Web interaction design",
       },
       {
-        src: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+        src: "/images/luzia_17.png",
         alt: "Responsive layout system",
       },
       {
-        src: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=600&q=80",
+        src: "/images/luzia_18.png",
         alt: "Animation engineering",
       },
     ],
@@ -66,15 +66,15 @@ const services: ServiceCardData[] = [
     tags: ["User Research", "Wireframing", "Design System", "Interactive Prototyping"],
     thumbnails: [
       {
-        src: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80",
+        src: "/images/luzia_19.png",
         alt: "SaaS dashboard UI",
       },
       {
-        src: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=600&q=80",
+        src: "/images/luzia_20.png",
         alt: "Mobile app flow",
       },
       {
-        src: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+        src: "/images/luzia_22.webp",
         alt: "Component library",
       },
     ],
@@ -144,12 +144,12 @@ export default function Services() {
                 </div>
               </div>
 
-              {/* Bottom: 3-column responsive thumbnail showcase */}
+              {/* Bottom: 3-column responsive thumbnail showcase filling card width cleanly */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full mt-8">
                 {service.thumbnails.map((thumb, idx) => (
                   <div
                     key={idx}
-                    className="group/thumb relative h-[220px] w-full overflow-hidden rounded-[18px] bg-[#F4F4F3] border border-[#E7E7E5]"
+                    className="group/thumb relative h-[220px] w-full aspect-[16/10] overflow-hidden rounded-[18px] bg-[#F4F4F3] border border-[#E7E7E5]"
                   >
                     <Image
                       src={thumb.src}

@@ -19,7 +19,7 @@ const projects: Project[] = [
     title: "Pulma",
     category: "Framer Website",
     tags: ["Framer Website", "Web Design"],
-    imageSrc: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=85",
+    imageSrc: "/images/luzia_9.png",
     alt: "Pulma Web Experience",
   },
   {
@@ -27,7 +27,7 @@ const projects: Project[] = [
     title: "LumeX",
     category: "Product & SaaS Design",
     tags: ["SaaS Platform", "UI/UX System"],
-    imageSrc: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=1200&q=85",
+    imageSrc: "/images/luzia_8.png",
     alt: "LumeX Interface Design",
   },
   {
@@ -35,7 +35,7 @@ const projects: Project[] = [
     title: "Planza",
     category: "Mobile & Web App",
     tags: ["Design System", "Mobile App"],
-    imageSrc: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=85",
+    imageSrc: "/images/luzia_10.png",
     alt: "Planza Architecture",
   },
   {
@@ -43,7 +43,7 @@ const projects: Project[] = [
     title: "Horizon Atlas",
     category: "Brand & Digital Direction",
     tags: ["Branding", "Creative Direction"],
-    imageSrc: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=85",
+    imageSrc: "/images/luzia_11.png",
     alt: "Horizon Atlas Platform",
   },
 ];
@@ -81,8 +81,8 @@ export default function FeaturedWorks() {
               transition={{ duration: 0.65, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="group relative cursor-pointer rounded-[24px] border border-[#E7E7E5] bg-white p-4 transition-colors duration-300 hover:border-[#D2D2CF] shadow-[0_8px_30px_rgba(0,0,0,0.02)]"
             >
-              {/* Image Frame */}
-              <div className="relative w-full h-[360px] md:h-[420px] overflow-hidden rounded-[20px] bg-[#F4F4F3]">
+              {/* Image Frame with Aspect Ratio */}
+              <div className="relative w-full aspect-[4/3] sm:h-[360px] md:h-[420px] overflow-hidden rounded-[20px] bg-[#F4F4F3]">
                 <Image
                   src={project.imageSrc}
                   alt={project.alt}

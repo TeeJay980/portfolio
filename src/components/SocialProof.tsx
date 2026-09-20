@@ -79,7 +79,7 @@ export default function SocialProof() {
           <div className="flex items-center gap-4 pt-2">
             <div className="relative h-12 w-12 overflow-hidden rounded-full border border-[#E7E7E5] bg-[#F4F4F3]">
               <Image
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
+                src="/images/luzia_21.jpg"
                 alt="Samantha Vance"
                 fill
                 className="object-cover"
