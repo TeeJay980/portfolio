@@ -43,13 +43,6 @@ export default function Hero() {
               <span>Start a Project</span>
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
-
-            <a
-              href="/about"
-              className="group inline-flex items-center justify-center gap-2 rounded-full border border-[#E7E7E5] bg-white px-6 py-3.5 text-sm font-medium text-[#111111] transition-all duration-200 hover:bg-[#F8F8F7] hover:border-[#D2D2CF] shadow-sm active:scale-[0.97]"
-            >
-              <span>About &amp; Experience</span>
-            </a>
           </div>
         </motion.div>
       </div>
