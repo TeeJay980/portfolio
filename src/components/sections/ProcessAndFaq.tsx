@@ -13,26 +13,21 @@ interface Step {
 const steps: Step[] = [
   {
     number: "01",
-    title: "Book a Call",
-    description: "Introductory 30-minute discovery conversation to align on project goals, scope, timeline, and vision.",
-  },
-  {
-    number: "02",
     title: "Project Brief",
     description: "Synthesizing requirements into structured wireframes, user journeys, design references, and technical constraints.",
   },
   {
-    number: "03",
+    number: "02",
     title: "Develop",
     description: "Iterative high-fidelity UI design, component system architecture, and interactive prototyping with weekly check-ins.",
   },
   {
-    number: "04",
+    number: "03",
     title: "Deliver",
     description: "Pixel-perfect implementation, production deployment, CMS setup, and comprehensive design token handoff.",
   },
   {
-    number: "05",
+    number: "04",
     title: "Support",
     description: "Post-launch warranty, performance optimization, team training, and continuous product evolution.",
   },
