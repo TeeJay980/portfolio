@@ -68,14 +68,22 @@ const faqs: FAQItem[] = [
 
 export default function ProcessAndFaq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [hoveredStep, setHoveredStep] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const staircaseOffsets = [
+    "md:ml-0 md:mr-24 lg:mr-32",
+    "md:ml-8 lg:ml-12 md:mr-16 lg:mr-24",
+    "md:ml-16 lg:ml-24 md:mr-8 lg:mr-16",
+    "md:ml-24 lg:ml-36 md:mr-0",
+  ];
+
   return (
     <div className="space-y-16 md:space-y-24 py-12 md:py-16">
-      {/* 1. Process Section */}
+      {/* 1. Process Section with Staircase Layout & Hover Reveal */}
       <section className="max-w-[1140px] mx-auto px-6 space-y-8">
         {/* Section Header */}
         <motion.div
@@ -90,33 +98,86 @@ export default function ProcessAndFaq() {
           <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.025em] text-[#111111] mt-3">
             How it works
           </h2>
+          <p className="text-sm text-[#666665] mt-1">
+            Hover over any step to reveal its execution details
+          </p>
         </motion.div>
 
-        {/* 5 Process Steps as Rounded Horizontal Cards */}
-        <div className="space-y-4">
-          {steps.map((step, idx) => (
-            <motion.div
-              key={step.number}
-              initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.65, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-[24px] border border-[#E7E7E5] bg-white p-6 md:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
-            >
-              <div className="flex items-start sm:items-center gap-6">
-                <span className="text-xl font-bold tracking-tight text-[#888888] font-mono">
-                  {step.number}
-                </span>
-                <h3 className="text-lg md:text-xl font-semibold text-[#111111] tracking-[-0.025em]">
-                  {step.title}
-                </h3>
-              </div>
+        {/* Staircase Steps List */}
+        <div className="space-y-3 md:space-y-4">
+          {steps.map((step, idx) => {
+            const isHovered = hoveredStep === idx;
+            return (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.65, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                onMouseEnter={() => setHoveredStep(idx)}
+                onMouseLeave={() => setHoveredStep(null)}
+                onClick={() => setHoveredStep(isHovered ? null : idx)}
+                className={`group relative overflow-hidden rounded-[24px] border transition-all duration-300 cursor-pointer ${
+                  staircaseOffsets[idx % staircaseOffsets.length]
+                } ${
+                  isHovered
+                    ? "border-[#111111] bg-white shadow-[0_12px_36px_rgba(0,0,0,0.06)]"
+                    : "border-[#E7E7E5] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:border-[#D2D2CF]"
+                } p-6 md:p-7`}
+              >
+                <div className="flex items-center justify-between gap-4">
+                  {/* Step Number & Title */}
+                  <div className="flex items-center gap-4 sm:gap-6">
+                    <span
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold font-mono transition-all duration-300 ${
+                        isHovered
+                          ? "bg-[#111111] text-white"
+                          : "bg-[#F4F4F3] text-[#888888] group-hover:bg-[#111111] group-hover:text-white"
+                      }`}
+                    >
+                      {step.number}
+                    </span>
+                    <h3 className="text-lg md:text-xl font-semibold text-[#111111] tracking-[-0.025em]">
+                      {step.title}
+                    </h3>
+                  </div>
 
-              <p className="text-sm sm:text-base text-[#666665] max-w-lg leading-relaxed sm:text-right">
-                {step.description}
-              </p>
-            </motion.div>
-          ))}
+                  {/* Staircase Step Level Indicator Pill */}
+                  <div className="flex items-center gap-2">
+                    <span className="hidden sm:inline-block rounded-full bg-[#F4F4F3] px-3 py-1 text-xs font-medium text-[#737373] transition-colors group-hover:bg-[#EAEAE8]">
+                      Step {step.number}
+                    </span>
+                    <div
+                      className={`flex h-8 w-8 items-center justify-center rounded-full transition-transform duration-300 ${
+                        isHovered ? "rotate-45 bg-[#111111] text-white" : "bg-[#F4F4F3] text-[#888888]"
+                      }`}
+                    >
+                      <Plus className="h-4 w-4" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Animated Content Reveal on Hover */}
+                <AnimatePresence initial={false}>
+                  {isHovered && (
+                    <motion.div
+                      key="desc"
+                      initial={{ height: 0, opacity: 0, marginTop: 0 }}
+                      animate={{ height: "auto", opacity: 1, marginTop: 16 }}
+                      exit={{ height: 0, opacity: 0, marginTop: 0 }}
+                      transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+                    >
+                      <div className="pt-3 border-t border-[#F2F2F0]">
+                        <p className="text-sm sm:text-base text-[#666665] leading-relaxed max-w-2xl">
+                          {step.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
