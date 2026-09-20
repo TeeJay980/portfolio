@@ -74,11 +74,11 @@ export default function FeaturedWorks() {
                   </div>
                 </div>
 
-                {/* Picture of Website Testimonials Section */}
-                <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full bg-[#F4F4F3] overflow-hidden">
+                {/* Picture of Website Testimonials / Product Section */}
+                <div className="relative h-[320px] sm:h-[420px] md:h-[460px] w-full bg-[#F4F4F3] overflow-hidden">
                   <Image
-                    src="/images/oriflame_testimonials.jpg"
-                    alt="Oriflame Abuja Website - Testimonials & Customer Experiences"
+                    src="/images/oriflame_featured.jpg"
+                    alt="Oriflame Abuja - Customer Experience & Product Showcase"
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 700px"
                     className="object-cover object-top transition-transform duration-500 ease-out group-hover/preview:scale-[1.03]"
@@ -88,7 +88,7 @@ export default function FeaturedWorks() {
                   {/* Hover Overlay Badge */}
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="flex items-center gap-2 rounded-full bg-[#111111]/90 backdrop-blur-md text-white px-5 py-2.5 text-xs sm:text-sm font-medium shadow-xl transform translate-y-2 group-hover/preview:translate-y-0 transition-transform duration-300">
-                      <span>View Testimonials Section</span>
+                      <span>View Live Site</span>
                       <ArrowUpRight className="h-4 w-4" />
                     </div>
                   </div>
