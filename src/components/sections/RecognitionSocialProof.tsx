@@ -63,7 +63,7 @@ export default function RecognitionSocialProof() {
 
           {/* Quote */}
           <blockquote className="text-lg sm:text-2xl md:text-[28px] font-normal text-[#111111] leading-relaxed tracking-[-0.02em] max-w-4xl">
-            “SPUrx delivered a transformative web project for our platform in record time. His attention to detail, clean code, and speed took our conversion rate up by 42% in the first quarter.”
+            “SPURX delivered a transformative web project for our platform in record time. His attention to detail, clean code, and speed took our conversion rate up by 42% in the first quarter.”
           </blockquote>
 
           {/* Author Profile */}

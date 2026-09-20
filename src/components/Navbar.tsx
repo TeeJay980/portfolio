@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight, Mail } from "lucide-react";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -43,12 +44,9 @@ export default function Navbar() {
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
           className="pointer-events-auto inline-flex items-center gap-2.5 md:gap-6 rounded-full border border-[#E7E7E5] bg-white/90 p-1.5 md:px-5 md:py-2.5 shadow-sm backdrop-blur-md w-auto"
         >
-          {/* Monogram Logo "SPUrx" */}
-          <Link
-            href="/"
-            className="flex h-8 px-3 items-center justify-center rounded-full bg-[#111111] text-xs font-bold text-white tracking-wider transition-all hover:opacity-85 active:scale-[0.95]"
-          >
-            SPUrx
+          {/* Designed Brand Logo "SPURX" */}
+          <Link href="/" aria-label="SPURX Home">
+            <Logo variant="pill" />
           </Link>
 
           {/* Divider on Desktop */}
