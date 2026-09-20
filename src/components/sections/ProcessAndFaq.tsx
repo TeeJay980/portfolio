@@ -40,29 +40,29 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "What types of design projects do you take on?",
+    question: "What types of web projects do you take on?",
     answer:
-      "I specialize in end-to-end digital product design (web apps, SaaS platforms, mobile applications) and high-impact marketing websites built with Framer or Next.js.",
+      "I build clean, responsive websites and interactive web applications using HTML, CSS, JavaScript, and React.",
   },
   {
     question: "How fast can you deliver a typical project?",
     answer:
-      "A complete landing page or brand website typically takes 2 to 3 weeks from brief to live launch. Full SaaS product design sprints generally take 4 to 6 weeks depending on scope.",
+      "A standard website typically takes 1 to 2 weeks from project brief to live deployment.",
   },
   {
-    question: "Do you also code the designs or just deliver Figma files?",
+    question: "Do you code the websites from scratch?",
     answer:
-      "Both! I provide production-ready Figma design systems as well as fully functional, interactive Framer or Next.js + Tailwind CSS codebases ready for immediate deployment.",
+      "Yes! I write clean, structured code using HTML5, modern CSS3, JavaScript, and React components.",
   },
   {
-    question: "How do we collaborate during the project?",
+    question: "How do we collaborate during a project?",
     answer:
-      "We communicate via dedicated Slack or Discord channels, with async Loom video walkthroughs and weekly scheduled Zoom check-ins to review progress and gather feedback.",
+      "We collaborate via WhatsApp, email, Slack, or Discord with frequent progress updates and live preview links.",
   },
   {
-    question: "What is your pricing and payment structure?",
+    question: "What is your pricing structure?",
     answer:
-      "Projects are either scoped at a fixed milestone-based rate (50% upfront, 50% upon final sign-off) or via a monthly dedicated design & development retainer.",
+      "Projects are scoped simply with transparent milestones based on the size and requirements of your website.",
   },
 ];
 
