@@ -5,15 +5,6 @@ import { Award, ArrowUpRight, Star } from "lucide-react";
 import Image from "next/image";
 
 export default function RecognitionSocialProof() {
-  const logos = [
-    "Stripe",
-    "Figma",
-    "Linear",
-    "Vercel",
-    "Notion",
-    "Raycast",
-  ];
-
   return (
     <section id="about" className="py-12 md:py-16">
       <div className="flex flex-col gap-6 max-w-[1140px] mx-auto px-6 my-10 md:my-16">
@@ -92,77 +83,47 @@ export default function RecognitionSocialProof() {
           </div>
         </motion.div>
 
-        {/* ROW 3: Metrics & Partner Logos Split */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Metrics Block (7 cols) */}
-          <motion.div
-            initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 rounded-[28px] bg-white border border-[#E7E7E5] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.02)] flex flex-col justify-between transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
-          >
-            <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3.5 py-1 text-xs font-medium text-[#333333] w-fit mb-6">
-              Track Record
-            </span>
+        {/* ROW 3: Track Record Metrics Block */}
+        <motion.div
+          initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full rounded-[28px] bg-white border border-[#E7E7E5] p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+        >
+          <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3.5 py-1 text-xs font-medium text-[#333333] inline-block mb-6">
+            Track Record
+          </span>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div>
-                <div className="text-3xl sm:text-4xl font-semibold tracking-[-0.025em] text-[#111111]">
-                  3+
-                </div>
-                <div className="text-sm text-[#666665] mt-1 font-normal">
-                  Happy clients
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div>
+              <div className="text-3xl sm:text-4xl font-semibold tracking-[-0.025em] text-[#111111]">
+                3+
               </div>
-
-              <div>
-                <div className="text-3xl sm:text-4xl font-semibold tracking-[-0.025em] text-[#111111]">
-                  6+
-                </div>
-                <div className="text-sm text-[#666665] mt-1 font-normal">
-                  Months of experience
-                </div>
-              </div>
-
-              <div>
-                <div className="text-3xl sm:text-4xl font-semibold tracking-[-0.025em] text-[#111111]">
-                  7
-                </div>
-                <div className="text-sm text-[#666665] mt-1 font-normal">
-                  Projects completed
-                </div>
+              <div className="text-sm text-[#666665] mt-1 font-normal">
+                Happy clients
               </div>
             </div>
-          </motion.div>
 
-          {/* Logos Block (5 cols) */}
-          <motion.div
-            initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 rounded-[28px] bg-white border border-[#E7E7E5] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.02)] flex flex-col justify-between transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
-          >
-            <div className="flex items-center justify-between mb-6">
-              <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3.5 py-1 text-xs font-medium text-[#333333]">
-                Collaborations
-              </span>
-              <span className="text-xs text-[#666665]">Trusted by many</span>
+            <div>
+              <div className="text-3xl sm:text-4xl font-semibold tracking-[-0.025em] text-[#111111]">
+                6+
+              </div>
+              <div className="text-sm text-[#666665] mt-1 font-normal">
+                Months of experience
+              </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-y-6 gap-x-4 items-center justify-items-center">
-              {logos.map((logo) => (
-                <div
-                  key={logo}
-                  className="text-sm font-semibold tracking-wider text-[#888888] hover:text-[#111111] transition-colors cursor-default"
-                >
-                  {logo}
-                </div>
-              ))}
+            <div>
+              <div className="text-3xl sm:text-4xl font-semibold tracking-[-0.025em] text-[#111111]">
+                7
+              </div>
+              <div className="text-sm text-[#666665] mt-1 font-normal">
+                Projects completed
+              </div>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
