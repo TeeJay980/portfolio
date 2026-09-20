@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Globe, Layers, Sparkles } from "lucide-react";
-import Image from "next/image";
+import { ArrowUpRight, Globe, Layers, Sparkles, ExternalLink, Lock } from "lucide-react";
 
 export default function FeaturedWorks() {
   const project = {
@@ -13,8 +12,6 @@ export default function FeaturedWorks() {
     summary:
       "A bespoke, interactive digital storefront and product catalogue engineered for Oriflame Central Store Abuja. Features an automated hero fragrance showcase, interactive slide-out product drawer with live quantity steppers, a personalized body & wellness routine quiz, and direct WhatsApp commerce integration.",
     techStack: ["HTML5", "CSS3 / Custom Design System", "JavaScript (ES6+)", "Vercel"],
-    imageSrc: "/images/luzia_9.png",
-    alt: "Oriflame Abuja Digital Platform Preview",
   };
 
   return (
@@ -47,33 +44,56 @@ export default function FeaturedWorks() {
           className="group relative rounded-[28px] border border-[#E7E7E5] bg-white p-6 md:p-8 transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Visual Image / Interactive Preview Frame (7 Cols) */}
+            {/* Visual Live Browser Mockup (7 Cols) */}
             <div className="lg:col-span-7">
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block relative h-[320px] sm:h-[400px] md:h-[440px] w-full overflow-hidden rounded-[20px] bg-[#F4F4F3] border border-[#E7E7E5]"
-              >
-                <Image
-                  src={project.imageSrc}
-                  alt={project.alt}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
-                  priority
-                />
-                {/* Overlay Badge */}
-                <div className="absolute top-4 left-4 z-10 flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-md px-3.5 py-1.5 text-xs font-medium text-[#111111] shadow-sm">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00C047] opacity-75" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-[#00C047]" />
-                  </span>
-                  <span>Live Production Site</span>
+              <div className="relative w-full rounded-[20px] overflow-hidden border border-[#E7E7E5] bg-[#F8F8F7] shadow-sm">
+                {/* Browser Chrome Header */}
+                <div className="flex items-center justify-between px-4 py-3 bg-[#EFEFEF] border-b border-[#E7E7E5]">
+                  <div className="flex items-center gap-1.5">
+                    <span className="h-3 w-3 rounded-full bg-[#FF5F56] inline-block" />
+                    <span className="h-3 w-3 rounded-full bg-[#FFBD2E] inline-block" />
+                    <span className="h-3 w-3 rounded-full bg-[#27C93F] inline-block" />
+                  </div>
+
+                  {/* Address Bar */}
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-xs text-[#666665] border border-[#E0E0DE] hover:text-[#111111] transition-colors max-w-[240px] sm:max-w-[320px] truncate"
+                  >
+                    <Lock className="h-3 w-3 text-[#00C047] shrink-0" />
+                    <span className="truncate">{project.domain}</span>
+                    <ExternalLink className="h-2.5 w-2.5 shrink-0 opacity-60" />
+                  </a>
+
+                  <div className="w-10 sm:w-12 text-right">
+                    <span className="h-2 w-2 rounded-full bg-[#00C047] animate-pulse inline-block" />
+                  </div>
                 </div>
 
-                <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/5 pointer-events-none" />
-              </a>
+                {/* Live Preview Iframe Container */}
+                <div className="relative h-[360px] sm:h-[420px] w-full bg-white overflow-hidden">
+                  <iframe
+                    src={project.url}
+                    title="Oriflame Abuja Website Preview"
+                    className="w-full h-full border-0 pointer-events-auto"
+                    loading="lazy"
+                    sandbox="allow-scripts allow-same-origin allow-popups"
+                  />
+
+                  {/* Floating click to open badge */}
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 rounded-full bg-[#111111]/90 backdrop-blur-md text-white px-3.5 py-1.5 text-xs font-medium hover:bg-[#111111] transition-all shadow-md active:scale-95"
+                  >
+                    <span>Open Live Site</span>
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                </div>
+              </div>
             </div>
 
             {/* Content & Details Panel (5 Cols) */}
