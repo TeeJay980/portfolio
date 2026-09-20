@@ -64,7 +64,7 @@ export default function RecognitionSocialProof() {
           className="rounded-[28px] bg-white border border-[#E7E7E5] p-8 md:p-12 shadow-[0_8px_30px_rgba(0,0,0,0.02)] space-y-8 transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
         >
           {/* Star rating */}
-          <div className="flex items-center gap-1 text-[#111111]">
+          <div className="flex items-center gap-1 text-[#EFCE03]">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="h-4 w-4 fill-current" />
             ))}

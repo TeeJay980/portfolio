@@ -41,16 +41,18 @@ const config: Config = {
       },
       fontFamily: {
         sans: [
-          "var(--font-plus-jakarta)",
-          "Plus Jakarta Sans",
+          "var(--font-instrument)",
+          "var(--font-inter)",
+          "Instrument Sans",
           "Inter",
           "system-ui",
           "-apple-system",
           "sans-serif",
         ],
         display: [
-          "var(--font-plus-jakarta)",
-          "Plus Jakarta Sans",
+          "var(--font-instrument)",
+          "var(--font-inter)",
+          "Instrument Sans",
           "Inter",
           "system-ui",
           "sans-serif",
