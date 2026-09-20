@@ -41,26 +41,26 @@ const servicesData: ServiceItem[] = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 px-6 max-w-[1140px] mx-auto">
+    <section id="services" className="py-24 px-6 max-w-[1140px] mx-auto bg-[#F8F8F7]">
       {/* Section Header */}
       <div className="mb-14">
-        <span className="inline-block px-3.5 py-1 rounded-full text-xs font-medium bg-[#FFFFFF] border border-[#E7E7E5] text-[#111111]">
+        <span className="inline-block px-3.5 py-1 rounded-full text-xs font-medium bg-white border border-[#E7E7E5] text-[#111111]">
           Services
         </span>
-        <h2 className="mt-4 text-3xl md:text-4xl font-normal text-[#111111] tracking-[-0.03em] max-w-2xl leading-tight">
-          Design solutions that elevate brands and create seamless user experiences.
+        <h2 className="mt-4 text-3xl md:text-4xl text-[#111111] font-normal tracking-[-0.03em] max-w-2xl leading-tight">
+          Design solutions that elevate brands and create seamless user experiences. I help bring ideas to life with strategy and creativity
         </h2>
       </div>
 
-      {/* Stacked Bento Cards */}
+      {/* Three Horizontal Bento Cards */}
       <div className="flex flex-col gap-6">
         {servicesData.map((svc) => (
           <div
             key={svc.title}
-            className="group rounded-[28px] border border-[#E7E7E5] bg-[#FFFFFF] p-8 md:p-10 transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.03)]"
+            className="group w-full rounded-[28px] border border-[#E7E7E5] bg-white p-8 md:p-10 mb-6 transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.03)]"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              {/* Left Column: Details & CTA */}
+              {/* Left Column (lg:col-span-6): Details & CTA */}
               <div className="lg:col-span-6 flex flex-col justify-between h-full">
                 <div>
                   <div className="flex items-center justify-between">
@@ -80,12 +80,12 @@ export default function Services() {
                   </p>
                 </div>
 
-                {/* Tag Pills */}
+                {/* Tag Pills Array */}
                 <div className="mt-8 flex flex-wrap gap-2">
                   {svc.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 rounded-full text-xs text-[#444443] bg-[#F4F4F3]"
+                      className="bg-[#F4F4F3] text-[#444443] text-xs px-3.5 py-1.5 rounded-full"
                     >
                       {tag}
                     </span>
@@ -93,8 +93,8 @@ export default function Services() {
                 </div>
               </div>
 
-              {/* Right Column: Visual Mockup Showcase */}
-              <div className="lg:col-span-6 grid grid-cols-2 gap-4 h-[240px]">
+              {/* Right Column (lg:col-span-6): Visual Mockup Showcase */}
+              <div className="lg:col-span-6 grid grid-cols-2 gap-4 h-[240px] w-full">
                 {svc.mockupImages.map((imgUrl, idx) => (
                   <div
                     key={idx}
