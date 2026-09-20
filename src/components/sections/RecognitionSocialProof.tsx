@@ -109,25 +109,25 @@ export default function RecognitionSocialProof() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div>
                 <div className="text-3xl sm:text-4xl font-semibold tracking-[-0.025em] text-[#111111]">
-                  10+
+                  3+
                 </div>
                 <div className="text-sm text-[#666665] mt-1 font-normal">
-                  Happy clients worldwide
+                  Happy clients
                 </div>
               </div>
 
               <div>
                 <div className="text-3xl sm:text-4xl font-semibold tracking-[-0.025em] text-[#111111]">
-                  5+
+                  6+
                 </div>
                 <div className="text-sm text-[#666665] mt-1 font-normal">
-                  Years of experience
+                  Months of experience
                 </div>
               </div>
 
               <div>
                 <div className="text-3xl sm:text-4xl font-semibold tracking-[-0.025em] text-[#111111]">
-                  20+
+                  7
                 </div>
                 <div className="text-sm text-[#666665] mt-1 font-normal">
                   Projects completed
