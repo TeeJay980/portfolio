@@ -12,27 +12,27 @@ export default function Footer() {
   ];
 
   return (
-    <footer id="contact" className="pt-12 pb-16 md:pt-16 md:pb-24">
-      <div className="max-w-[1140px] mx-auto px-6 space-y-12">
+    <footer id="contact" className="pt-8 pb-12 sm:pt-12 sm:pb-16 md:pt-16 md:pb-24">
+      <div className="max-w-[1140px] mx-auto px-4 sm:px-6 space-y-8 sm:space-y-12">
         {/* Contact Banner Card with Scroll Reveal */}
         <motion.div
           initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="rounded-[28px] border border-[#E7E7E5] bg-[#111111] text-white p-8 md:p-14 shadow-xl"
+          className="rounded-[28px] border border-[#E7E7E5] bg-[#111111] text-white p-6 sm:p-10 md:p-14 shadow-xl"
         >
-          <div className="max-w-2xl space-y-6">
+          <div className="max-w-2xl space-y-5 sm:space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-[#00C047] animate-pulse" />
               <span>Let&apos;s build something exceptional</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-[-0.025em] text-white leading-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-semibold tracking-[-0.025em] text-white leading-tight">
               Have a project in mind? Let&apos;s talk about it.
             </h2>
 
-            <p className="text-base sm:text-lg text-[#A0A0A0] leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-[#A0A0A0] leading-relaxed">
               Whether you need a ground-up SaaS product redesign, a high-converting marketing site, or a scalable design system, I&apos;m here to help.
             </p>
 

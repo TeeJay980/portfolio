@@ -41,7 +41,7 @@ export default function Navbar() {
           initial={{ y: -20, opacity: 0, filter: "blur(4px)" }}
           animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="pointer-events-auto flex items-center justify-between md:justify-start gap-4 md:gap-6 rounded-full border border-[#E7E7E5] bg-white/85 px-4 py-2 md:px-5 md:py-2.5 shadow-sm backdrop-blur-md w-full max-w-[92vw] sm:max-w-md md:w-auto"
+          className="pointer-events-auto inline-flex items-center gap-2.5 md:gap-6 rounded-full border border-[#E7E7E5] bg-white/90 p-1.5 md:px-5 md:py-2.5 shadow-sm backdrop-blur-md w-auto"
         >
           {/* Monogram Logo "TJ" */}
           <Link

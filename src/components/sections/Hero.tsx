@@ -5,13 +5,13 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="pt-32 pb-16 md:pt-40 md:pb-20">
-      <div className="max-w-[1140px] mx-auto px-6">
+    <section className="pt-24 pb-12 sm:pt-32 sm:pb-16 md:pt-40 md:pb-20">
+      <div className="max-w-[1140px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="space-y-6"
+          className="space-y-5 sm:space-y-6"
         >
           {/* Top Badge */}
           <div className="inline-flex flex-wrap items-center gap-2 rounded-full border border-[#E7E7E5] bg-white px-4 py-1.5 shadow-sm">

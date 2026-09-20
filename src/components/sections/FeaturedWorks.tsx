@@ -15,15 +15,15 @@ export default function FeaturedWorks() {
   };
 
   return (
-    <section id="work" className="py-12 md:py-16">
-      <div className="max-w-[1140px] mx-auto px-6">
+    <section id="work" className="py-10 md:py-16">
+      <div className="max-w-[1140px] mx-auto px-4 sm:px-6">
         {/* Section Header with Scroll Reveal */}
         <motion.div
           initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-end justify-between mb-8"
+          className="flex items-end justify-between mb-6 md:mb-8"
         >
           <div>
             <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3.5 py-1.5 text-xs font-medium text-[#333333]">
@@ -41,18 +41,18 @@ export default function FeaturedWorks() {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="group relative rounded-[28px] border border-[#E7E7E5] bg-white p-6 md:p-8 transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+          className="group relative rounded-[28px] border border-[#E7E7E5] bg-white p-5 sm:p-7 md:p-8 transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
             {/* Visual Live Browser Mockup (7 Cols) */}
             <div className="lg:col-span-7">
               <div className="relative w-full rounded-[20px] overflow-hidden border border-[#E7E7E5] bg-[#F8F8F7] shadow-sm">
                 {/* Browser Chrome Header */}
-                <div className="flex items-center justify-between px-4 py-3 bg-[#EFEFEF] border-b border-[#E7E7E5]">
+                <div className="flex items-center justify-between px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#EFEFEF] border-b border-[#E7E7E5]">
                   <div className="flex items-center gap-1.5">
-                    <span className="h-3 w-3 rounded-full bg-[#FF5F56] inline-block" />
-                    <span className="h-3 w-3 rounded-full bg-[#FFBD2E] inline-block" />
-                    <span className="h-3 w-3 rounded-full bg-[#27C93F] inline-block" />
+                    <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-[#FF5F56] inline-block" />
+                    <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-[#FFBD2E] inline-block" />
+                    <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-[#27C93F] inline-block" />
                   </div>
 
                   {/* Address Bar */}
@@ -60,20 +60,20 @@ export default function FeaturedWorks() {
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-xs text-[#666665] border border-[#E0E0DE] hover:text-[#111111] transition-colors max-w-[240px] sm:max-w-[320px] truncate"
+                    className="flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white text-[11px] sm:text-xs text-[#666665] border border-[#E0E0DE] hover:text-[#111111] transition-colors max-w-[200px] sm:max-w-[320px] truncate"
                   >
                     <Lock className="h-3 w-3 text-[#00C047] shrink-0" />
                     <span className="truncate">{project.domain}</span>
                     <ExternalLink className="h-2.5 w-2.5 shrink-0 opacity-60" />
                   </a>
 
-                  <div className="w-10 sm:w-12 text-right">
+                  <div className="w-8 sm:w-12 text-right">
                     <span className="h-2 w-2 rounded-full bg-[#00C047] animate-pulse inline-block" />
                   </div>
                 </div>
 
                 {/* Live Preview Iframe Container */}
-                <div className="relative h-[360px] sm:h-[420px] w-full bg-white overflow-hidden">
+                <div className="relative h-[280px] sm:h-[360px] md:h-[420px] w-full bg-white overflow-hidden">
                   <iframe
                     src={project.url}
                     title="Oriflame Abuja Website Preview"
