@@ -1,12 +1,11 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import FeaturedWorks from "@/components/FeaturedWorks";
-import SocialProof from "@/components/SocialProof";
-import Services from "@/components/Services";
-import Process from "@/components/Process";
-import FAQ from "@/components/FAQ";
+import Hero from "@/components/sections/Hero";
+import FeaturedWorks from "@/components/sections/FeaturedWorks";
+import RecognitionSocialProof from "@/components/sections/RecognitionSocialProof";
+import Services from "@/components/sections/Services";
+import ProcessAndFaq from "@/components/sections/ProcessAndFaq";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -15,28 +14,25 @@ export default function Home() {
       {/* 1. Floating Pill Navbar */}
       <Navbar />
 
-      {/* Main Content Area */}
+      {/* Main Sections */}
       <main className="space-y-4 md:space-y-6">
         {/* 2. Hero Section */}
         <Hero />
 
-        {/* 3. Featured Works Grid (2x2 Asymmetric Bento) */}
+        {/* 3. Featured Works Grid (2x2 Bento) */}
         <FeaturedWorks />
 
-        {/* 4. Recognition & Social Proof Block (3-Row Stack) */}
-        <SocialProof />
+        {/* 4. 3-Row Recognition & Social Proof Block */}
+        <RecognitionSocialProof />
 
-        {/* 5. Services Section (Full-Width Responsive Cards) */}
+        {/* 5. Services Section (Full-Width Responsive Cards & 3-Column Showcase) */}
         <Services />
 
-        {/* 6. Process ("How It Works") */}
-        <Process />
-
-        {/* 7. FAQ Accordion */}
-        <FAQ />
+        {/* 6. Process Steps ("How It Works") & FAQ Accordion */}
+        <ProcessAndFaq />
       </main>
 
-      {/* 8. Footer */}
+      {/* 7. Footer */}
       <Footer />
     </div>
   );

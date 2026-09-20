@@ -19,12 +19,12 @@ export default function Navbar() {
         transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
         className="pointer-events-auto flex items-center gap-4 md:gap-6 rounded-full border border-[#E7E7E5] bg-white/80 px-5 py-2.5 shadow-sm backdrop-blur-md"
       >
-        {/* Monogram Logo */}
+        {/* Monogram Logo "TJ" */}
         <Link
           href="/"
           className="flex h-8 w-8 items-center justify-center rounded-full bg-[#111111] text-xs font-bold text-white tracking-wider transition-all hover:opacity-85 active:scale-[0.95]"
         >
-          MC
+          TJ
         </Link>
 
         {/* Divider */}

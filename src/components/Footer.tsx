@@ -8,7 +8,7 @@ export default function Footer() {
     { name: "Twitter / X", href: "https://twitter.com" },
     { name: "LinkedIn", href: "https://linkedin.com" },
     { name: "Dribbble", href: "https://dribbble.com" },
-    { name: "GitHub", href: "https://github.com" },
+    { name: "GitHub", href: "https://github.com/TeeJay980" },
   ];
 
   return (
@@ -38,11 +38,11 @@ export default function Footer() {
 
             <div className="pt-2">
               <a
-                href="mailto:michael@carterdesign.com"
+                href="mailto:mctjay80@gmail.com"
                 className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-medium text-[#111111] transition-all duration-200 hover:bg-[#F2F2F0] shadow-md active:scale-[0.97]"
               >
                 <Mail className="h-4 w-4" />
-                <span>michael@carterdesign.com</span>
+                <span>mctjay80@gmail.com</span>
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>
@@ -52,7 +52,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[#E7E7E5] text-sm text-[#666665]">
           <div className="flex items-center gap-3">
-            <span className="font-semibold text-[#111111]">Michael Carter</span>
+            <span className="font-semibold text-[#111111]">TJ</span>
             <span>&copy; {new Date().getFullYear()} All rights reserved.</span>
           </div>
 
