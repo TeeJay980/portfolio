@@ -52,7 +52,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[#E7E7E5] text-sm text-[#666665]">
           <div className="flex items-center gap-3">
-            <span className="font-semibold text-[#111111]">TJ</span>
+            <span className="font-semibold text-[#111111]">SPUrx</span>
             <span>&copy; {new Date().getFullYear()} All rights reserved.</span>
           </div>
 
