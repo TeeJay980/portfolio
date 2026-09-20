@@ -25,8 +25,8 @@ export default function Hero() {
           </div>
 
           {/* Display Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-[-0.025em] text-[#111111] leading-[1.08] max-w-4xl mt-6">
-            TJ is crafting high-impact digital experiences through strategic design and modern web development.
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal tracking-[-0.025em] text-[#111111] leading-[1.15] max-w-4xl mt-6">
+            Hi, my name is Terrence mark. Interning at Spex.
           </h1>
 
           {/* Subtext / Bio */}
