@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 
 interface ServiceItem {
@@ -13,53 +13,33 @@ interface ServiceItem {
 
 const servicesData: ServiceItem[] = [
   {
-    title: "Branding Design",
-    desc: "A strong brand is more than just a logo—it's the foundation of how your audience perceives you. I create cohesive and impactful brand identities that ensure consistency across all touchpoints.",
-    tags: ["Logo design", "Brand guideline", "Brand strategy", "+more"],
-    mockups: [
-      "/images/luzia_12.png",
-      "/images/luzia_13.png",
-      "/images/luzia_14.png",
-    ],
-  },
-  {
-    title: "Framer Development",
-    desc: "Transforming designs into fully responsive, interactive websites with Framer. Whether it's a landing page or a full-scale web experience, I build fast, modern sites optimized for seamless performance.",
-    tags: ["Landing page", "Multipages", "Web migration", "+more"],
+    title: "Web Development",
+    desc: "Transforming design ideas into responsive, interactive, and high-performance websites and web applications using modern HTML5, CSS3, JavaScript, and React.",
+    tags: ["HTML5 & CSS3", "JavaScript", "React", "Responsive Web", "+more"],
     mockups: [
       "/images/luzia_15.png",
       "/images/luzia_16.png",
       "/images/luzia_17.png",
     ],
   },
-  {
-    title: "UI/UX Design",
-    desc: "Designing user-centered experiences that are both functional and visually engaging. From concept to final prototype, I focus on intuitive interfaces that enhance experiences and usability.",
-    tags: ["Web & app design", "Design system", "Prototyping", "+more"],
-    mockups: [
-      "/images/luzia_18.png",
-      "/images/luzia_19.png",
-      "/images/luzia_20.png",
-    ],
-  },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 px-6 max-w-[1140px] mx-auto">
+    <section id="services" className="py-16 md:py-24 px-6 max-w-[1140px] mx-auto">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-        className="mb-14"
+        className="mb-12"
       >
         <span className="inline-block px-3.5 py-1 rounded-full text-xs font-medium bg-white border border-[#E7E7E5] text-[#111111]">
           Services
         </span>
         <h2 className="mt-4 text-3xl md:text-4xl font-normal text-[#111111] tracking-[-0.03em] max-w-2xl leading-tight">
-          Design solutions that elevate brands and create seamless user experiences. I help bring ideas to life with strategy and creativity.
+          I bring ideas to life with strategy and creativity.
         </h2>
       </motion.div>
 
@@ -125,6 +105,23 @@ export default function Services() {
             </div>
           </motion.div>
         ))}
+
+        {/* Coming Soon Box */}
+        <motion.div
+          initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full rounded-[28px] border border-dashed border-[#D2D2CF] bg-white/60 p-8 md:p-12 text-center flex flex-col items-center justify-center gap-3 transition-colors hover:bg-white"
+        >
+          <div className="flex items-center gap-2 rounded-full bg-[#F4F4F3] px-3.5 py-1 text-xs font-medium text-[#333333] border border-[#E7E7E5]">
+            <Sparkles className="h-3 w-3 text-[#7430F7]" />
+            <span>Expanding Toolkit</span>
+          </div>
+          <p className="text-base sm:text-lg font-medium text-[#666665]">
+            Other services coming soon
+          </p>
+        </motion.div>
       </div>
     </section>
   );
