@@ -31,7 +31,7 @@ export default function Hero() {
 
           {/* Subtext / Bio */}
           <p className="text-base sm:text-lg text-[#666665] max-w-2xl mt-6 leading-relaxed font-normal">
-            Partnering with high-growth startups and visionary brands worldwide to engineer bespoke web platforms, conversion-focused design systems, and fluid digital interfaces.
+            My name is Terrence J. Mark I am 12 years old learning HTML, JS and React, and an upcoming web developer
           </p>
 
           {/* CTAs */}
@@ -45,7 +45,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="#about"
+              href="/about"
               className="group inline-flex items-center justify-center gap-2 rounded-full border border-[#E7E7E5] bg-white px-6 py-3.5 text-sm font-medium text-[#111111] transition-all duration-200 hover:bg-[#F8F8F7] hover:border-[#D2D2CF] shadow-sm active:scale-[0.97]"
             >
               <span>About &amp; Experience</span>

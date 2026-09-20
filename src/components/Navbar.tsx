@@ -2,13 +2,16 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   const navLinks = [
-    { name: "Work", href: "#work" },
-    { name: "Services", href: "#services" },
-    { name: "About", href: "#about" },
-    { name: "FAQ", href: "#faq" },
+    { name: "Work", href: "/work" },
+    { name: "Services", href: "/services" },
+    { name: "About", href: "/about" },
+    { name: "FAQ", href: "/faq" },
   ];
 
   return (
@@ -32,15 +35,22 @@ export default function Navbar() {
 
         {/* Navigation Links */}
         <div className="flex items-center gap-1 sm:gap-2 text-sm font-medium text-[#666665]">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="rounded-full px-3 py-1 text-[#666665] transition-all duration-200 hover:text-[#111111] hover:bg-[#F4F4F3] active:scale-[0.97]"
-            >
-              {link.name}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`rounded-full px-3 py-1 transition-all duration-200 active:scale-[0.97] ${
+                  isActive
+                    ? "bg-[#111111] text-white font-medium"
+                    : "text-[#666665] hover:text-[#111111] hover:bg-[#F4F4F3]"
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Divider */}
