@@ -40,34 +40,39 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "What types of web projects do you take on?",
+    question: "What’s your typical project timeline?",
     answer:
-      "I build clean, responsive websites and interactive web applications using HTML, CSS, JavaScript, and React.",
+      "Standard landing pages and portfolio sites take between 1 to 2 weeks. More complex web applications with bespoke interactive features typically take 3 to 4 weeks from project brief to deployment.",
   },
   {
-    question: "How fast can you deliver a typical project?",
+    question: "Do you offer revisions?",
     answer:
-      "A standard website typically takes 1 to 2 weeks from project brief to live deployment.",
+      "Yes! Every project includes iterative feedback rounds during both the design and development phases to ensure the final product exceeds your expectations.",
   },
   {
-    question: "Do you code the websites from scratch?",
+    question: "What do you need from me to get started?",
     answer:
-      "Yes! I write clean, structured code using HTML5, modern CSS3, JavaScript, and React components.",
+      "A brief overview of your goals, any existing brand assets or inspirations, target audience details, and your preferred launch timeline.",
   },
   {
-    question: "How do we collaborate during a project?",
+    question: "Can you work with my existing brand guidelines?",
     answer:
-      "We collaborate via WhatsApp, email, Slack, or Discord with frequent progress updates and live preview links.",
+      "Absolutely. I adapt seamlessly to existing design systems, typography guidelines, and brand identities while ensuring clean code and modern aesthetics.",
   },
   {
-    question: "What is your pricing structure?",
+    question: "Do you provide post-project support?",
     answer:
-      "Projects are scoped simply with transparent milestones based on the size and requirements of your website.",
+      "Yes, I provide post-launch support and warranty to address any questions, optimize performance, and assist with updates.",
+  },
+  {
+    question: "What’s the best way to reach you?",
+    answer:
+      "The fastest way to reach me is via email at mctjay80@gmail.com or via WhatsApp. I typically reply within a few hours.",
   },
 ];
 
 export default function ProcessAndFaq() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
@@ -181,70 +186,105 @@ export default function ProcessAndFaq() {
         </div>
       </section>
 
-      {/* 2. FAQ Accordion Section */}
-      <section id="faq" className="max-w-[1140px] mx-auto px-6 space-y-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3.5 py-1.5 text-xs font-medium text-[#333333]">
-            Common Questions
-          </span>
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.025em] text-[#111111] mt-3">
-            Frequently Asked Questions
-          </h2>
-        </motion.div>
+      {/* 2. FAQ Section Designed to Match Reference Image */}
+      <section id="faq" className="max-w-[1140px] mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          {/* Left Column: Eyebrow + Divided Headline + Email CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 space-y-6 sm:space-y-8"
+          >
+            {/* Top Eyebrow with Divider Line */}
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-medium text-[#737373]">FAQs</span>
+              <div className="h-[1px] flex-1 max-w-[220px] bg-[#E7E7E5]" />
+            </div>
 
-        {/* Accordion List */}
-        <div className="space-y-4">
-          {faqs.map((faq, index) => {
-            const isOpen = openIndex === index;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.65, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                className="overflow-hidden rounded-[24px] border border-[#E7E7E5] bg-white transition-all duration-300 hover:border-[#D2D2CF] shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+            {/* Display Headline */}
+            <h2 className="text-2xl sm:text-3xl md:text-[38px] font-normal tracking-[-0.025em] text-[#737373] leading-[1.2]">
+              Answers to common questions to help you understand{" "}
+              <span className="font-semibold text-[#111111]">
+                the process and how we can work together
+              </span>
+            </h2>
+
+            {/* Email Me Button with Soft Floating Shadow */}
+            <div className="pt-2">
+              <a
+                href="mailto:mctjay80@gmail.com"
+                className="inline-flex items-center justify-center rounded-full bg-[#111111] px-7 py-3.5 text-sm font-medium text-white shadow-[0_12px_28px_rgba(0,0,0,0.18)] hover:bg-[#222222] active:scale-95 transition-all duration-200"
               >
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="flex w-full items-center justify-between p-6 md:p-8 text-left transition-colors active:scale-[0.99]"
-                >
-                  <span className="text-lg md:text-xl font-medium tracking-[-0.02em] text-[#111111]">
-                    {faq.question}
-                  </span>
-                  <motion.div
-                    animate={{ rotate: isOpen ? 45 : 0 }}
-                    transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#F4F4F3] text-[#111111]"
-                  >
-                    <Plus className="h-5 w-5" />
-                  </motion.div>
-                </button>
+                Email Me
+              </a>
+            </div>
+          </motion.div>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      key="content"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+          {/* Right Column: Rounded Card Container with Floating Badge & FAQ Items */}
+          <motion.div
+            initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 relative"
+          >
+            {/* Card Shell */}
+            <div className="relative rounded-[32px] sm:rounded-[40px] bg-[#F4F4F3] border border-[#E7E7E5] p-4 sm:p-6 md:p-8 pt-8 sm:pt-9 shadow-sm space-y-3">
+              {/* Floating Top Badge */}
+              <div className="absolute -top-4 sm:-top-5 left-1/2 -translate-x-1/2 z-10">
+                <div className="inline-flex items-center justify-center rounded-full bg-[#111111] text-white px-5 py-2 text-xs sm:text-sm font-medium shadow-[0_12px_28px_rgba(0,0,0,0.22)] whitespace-nowrap">
+                  I&apos;m here to help you
+                </div>
+              </div>
+
+              {/* FAQ Accordion List Items */}
+              {faqs.map((faq, index) => {
+                const isOpen = openIndex === index;
+                return (
+                  <div
+                    key={index}
+                    className={`overflow-hidden border border-[#E7E7E5] bg-white transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.015)] hover:border-[#D2D2CF] ${
+                      isOpen ? "rounded-[22px]" : "rounded-full"
+                    }`}
+                  >
+                    <button
+                      onClick={() => toggleFAQ(index)}
+                      className="flex w-full items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 text-left transition-colors active:scale-[0.99]"
                     >
-                      <div className="px-6 pb-6 md:px-8 md:pb-8 pt-0 text-base text-[#666665] leading-relaxed border-t border-[#F2F2F0]">
-                        <p className="pt-4">{faq.answer}</p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
+                      <span className="text-sm sm:text-base font-medium text-[#111111] tracking-[-0.015em] pr-4">
+                        {faq.question}
+                      </span>
+                      <motion.div
+                        animate={{ rotate: isOpen ? 45 : 0 }}
+                        transition={{ duration: 0.25, ease: [0.25, 1, 0.5, 1] }}
+                        className="flex h-6 w-6 shrink-0 items-center justify-center text-[#888888]"
+                      >
+                        <Plus className="h-4 w-4 stroke-[2]" />
+                      </motion.div>
+                    </button>
+
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          key="content"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+                        >
+                          <div className="px-5 sm:px-6 pb-5 pt-0 text-xs sm:text-sm text-[#666665] leading-relaxed border-t border-[#F4F4F3]">
+                            <p className="pt-3.5">{faq.answer}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>
