@@ -17,13 +17,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SPURX | Web Developer & Specialist",
+  title: "TJ | Web Developer & Specialist",
   description:
     "Product Designer & Web Specialist crafting premium web experiences, high-converting digital products, and refined design systems.",
-  keywords: ["Web Design", "UI/UX", "Framer", "Next.js", "Portfolio", "Design Engineer", "SPURX"],
-  authors: [{ name: "SPURX" }],
+  keywords: ["Web Design", "UI/UX", "Framer", "Next.js", "Portfolio", "Design Engineer", "TJ"],
+  authors: [{ name: "TJ" }],
   openGraph: {
-    title: "SPURX | Web Developer & Specialist",
+    title: "TJ | Web Developer & Specialist",
     description: "Product Designer & Web Specialist crafting premium web experiences.",
     type: "website",
   },

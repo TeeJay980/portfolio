@@ -44,8 +44,8 @@ export default function Navbar() {
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
           className="pointer-events-auto inline-flex items-center gap-2.5 md:gap-6 rounded-full border border-[#E7E7E5] bg-white/90 p-1.5 md:px-5 md:py-2.5 shadow-sm backdrop-blur-md w-auto"
         >
-          {/* Designed Brand Logo "SPURX" */}
-          <Link href="/" aria-label="SPURX Home">
+          {/* Designed Brand Logo "TJ" */}
+          <Link href="/" aria-label="TJ Home">
             <Logo variant="pill" />
           </Link>
 
