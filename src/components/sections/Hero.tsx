@@ -17,14 +17,10 @@ export default function Hero() {
             className="lg:col-span-7 space-y-5 sm:space-y-6 text-left"
           >
             {/* Top Badge */}
-            <div className="inline-flex flex-wrap items-center gap-2 rounded-full border border-[#E7E7E5] bg-white px-4 py-1.5 shadow-sm">
-              <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[#111111]">
-                <Logo variant="text" size="sm" />
-                <span>— Web Developer &amp; Spex Intern</span>
-              </span>
-              <span className="h-1.5 w-1.5 rounded-full bg-[#E7E7E5] hidden sm:inline-block" />
-              <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-2.5 py-0.5 text-xs font-medium text-[#333333]">
-                2 projects left
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-[#E7E7E5] bg-white px-4 py-1.5 shadow-sm">
+              <Logo variant="text" size="sm" />
+              <span className="text-xs sm:text-sm font-medium text-[#111111]">
+                — Web Developer &amp; Spex Intern
               </span>
             </div>
 
