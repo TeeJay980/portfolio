@@ -17,9 +17,9 @@ const servicesData: ServiceItem[] = [
     desc: "Transforming design ideas into responsive, interactive, and high-performance websites and web applications using modern HTML5, CSS3, JavaScript, and React.",
     tags: ["HTML5 & CSS3", "JavaScript", "React", "Responsive Web", "+more"],
     mockups: [
-      "/images/luzia_15.png",
-      "/images/luzia_16.png",
-      "/images/luzia_17.png",
+      "/images/webdev_1.jpg",
+      "/images/webdev_2.jpg",
+      "/images/webdev_3.jpg",
     ],
   },
 ];
