@@ -7,15 +7,15 @@ import { ArrowUpRight, Globe, Layers, Sparkles, ExternalLink, Lock } from "lucid
 export default function FeaturedWorks() {
   const projects = [
     {
-      title: "T-Hub News | Autonomous Tech & Social Community",
-      url: "https://terrssblog.vercel.app/",
-      domain: "terrssblog.vercel.app",
-      previewImage: "/images/thub_preview.jpg",
-      category: "Autonomous Web Application",
-      badge: "Full-Stack Platform",
+      title: "Mary Williams | Bespoke Sewing & Design",
+      url: "https://mary-willams.vercel.app/",
+      domain: "mary-willams.vercel.app",
+      previewImage: "/images/mary_williams_preview.png",
+      category: "Fashion Brand & Portfolio",
+      badge: "Featured Client Project",
       summary:
-        "An autonomous tech news aggregation and social community portal. Features dynamic live feed ingestion, multi-category filtering (Tech, AI, Politics, Sports), user authentication, interactive story publishing, local history tracking, and real-time community engagement.",
-      techStack: ["HTML5 / CSS3", "JavaScript (ES6+)", "REST API & Auth", "Vercel"],
+        "A bespoke digital showcase and brand experience created for Mary Williams Bespoke Sewing & Design. Features curated fashion collections, social media integration, custom lookbook exploration, and direct WhatsApp customer inquiries.",
+      techStack: ["React", "HTML5 / CSS3", "JavaScript (ES6+)", "Vercel"],
     },
     {
       title: "Oriflame Central Store Abuja",
