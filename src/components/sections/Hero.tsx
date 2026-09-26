@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Logo from "../Logo";
 
 export default function Hero() {
@@ -9,7 +10,7 @@ export default function Hero() {
     <section className="pt-24 pb-12 sm:pt-32 sm:pb-16 md:pt-40 md:pb-20">
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Left Column: Hero Text Content pushed to the left */}
+          {/* Left Column: Hero Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -24,7 +25,7 @@ export default function Hero() {
               </span>
             </div>
 
-            {/* Display Headline with Interning at Spex on next line */}
+            {/* Display Headline */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-normal tracking-[-0.025em] text-[#111111] leading-[1.18] mt-6">
               Hi, my name is Terrence mark.
               <br className="hidden sm:inline" />
@@ -50,8 +51,45 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Right Column: Slot reserved for upcoming picture */}
-          <div className="lg:col-span-5 hidden lg:block" />
+          {/* Right Column: Hero Portrait Bento Frame */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 24, filter: "blur(4px)" }}
+            animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 flex justify-center lg:justify-end"
+          >
+            <div className="relative w-full max-w-[360px] sm:max-w-[400px] aspect-square rounded-[32px] sm:rounded-[36px] border border-[#E7E7E5] bg-gradient-to-b from-white via-[#F8F8F7] to-[#F1F1EF] p-3 sm:p-4 shadow-[0_12px_40px_rgba(0,0,0,0.03)] group transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_16px_50px_rgba(0,0,0,0.06)]">
+              {/* Inner picture container */}
+              <div className="relative w-full h-full rounded-[24px] sm:rounded-[28px] overflow-hidden bg-[#F4F4F3]">
+                <Image
+                  src="/images/tj_portrait.jpg"
+                  alt="Terrence J. Mark - Web Developer"
+                  fill
+                  priority
+                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 400px"
+                />
+
+                {/* Bottom subtle gradient blend */}
+                <div className="absolute inset-x-0 bottom-0 h-24 sm:h-28 bg-gradient-to-t from-[#111111]/70 via-[#111111]/20 to-transparent pointer-events-none" />
+
+                {/* Floating Badges inside frame */}
+                <div className="absolute bottom-3 sm:bottom-3.5 inset-x-3 sm:inset-x-3.5 flex items-center justify-between z-10">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-md px-3 sm:px-3.5 py-1.5 text-xs font-medium text-[#111111] shadow-sm border border-white/50">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00C047] opacity-75" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-[#00C047]" />
+                    </span>
+                    <span>Terrence J. Mark</span>
+                  </div>
+
+                  <span className="rounded-full bg-[#111111]/85 backdrop-blur-md px-2.5 py-1 text-[11px] font-medium text-white/95 border border-white/10">
+                    12 y/o Developer
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

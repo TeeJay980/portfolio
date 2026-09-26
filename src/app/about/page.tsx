@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import RecognitionSocialProof from "@/components/sections/RecognitionSocialProof";
 import { motion } from "framer-motion";
 import { Code, Sparkles, Terminal } from "lucide-react";
+import Image from "next/image";
 
 export default function AboutPage() {
   const skills = [
@@ -53,22 +54,47 @@ export default function AboutPage() {
 
           {/* Story & Background Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mt-12">
-            {/* My Journey Card */}
+            {/* Profile Picture Card */}
             <motion.div
               initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-              className="md:col-span-7 rounded-[28px] border border-[#E7E7E5] bg-white p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.02)] space-y-6"
+              className="md:col-span-4 rounded-[28px] border border-[#E7E7E5] bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.02)] flex flex-col justify-between"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#F4F4F3] text-[#111111]">
-                <Code className="h-6 w-6" />
+              <div className="relative w-full aspect-square rounded-[22px] overflow-hidden bg-[#F4F4F3]">
+                <Image
+                  src="/images/tj_portrait.jpg"
+                  alt="Terrence J. Mark"
+                  fill
+                  priority
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 350px"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#111111]/70 via-[#111111]/20 to-transparent pointer-events-none" />
+                <div className="absolute bottom-3 inset-x-3 flex items-center justify-between text-white text-xs font-medium">
+                  <span className="bg-white/95 text-[#111111] px-3 py-1 rounded-full shadow-sm">Terrence</span>
+                  <span className="bg-[#111111]/80 backdrop-blur-sm px-2.5 py-1 rounded-full text-[11px]">Spex Intern</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* My Journey Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.65, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="md:col-span-5 rounded-[28px] border border-[#E7E7E5] bg-white p-7 md:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.02)] space-y-4 flex flex-col justify-center"
+            >
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F4F4F3] text-[#111111]">
+                <Code className="h-5 w-5" />
               </div>
               <h2 className="text-2xl font-semibold tracking-[-0.02em] text-[#111111]">
                 The Journey So Far
               </h2>
-              <p className="text-[#666665] leading-relaxed text-base">
-                Ever since writing my first lines of HTML, I was fascinated by how a few lines of code can create interactive tools and beautiful visual interfaces. Every day I practice building components, experimenting with CSS layouts, and understanding JavaScript logic to grow into a versatile web developer.
+              <p className="text-[#666665] leading-relaxed text-sm sm:text-base">
+                Ever since writing my first lines of HTML, I was fascinated by how code can create interactive tools and beautiful visual interfaces. Every day I practice building components, experimenting with CSS layouts, and understanding JavaScript logic to grow into a versatile web developer.
               </p>
             </motion.div>
 
@@ -77,24 +103,24 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="md:col-span-5 rounded-[28px] border border-[#E7E7E5] bg-white p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.02)] space-y-6 flex flex-col justify-between"
+              transition={{ duration: 0.65, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+              className="md:col-span-3 rounded-[28px] border border-[#E7E7E5] bg-white p-7 md:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.02)] space-y-4 flex flex-col justify-between"
             >
-              <div className="space-y-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#F4F4F3] text-[#111111]">
-                  <Terminal className="h-6 w-6" />
+              <div className="space-y-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F4F4F3] text-[#111111]">
+                  <Terminal className="h-5 w-5" />
                 </div>
-                <h2 className="text-2xl font-semibold tracking-[-0.02em] text-[#111111]">
+                <h2 className="text-xl font-semibold tracking-[-0.02em] text-[#111111]">
                   Spex Internship
                 </h2>
-                <p className="text-[#666665] leading-relaxed text-base">
+                <p className="text-[#666665] leading-relaxed text-xs sm:text-sm">
                   Gaining hands-on real-world experience, learning clean code best practices, modern developer workflows, and collaborating on web design projects.
                 </p>
               </div>
 
-              <div className="inline-flex items-center gap-2 rounded-full bg-[#F4F4F3] px-3.5 py-1.5 text-xs font-medium text-[#333333] w-fit">
+              <div className="inline-flex items-center gap-2 rounded-full bg-[#F4F4F3] px-3 py-1 text-xs font-medium text-[#333333] w-fit">
                 <Sparkles className="h-3.5 w-3.5 text-[#7430F7]" />
-                <span>Growth Mindset &amp; Curiosity</span>
+                <span>Growth Mindset</span>
               </div>
             </motion.div>
           </div>
