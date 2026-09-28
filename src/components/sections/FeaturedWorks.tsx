@@ -7,10 +7,32 @@ import { ArrowUpRight, Globe, Layers, Sparkles, ExternalLink, Lock } from "lucid
 export default function FeaturedWorks() {
   const projects = [
     {
+      title: "EduPortal | School Management System",
+      url: "https://school-portal-two-mu.vercel.app/",
+      domain: "school-portal-two-mu.vercel.app",
+      previewImage: "/images/eduportal_admin.png",
+      category: "School ERP & Management Platform",
+      badge: "Full-Stack Web App",
+      summary:
+        "A comprehensive cloud-enabled school administration platform. Features real-time student and faculty teacher directory management, automated Nigerian secondary class promotions (JSS 1 through SSS 3), tuition fee tracking with debt audits, school supplies & inventory store, and cloud database sync with Supabase.",
+      techStack: ["JavaScript (ES6+)", "HTML5 / CSS3", "Supabase DB & Auth", "Cloudflare", "Vercel"],
+    },
+    {
+      title: "EduPortal | Student Self-Service Portal",
+      url: "https://school-portal-ecxr.vercel.app/",
+      domain: "school-portal-ecxr.vercel.app",
+      previewImage: "/images/eduportal_student.png",
+      category: "Student Self-Service Portal",
+      badge: "Academic Portal",
+      summary:
+        "A dedicated, security-hardened student portal protected with Cloudflare Turnstile. Provides students with instant access to term GPA reports, subject grade breakdowns with printable report cards, weekly lecture timetables, homework & assignment trackers, tuition statements, and digital student ID cards.",
+      techStack: ["JavaScript (ES6+)", "Custom CSS Design System", "Cloudflare Turnstile", "HTML5", "Vercel"],
+    },
+    {
       title: "Mary Williams | Bespoke Sewing & Design",
       url: "https://mary-willams.vercel.app/",
       domain: "mary-willams.vercel.app",
-      previewImage: "/images/mary_williams_preview.png",
+      previewImage: "/images/mary_williams_preview.webp",
       category: "Fashion Brand & Portfolio",
       badge: "Featured Client Project",
       summary:
