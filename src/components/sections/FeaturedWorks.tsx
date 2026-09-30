@@ -30,8 +30,8 @@ export default function FeaturedWorks() {
     },
     {
       title: "Oriflame Central Store Abuja",
-      url: "https://saved-cancel.vercel.app/",
-      domain: "saved-cancel.vercel.app",
+      url: "https://www.oriflamestore.com.ng/",
+      domain: "www.oriflamestore.com.ng",
       previewImage: "/images/oriflame_featured.jpg",
       category: "Featured Client Project",
       badge: "Spex Built",
