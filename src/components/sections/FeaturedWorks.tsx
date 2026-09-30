@@ -147,16 +147,18 @@ export default function FeaturedWorks() {
               <div className="space-y-4">
                 {/* Browser-style Preview Thumbnail */}
                 <div className="relative w-full rounded-[18px] overflow-hidden border border-[#E7E7E5] bg-[#F8F8F7]">
-                  {/* Subtle Top Browser Bar */}
-                  <div className="flex items-center justify-between px-3 py-2 bg-[#EFEFEF] border-b border-[#E7E7E5]">
+                  {/* Top Browser Bar with Gunmetal Gray / Platinum Silver hover */}
+                  <div className="flex items-center justify-between px-3 py-2 bg-[#EFEFEF] group-hover:bg-[#E5E5E3] border-b border-[#E7E7E5] transition-colors duration-300">
                     <div className="flex items-center gap-1.5">
                       <span className="h-2 w-2 rounded-full bg-[#FF5F56] inline-block" />
                       <span className="h-2 w-2 rounded-full bg-[#FFBD2E] inline-block" />
                       <span className="h-2 w-2 rounded-full bg-[#27C93F] inline-block" />
                     </div>
-                    <span className="text-[10px] text-[#888888] font-mono truncate max-w-[140px]">
-                      {project.domain}
-                    </span>
+                    {/* Website Link Bar */}
+                    <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white text-[11px] text-[#666665] border border-[#E0E0DE] max-w-[170px] truncate transition-all duration-300 group-hover:bg-[#20242C] group-hover:text-white group-hover:border-[#374151] group-hover:shadow-sm">
+                      <Lock className="h-2.5 w-2.5 text-[#00C047] group-hover:text-[#00FF87] shrink-0 transition-colors" />
+                      <span className="font-mono truncate group-hover:text-[#FFFFFF]">{project.domain}</span>
+                    </div>
                     <span className="h-1.5 w-1.5 rounded-full bg-[#00C047]" />
                   </div>
 
@@ -170,9 +172,9 @@ export default function FeaturedWorks() {
                       className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-black/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-md px-3.5 py-1.5 text-xs font-medium text-[#111111] shadow-lg">
-                        <Eye className="h-3.5 w-3.5" />
-                        <span>View Details</span>
+                      <div className="flex items-center gap-1.5 rounded-full bg-[#20242C]/95 text-[#FFFFFF] border border-[#374151] backdrop-blur-md px-4 py-1.5 text-xs font-medium shadow-xl">
+                        <Eye className="h-3.5 w-3.5 text-[#E5E7EB]" />
+                        <span className="text-[#FFFFFF]">View Details</span>
                       </div>
                     </div>
                   </div>
@@ -195,13 +197,13 @@ export default function FeaturedWorks() {
                 </div>
               </div>
 
-              {/* Card Footer Button */}
+              {/* Card Footer Button with Gunmetal Gray / Platinum Silver hover */}
               <div className="mt-4 pt-3 border-t border-[#F0F0EE] flex items-center justify-between text-xs text-[#666665]">
                 <span className="font-medium group-hover:text-[#111111] transition-colors">
                   Explore Work
                 </span>
-                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F4F4F3] group-hover:bg-[#111111] group-hover:text-white transition-all duration-300 group-hover:rotate-45">
-                  <ArrowUpRight className="h-3.5 w-3.5" />
+                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F4F4F3] group-hover:bg-[#20242C] group-hover:text-[#FFFFFF] border border-transparent group-hover:border-[#374151] transition-all duration-300 group-hover:rotate-45 shadow-sm">
+                  <ArrowUpRight className="h-3.5 w-3.5 text-[#666665] group-hover:text-[#E5E7EB]" />
                 </div>
               </div>
             </motion.div>
@@ -251,7 +253,7 @@ export default function FeaturedWorks() {
                 <button
                   type="button"
                   onClick={() => setSelectedProject(null)}
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F4F4F3] text-[#111111] hover:bg-[#EAEAE8] active:scale-95 transition-all shadow-sm"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F4F4F3] text-[#111111] hover:bg-[#20242C] hover:text-[#FFFFFF] hover:border hover:border-[#374151] active:scale-95 transition-all shadow-sm"
                   aria-label="Close modal"
                 >
                   <X className="h-5 w-5" />
@@ -259,18 +261,24 @@ export default function FeaturedWorks() {
               </div>
 
               {/* Full Browser Mockup View */}
-              <div className="relative w-full rounded-[20px] overflow-hidden border border-[#E7E7E5] bg-[#F8F8F7] shadow-sm">
-                <div className="flex items-center justify-between px-3.5 py-2.5 bg-[#EFEFEF] border-b border-[#E7E7E5]">
+              <div className="group/mockup relative w-full rounded-[20px] overflow-hidden border border-[#E7E7E5] bg-[#F8F8F7] shadow-sm">
+                <div className="flex items-center justify-between px-3.5 py-2.5 bg-[#EFEFEF] border-b border-[#E7E7E5] transition-colors duration-300 group-hover/mockup:bg-[#E5E5E3]">
                   <div className="flex items-center gap-1.5">
                     <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F56] inline-block" />
                     <span className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E] inline-block" />
                     <span className="h-2.5 w-2.5 rounded-full bg-[#27C93F] inline-block" />
                   </div>
-                  <div className="flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white text-xs text-[#666665] border border-[#E0E0DE] max-w-[240px] sm:max-w-[320px] truncate">
-                    <Lock className="h-3 w-3 text-[#00C047] shrink-0" />
-                    <span className="truncate">{selectedProject.domain}</span>
-                    <ExternalLink className="h-2.5 w-2.5 shrink-0 opacity-60" />
-                  </div>
+                  {/* Modal Address Bar with Gunmetal Gray / Platinum Silver hover */}
+                  <a
+                    href={selectedProject.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-xs text-[#666665] border border-[#E0E0DE] max-w-[240px] sm:max-w-[320px] truncate transition-all duration-300 hover:bg-[#20242C] hover:text-[#FFFFFF] hover:border-[#374151] shadow-sm group/address"
+                  >
+                    <Lock className="h-3 w-3 text-[#00C047] group-hover/address:text-[#00FF87] shrink-0 transition-colors" />
+                    <span className="truncate font-mono group-hover/address:text-[#FFFFFF]">{selectedProject.domain}</span>
+                    <ExternalLink className="h-2.5 w-2.5 shrink-0 text-[#888888] group-hover/address:text-[#E5E7EB] opacity-75" />
+                  </a>
                   <div className="w-8 text-right">
                     <span className="h-2 w-2 rounded-full bg-[#00C047] animate-pulse inline-block" />
                   </div>
@@ -307,7 +315,7 @@ export default function FeaturedWorks() {
                   {selectedProject.techStack.map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-full bg-[#F4F4F3] border border-[#E7E7E5] px-3.5 py-1.5 text-xs font-medium text-[#222222] shadow-sm"
+                      className="rounded-full bg-[#F4F4F3] border border-[#E7E7E5] px-3.5 py-1.5 text-xs font-medium text-[#222222] shadow-sm hover:border-[#D2D2CF] transition-colors"
                     >
                       {tech}
                     </span>
@@ -315,17 +323,17 @@ export default function FeaturedWorks() {
                 </div>
               </div>
 
-              {/* Actions: Visit Live Site */}
+              {/* Actions: Visit Live Site Bar with Dark Gunmetal Gray & Platinum Silver Hover */}
               <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
                 <a
                   href={selectedProject.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center w-full gap-2 rounded-full bg-[#111111] px-6 py-3.5 text-sm font-medium text-white transition-all duration-200 hover:bg-[#222222] active:scale-[0.98] shadow-sm"
+                  className="group/visit inline-flex items-center justify-center w-full gap-2.5 rounded-full bg-[#111111] border border-[#111111] px-6 py-3.5 text-sm font-medium text-[#FFFFFF] shadow-sm transition-all duration-300 hover:bg-[#20242C] hover:border-[#374151] hover:shadow-[0_8px_25px_rgba(32,36,44,0.35)] active:scale-[0.98]"
                 >
-                  <Globe className="h-4 w-4" />
-                  <span>Visit {selectedProject.domain}</span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <Globe className="h-4 w-4 text-[#E5E7EB] group-hover/visit:text-[#FFFFFF] transition-colors" />
+                  <span className="text-[#FFFFFF]">Visit <span className="font-semibold text-[#F3F4F6] group-hover/visit:text-[#FFFFFF]">{selectedProject.domain}</span></span>
+                  <ArrowUpRight className="h-4 w-4 text-[#E5E7EB] transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/visit:translate-x-0.5 group-hover/visit:-translate-y-0.5 group-hover/visit:text-[#FFFFFF]" />
                 </a>
               </div>
             </motion.div>
