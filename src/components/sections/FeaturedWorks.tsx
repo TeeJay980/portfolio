@@ -1,32 +1,67 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowUpRight, Globe, Layers, Sparkles, ExternalLink, Lock } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ArrowUpRight,
+  Globe,
+  Layers,
+  Sparkles,
+  ExternalLink,
+  Lock,
+  X,
+  Eye,
+} from "lucide-react";
+
+interface Project {
+  title: string;
+  url: string;
+  domain: string;
+  previewImage: string;
+  category: string;
+  badge: string;
+  summary: string;
+  techStack: string[];
+}
 
 export default function FeaturedWorks() {
-  const projects = [
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const projects: Project[] = [
     {
       title: "EduPortal | School Management System",
       url: "https://school-portal-two-mu.vercel.app/",
       domain: "school-portal-two-mu.vercel.app",
       previewImage: "/images/eduportal_admin.png",
-      category: "School ERP & Management Platform",
+      category: "School ERP & Management",
       badge: "Full-Stack Web App",
       summary:
         "A comprehensive cloud-enabled school administration platform. Features real-time student and faculty teacher directory management, automated Nigerian secondary class promotions (JSS 1 through SSS 3), tuition fee tracking with debt audits, school supplies & inventory store, and cloud database sync with Supabase.",
-      techStack: ["JavaScript (ES6+)", "HTML5 / CSS3", "Supabase DB & Auth", "Cloudflare", "Vercel"],
+      techStack: [
+        "JavaScript (ES6+)",
+        "HTML5 / CSS3",
+        "Supabase DB & Auth",
+        "Cloudflare",
+        "Vercel",
+      ],
     },
     {
       title: "EduPortal | Student Self-Service Portal",
       url: "https://school-portal-ecxr.vercel.app/",
       domain: "school-portal-ecxr.vercel.app",
       previewImage: "/images/eduportal_student.png",
-      category: "Student Self-Service Portal",
+      category: "Student Portal",
       badge: "Academic Portal",
       summary:
         "A dedicated, security-hardened student portal protected with Cloudflare Turnstile. Provides students with instant access to term GPA reports, subject grade breakdowns with printable report cards, weekly lecture timetables, homework & assignment trackers, tuition statements, and digital student ID cards.",
-      techStack: ["JavaScript (ES6+)", "Custom CSS Design System", "Cloudflare Turnstile", "HTML5", "Vercel"],
+      techStack: [
+        "JavaScript (ES6+)",
+        "Custom CSS Design System",
+        "Cloudflare Turnstile",
+        "HTML5",
+        "Vercel",
+      ],
     },
     {
       title: "Oriflame Central Store Abuja",
@@ -37,155 +72,286 @@ export default function FeaturedWorks() {
       badge: "Spex Built",
       summary:
         "A bespoke, interactive digital storefront and product catalogue engineered for Oriflame Central Store Abuja. Features an automated hero fragrance showcase, interactive slide-out product drawer with live quantity steppers, a personalized body & wellness routine quiz, and direct WhatsApp commerce integration.",
-      techStack: ["HTML5", "CSS3 / Custom Design System", "JavaScript (ES6+)", "Vercel"],
+      techStack: [
+        "HTML5",
+        "CSS3 / Custom Design System",
+        "JavaScript (ES6+)",
+        "Vercel",
+      ],
     },
   ];
 
+  // Lock background scroll when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedProject]);
+
+  // Handle escape key to close modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedProject(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
-    <section id="work" className="py-10 md:py-16">
-      <div className="max-w-[1140px] mx-auto px-4 sm:px-6 space-y-8 md:space-y-12">
-        {/* Section Header with Scroll Reveal */}
+    <section id="work" className="py-8 md:py-14">
+      <div className="max-w-[1140px] mx-auto px-4 sm:px-6 space-y-6 md:space-y-10">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-end justify-between"
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-3"
         >
           <div>
             <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3.5 py-1.5 text-xs font-medium text-[#333333]">
               Featured Works
             </span>
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.025em] text-[#111111] mt-3">
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.025em] text-[#111111] mt-2.5">
               Selected client cases &amp; live products
             </h2>
           </div>
+          <p className="text-xs sm:text-sm text-[#666665]">
+            Click on any project to view details &amp; tools
+          </p>
         </motion.div>
 
-        {/* Featured Showcase Bento Cards List */}
-        <div className="space-y-8 md:space-y-10">
+        {/* Simplified & Compact Works Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {projects.map((project, idx) => (
-            <motion.article
+            <motion.div
               key={project.domain}
-              initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+              initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.65, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative rounded-[28px] border border-[#E7E7E5] bg-white p-5 sm:p-7 md:p-8 transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{
+                duration: 0.55,
+                delay: idx * 0.08,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              onClick={() => setSelectedProject(project)}
+              className="group relative cursor-pointer rounded-[24px] border border-[#E7E7E5] bg-white p-4 sm:p-5 transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_12px_36px_rgba(0,0,0,0.06)] hover:-translate-y-1 flex flex-col justify-between"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-                {/* Visual Browser Mockup (7 Cols) */}
-                <div className={`lg:col-span-7 ${idx % 2 === 1 ? "lg:order-2" : ""}`}>
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block relative w-full rounded-[20px] overflow-hidden border border-[#E7E7E5] bg-[#F8F8F7] shadow-sm group/preview"
-                  >
-                    {/* Browser Chrome Header */}
-                    <div className="flex items-center justify-between px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#EFEFEF] border-b border-[#E7E7E5]">
-                      <div className="flex items-center gap-1.5">
-                        <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-[#FF5F56] inline-block" />
-                        <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-[#FFBD2E] inline-block" />
-                        <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-[#27C93F] inline-block" />
-                      </div>
+              <div className="space-y-4">
+                {/* Browser-style Preview Thumbnail */}
+                <div className="relative w-full rounded-[18px] overflow-hidden border border-[#E7E7E5] bg-[#F8F8F7]">
+                  {/* Subtle Top Browser Bar */}
+                  <div className="flex items-center justify-between px-3 py-2 bg-[#EFEFEF] border-b border-[#E7E7E5]">
+                    <div className="flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-[#FF5F56] inline-block" />
+                      <span className="h-2 w-2 rounded-full bg-[#FFBD2E] inline-block" />
+                      <span className="h-2 w-2 rounded-full bg-[#27C93F] inline-block" />
+                    </div>
+                    <span className="text-[10px] text-[#888888] font-mono truncate max-w-[140px]">
+                      {project.domain}
+                    </span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#00C047]" />
+                  </div>
 
-                      {/* Address Bar */}
-                      <div className="flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white text-[11px] sm:text-xs text-[#666665] border border-[#E0E0DE] max-w-[200px] sm:max-w-[320px] truncate">
-                        <Lock className="h-3 w-3 text-[#00C047] shrink-0" />
-                        <span className="truncate">{project.domain}</span>
-                        <ExternalLink className="h-2.5 w-2.5 shrink-0 opacity-60" />
-                      </div>
-
-                      <div className="w-8 sm:w-12 text-right">
-                        <span className="h-2 w-2 rounded-full bg-[#00C047] animate-pulse inline-block" />
+                  {/* Thumbnail Image */}
+                  <div className="relative h-44 sm:h-48 w-full bg-[#F4F4F3] overflow-hidden">
+                    <Image
+                      src={project.previewImage}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
+                      className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-md px-3.5 py-1.5 text-xs font-medium text-[#111111] shadow-lg">
+                        <Eye className="h-3.5 w-3.5" />
+                        <span>View Details</span>
                       </div>
                     </div>
-
-                    {/* Picture of Website Preview */}
-                    <div className="relative h-[280px] sm:h-[360px] md:h-[400px] w-full bg-[#F4F4F3] overflow-hidden">
-                      <Image
-                        src={project.previewImage}
-                        alt={`${project.title} Preview`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 700px"
-                        className="object-cover object-top transition-transform duration-500 ease-out group-hover/preview:scale-[1.03]"
-                        priority={idx === 0}
-                      />
-
-                      {/* Hover Overlay Badge */}
-                      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <div className="flex items-center gap-2 rounded-full bg-[#111111]/90 backdrop-blur-md text-white px-5 py-2.5 text-xs sm:text-sm font-medium shadow-xl transform translate-y-2 group-hover/preview:translate-y-0 transition-transform duration-300">
-                          <span>View Live Site</span>
-                          <ArrowUpRight className="h-4 w-4" />
-                        </div>
-                      </div>
-                    </div>
-                  </a>
+                  </div>
                 </div>
 
-                {/* Content & Details Panel (5 Cols) */}
-                <div className={`lg:col-span-5 flex flex-col justify-between space-y-6 ${idx % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2">
-                      <span className="rounded-full bg-[#F4F4F3] px-3 py-1 text-xs font-medium text-[#333333]">
-                        {project.category}
-                      </span>
-                      <span className="text-xs text-[#666665] flex items-center gap-1">
-                        <Sparkles className="h-3 w-3 text-[#7430F7]" /> {project.badge}
-                      </span>
-                    </div>
-
-                    <h3 className="text-2xl sm:text-3xl font-semibold tracking-[-0.025em] text-[#111111] leading-snug">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-sm sm:text-base text-[#666665] leading-relaxed">
-                      {project.summary}
-                    </p>
+                {/* Card Meta Info */}
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="rounded-full bg-[#F4F4F3] px-2.5 py-0.5 text-[11px] font-medium text-[#555555]">
+                      {project.category}
+                    </span>
+                    <span className="text-[11px] text-[#7430F7] font-medium flex items-center gap-1">
+                      <Sparkles className="h-3 w-3" /> {project.badge}
+                    </span>
                   </div>
 
-                  {/* Technologies Used Block */}
-                  <div className="space-y-3 pt-2 border-t border-[#F0F0EE]">
-                    <div className="flex items-center gap-1.5 text-xs font-semibold text-[#111111] uppercase tracking-wider">
-                      <Layers className="h-3.5 w-3.5 text-[#666665]" />
-                      <span>Technologies Used:</span>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {project.techStack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="rounded-full bg-[#F4F4F3] border border-[#E7E7E5] px-3 py-1 text-xs font-medium text-[#333333]"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Action Button Link with Arrow */}
-                  <div className="pt-2">
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group/btn inline-flex items-center justify-between w-full sm:w-auto gap-4 rounded-full bg-[#111111] px-6 py-3.5 text-sm font-medium text-white transition-all duration-200 hover:bg-[#222222] active:scale-[0.97] shadow-sm"
-                    >
-                      <div className="flex items-center gap-2">
-                        <Globe className="h-4 w-4" />
-                        <span>Visit {project.domain}</span>
-                      </div>
-                      <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">
-                        <ArrowUpRight className="h-4 w-4 text-white" />
-                      </div>
-                    </a>
-                  </div>
+                  <h3 className="text-base sm:text-lg font-semibold tracking-[-0.015em] text-[#111111] group-hover:text-black leading-snug line-clamp-1">
+                    {project.title}
+                  </h3>
                 </div>
               </div>
-            </motion.article>
+
+              {/* Card Footer Button */}
+              <div className="mt-4 pt-3 border-t border-[#F0F0EE] flex items-center justify-between text-xs text-[#666665]">
+                <span className="font-medium group-hover:text-[#111111] transition-colors">
+                  Explore Work
+                </span>
+                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F4F4F3] group-hover:bg-[#111111] group-hover:text-white transition-all duration-300 group-hover:rotate-45">
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Detail Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setSelectedProject(null)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-md"
+            />
+
+            {/* Modal Card Content */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full max-w-2xl max-h-[85vh] sm:max-h-[88vh] overflow-y-auto rounded-[28px] border border-[#E7E7E5] bg-white p-5 sm:p-7 md:p-8 shadow-2xl z-10 space-y-6"
+            >
+              {/* Top Header with Close Button */}
+              <div className="flex items-start justify-between gap-4">
+                <div className="space-y-1.5">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="rounded-full bg-[#F4F4F3] border border-[#E7E7E5] px-3 py-1 text-xs font-medium text-[#333333]">
+                      {selectedProject.category}
+                    </span>
+                    <span className="rounded-full bg-[#F4F4F3] px-2.5 py-0.5 text-xs text-[#7430F7] font-medium flex items-center gap-1">
+                      <Sparkles className="h-3 w-3" /> {selectedProject.badge}
+                    </span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-[-0.025em] text-[#111111] leading-tight">
+                    {selectedProject.title}
+                  </h3>
+                </div>
+
+                {/* Top Desktop/Tablet Close 'X' Button */}
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(null)}
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F4F4F3] text-[#111111] hover:bg-[#EAEAE8] active:scale-95 transition-all shadow-sm"
+                  aria-label="Close modal"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              {/* Full Browser Mockup View */}
+              <div className="relative w-full rounded-[20px] overflow-hidden border border-[#E7E7E5] bg-[#F8F8F7] shadow-sm">
+                <div className="flex items-center justify-between px-3.5 py-2.5 bg-[#EFEFEF] border-b border-[#E7E7E5]">
+                  <div className="flex items-center gap-1.5">
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F56] inline-block" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E] inline-block" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#27C93F] inline-block" />
+                  </div>
+                  <div className="flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white text-xs text-[#666665] border border-[#E0E0DE] max-w-[240px] sm:max-w-[320px] truncate">
+                    <Lock className="h-3 w-3 text-[#00C047] shrink-0" />
+                    <span className="truncate">{selectedProject.domain}</span>
+                    <ExternalLink className="h-2.5 w-2.5 shrink-0 opacity-60" />
+                  </div>
+                  <div className="w-8 text-right">
+                    <span className="h-2 w-2 rounded-full bg-[#00C047] animate-pulse inline-block" />
+                  </div>
+                </div>
+
+                <div className="relative h-[220px] sm:h-[300px] md:h-[340px] w-full bg-[#F4F4F3] overflow-hidden">
+                  <Image
+                    src={selectedProject.previewImage}
+                    alt={selectedProject.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 700px"
+                    className="object-cover object-top"
+                  />
+                </div>
+              </div>
+
+              {/* About the Project / Description */}
+              <div className="space-y-2.5">
+                <h4 className="text-xs font-semibold text-[#888888] uppercase tracking-wider">
+                  About the Project
+                </h4>
+                <p className="text-sm sm:text-base text-[#444444] leading-relaxed font-normal">
+                  {selectedProject.summary}
+                </p>
+              </div>
+
+              {/* What I Used to Create It (Tech Stack) */}
+              <div className="space-y-3 pt-4 border-t border-[#F0F0EE]">
+                <div className="flex items-center gap-1.5 text-xs font-semibold text-[#111111] uppercase tracking-wider">
+                  <Layers className="h-4 w-4 text-[#666665]" />
+                  <span>What I Used to Create It:</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full bg-[#F4F4F3] border border-[#E7E7E5] px-3.5 py-1.5 text-xs font-medium text-[#222222] shadow-sm"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Actions: Visit Live Site */}
+              <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
+                <a
+                  href={selectedProject.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center w-full gap-2 rounded-full bg-[#111111] px-6 py-3.5 text-sm font-medium text-white transition-all duration-200 hover:bg-[#222222] active:scale-[0.98] shadow-sm"
+                >
+                  <Globe className="h-4 w-4" />
+                  <span>Visit {selectedProject.domain}</span>
+                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Mobile Bottom-Center "X" Floating Button to dismiss */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.25 }}
+              className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] sm:hidden"
+            >
+              <button
+                type="button"
+                onClick={() => setSelectedProject(null)}
+                className="flex items-center gap-2 rounded-full bg-[#111111] px-6 py-3 text-sm font-semibold text-white shadow-2xl border border-white/20 active:scale-95 transition-transform"
+                aria-label="Close modal"
+              >
+                <X className="h-4 w-4 text-white" />
+                <span>Close</span>
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
+
