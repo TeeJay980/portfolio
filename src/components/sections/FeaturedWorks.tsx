@@ -29,17 +29,6 @@ export default function FeaturedWorks() {
       techStack: ["JavaScript (ES6+)", "Custom CSS Design System", "Cloudflare Turnstile", "HTML5", "Vercel"],
     },
     {
-      title: "Mary Williams | Bespoke Sewing & Design",
-      url: "https://mary-willams.vercel.app/",
-      domain: "mary-willams.vercel.app",
-      previewImage: "/images/mary_williams_preview.webp",
-      category: "Fashion Brand & Portfolio",
-      badge: "Featured Client Project",
-      summary:
-        "A bespoke digital showcase and brand experience created for Mary Williams Bespoke Sewing & Design. Features curated fashion collections, social media integration, custom lookbook exploration, and direct WhatsApp customer inquiries.",
-      techStack: ["React", "HTML5 / CSS3", "JavaScript (ES6+)", "Vercel"],
-    },
-    {
       title: "Oriflame Central Store Abuja",
       url: "https://saved-cancel.vercel.app/",
       domain: "saved-cancel.vercel.app",
