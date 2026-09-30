@@ -53,22 +53,3 @@ body {
     letter-spacing: -0.025em;
   }
 }
-
-/* Slow moving gradient keyframe for stylized Logo */
-@keyframes logoSlowFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.animate-logo-slow {
-  background-size: 250% 250%;
-  animation: logoSlowFlow 5s ease infinite;
-}
-

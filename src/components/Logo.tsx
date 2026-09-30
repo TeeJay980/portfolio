@@ -13,178 +13,113 @@ export default function Logo({
   variant = "pill",
   size = "md",
 }: LogoProps) {
-  // Dimension classes based on size prop
-  const sizeMap = {
-    sm: "h-4 w-7",
-    md: "h-5 w-8",
-    lg: "h-6 w-10",
-  };
+  // Custom designed stylized "J" with emerald curve & glowing terminal
+  const StylizedJ = ({ sizeClass = "w-4 h-4" }: { sizeClass?: string }) => (
+    <span className={`inline-flex items-center justify-center relative ${sizeClass} -ml-0.5`}>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-full h-full transform transition-all duration-300 group-hover:scale-110 group-hover:-rotate-6"
+      >
+        {/* Stylized J stem and sweeping hook */}
+        <path
+          d="M15 3.5V13.5C15 17.2 12.2 19.8 8.5 19.8C5.5 19.8 4 17.8 3.5 16"
+          stroke="url(#tj-j-grad)"
+          strokeWidth="3.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
 
-  const svgClass = sizeMap[size] || sizeMap.md;
+        {/* Accent dot above the J hook */}
+        <circle cx="15" cy="3.5" r="1.8" fill="#00FF87" />
 
-  // Stylized Monogram (Both T and J custom-engineered vector paths)
-  const StylizedMonogram = ({
-    isLightBg = false,
-    extraClass = "",
-  }: {
-    isLightBg?: boolean;
-    extraClass?: string;
-  }) => {
-    const gradId = isLightBg ? "tj-grad-dark" : "tj-grad-light";
-    const dotGradId = isLightBg ? "tj-dot-grad-dark" : "tj-dot-grad-light";
+        <defs>
+          <linearGradient
+            id="tj-j-grad"
+            x1="15"
+            y1="3.5"
+            x2="3.5"
+            y2="19.8"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#FFFFFF" />
+            <stop offset="45%" stopColor="#00FF87" />
+            <stop offset="100%" stopColor="#00C047" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </span>
+  );
 
-    return (
-      <span className={`inline-flex items-center justify-center relative ${extraClass}`}>
-        <svg
-          viewBox="0 0 34 22"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full transform transition-all duration-500 ease-out group-hover:scale-105"
-        >
-          <defs>
-            {/* Light variant gradient with slow color cycle on hover */}
-            <linearGradient id="tj-grad-light" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FFFFFF">
-                <animate
-                  attributeName="stop-color"
-                  values="#FFFFFF;#00FF87;#00C047;#38BDF8;#E5E7EB;#FFFFFF"
-                  dur="6s"
-                  repeatCount="indefinite"
-                />
-              </stop>
-              <stop offset="45%" stopColor="#00FF87">
-                <animate
-                  attributeName="stop-color"
-                  values="#00FF87;#00C047;#38BDF8;#E5E7EB;#FFFFFF;#00FF87"
-                  dur="6s"
-                  repeatCount="indefinite"
-                />
-              </stop>
-              <stop offset="100%" stopColor="#00C047">
-                <animate
-                  attributeName="stop-color"
-                  values="#00C047;#38BDF8;#E5E7EB;#FFFFFF;#00FF87;#00C047"
-                  dur="6s"
-                  repeatCount="indefinite"
-                />
-              </stop>
-            </linearGradient>
+  // Stylized "J" for light background / dark text
+  const StylizedJDark = ({ sizeClass = "w-4 h-4" }: { sizeClass?: string }) => (
+    <span className={`inline-flex items-center justify-center relative ${sizeClass} -ml-0.5`}>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-full h-full transform transition-all duration-300 group-hover:scale-110 group-hover:-rotate-6"
+      >
+        {/* Stylized J stem and sweeping hook */}
+        <path
+          d="M15 3.5V13.5C15 17.2 12.2 19.8 8.5 19.8C5.5 19.8 4 17.8 3.5 16"
+          stroke="url(#tj-j-grad-dark)"
+          strokeWidth="3.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
 
-            {/* Dark variant gradient for white background */}
-            <linearGradient id="tj-grad-dark" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#111111">
-                <animate
-                  attributeName="stop-color"
-                  values="#111111;#00C047;#7430F7;#008F35;#111111"
-                  dur="6s"
-                  repeatCount="indefinite"
-                />
-              </stop>
-              <stop offset="50%" stopColor="#00C047">
-                <animate
-                  attributeName="stop-color"
-                  values="#00C047;#7430F7;#008F35;#111111;#00C047"
-                  dur="6s"
-                  repeatCount="indefinite"
-                />
-              </stop>
-              <stop offset="100%" stopColor="#111111">
-                <animate
-                  attributeName="stop-color"
-                  values="#111111;#008F35;#7430F7;#00C047;#111111"
-                  dur="6s"
-                  repeatCount="indefinite"
-                />
-              </stop>
-            </linearGradient>
+        {/* Accent dot above the J */}
+        <circle cx="15" cy="3.5" r="1.8" fill="#00C047" />
 
-            {/* Glowing Accent Node Gradient */}
-            <linearGradient id={dotGradId} x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00FF87">
-                <animate
-                  attributeName="stop-color"
-                  values="#00FF87;#38BDF8;#00C047;#00FF87"
-                  dur="5s"
-                  repeatCount="indefinite"
-                />
-              </stop>
-              <stop offset="100%" stopColor="#00C047">
-                <animate
-                  attributeName="stop-color"
-                  values="#00C047;#00FF87;#38BDF8;#00C047"
-                  dur="5s"
-                  repeatCount="indefinite"
-                />
-              </stop>
-            </linearGradient>
-          </defs>
+        <defs>
+          <linearGradient
+            id="tj-j-grad-dark"
+            x1="15"
+            y1="3.5"
+            x2="3.5"
+            y2="19.8"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#111111" />
+            <stop offset="50%" stopColor="#00C047" />
+            <stop offset="100%" stopColor="#00A83E" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </span>
+  );
 
-          {/* STYLIZED "T" */}
-          {/* T Top Horizontal Crossbar */}
-          <path
-            d="M3 4.5H15"
-            stroke={`url(#${gradId})`}
-            strokeWidth="3.2"
-            strokeLinecap="round"
-            className="transition-all duration-300"
-          />
-          {/* T Vertical Stem */}
-          <path
-            d="M9 4.5V18.5"
-            stroke={`url(#${gradId})`}
-            strokeWidth="3.2"
-            strokeLinecap="round"
-            className="transition-all duration-300"
-          />
-          {/* T Left Accent Dot */}
-          <circle cx="3" cy="4.5" r="1.6" fill={`url(#${dotGradId})`} />
-
-          {/* STYLIZED "J" */}
-          {/* J Stem & Smooth Hook */}
-          <path
-            d="M23 4.5V13.5C23 16.8 20.6 19 17.2 19C14.4 19 12.8 17.2 12.2 15.6"
-            stroke={`url(#${gradId})`}
-            strokeWidth="3.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="transition-all duration-300"
-          />
-          {/* J Top Accent Dot */}
-          <circle cx="23" cy="4.5" r="1.6" fill={`url(#${dotGradId})`} />
-        </svg>
-      </span>
-    );
-  };
-
-  // 1. Pill Variant (Floating Navbar style)
   if (variant === "pill") {
     return (
       <div
-        className={`group flex items-center justify-center rounded-full bg-[#111111] text-white px-3 h-8 shadow-sm transition-all duration-300 hover:bg-[#1f242d] hover:shadow-[0_0_15px_rgba(0,192,71,0.2)] active:scale-95 border border-white/10 ${className}`}
+        className={`group flex items-center justify-center rounded-full bg-[#111111] text-white px-3 h-8 gap-0.5 tracking-wider font-extrabold text-[14px] shadow-sm transition-all duration-200 hover:bg-[#1f1f1f] active:scale-95 ${className}`}
       >
-        <StylizedMonogram isLightBg={false} extraClass="w-7 h-4" />
+        <span className="font-extrabold tracking-tight">T</span>
+        <StylizedJ sizeClass="w-3.5 h-3.5" />
       </div>
     );
   }
 
-  // 2. Light Variant (White text on dark cards)
   if (variant === "light") {
     return (
       <div
-        className={`group inline-flex items-center transition-all duration-300 active:scale-95 ${className}`}
+        className={`group inline-flex items-center gap-0.5 text-white font-extrabold tracking-wider ${className}`}
       >
-        <StylizedMonogram isLightBg={false} extraClass={svgClass} />
+        <span className="font-extrabold tracking-tight">T</span>
+        <StylizedJ sizeClass={size === "lg" ? "w-5 h-5" : size === "sm" ? "w-3.5 h-3.5" : "w-4 h-4"} />
       </div>
     );
   }
 
-  // 3. Text Variant (Dark text on light background)
+  // Text variant (dark text on light background)
   return (
     <div
-      className={`group inline-flex items-center transition-all duration-300 active:scale-95 ${className}`}
+      className={`group inline-flex items-center gap-0.5 text-[#111111] font-extrabold tracking-wider ${className}`}
     >
-      <StylizedMonogram isLightBg={true} extraClass={svgClass} />
+      <span className="font-extrabold tracking-tight">T</span>
+      <StylizedJDark sizeClass={size === "lg" ? "w-5 h-5" : size === "sm" ? "w-3.5 h-3.5" : "w-4 h-4"} />
     </div>
   );
 }
-
