@@ -13,13 +13,13 @@ interface ServiceItem {
 
 const servicesData: ServiceItem[] = [
   {
-    title: "Web Development",
-    desc: "Transforming design ideas into responsive, interactive, and high-performance websites and web applications using modern HTML5, CSS3, JavaScript, and React.",
-    tags: ["HTML5 & CSS3", "JavaScript", "React", "Responsive Web", "+more"],
+    title: "Front-End Web Development",
+    desc: "Crafting clean, responsive, and mobile-friendly websites and web applications using modern HTML5, CSS3, JavaScript (ES6+), and React. Focused on fast load times, accessible layouts, and fluid user interfaces.",
+    tags: ["HTML5 & CSS3", "JavaScript (ES6+)", "React", "Responsive Web", "Tailwind CSS"],
     mockups: [
-      "/images/webdev_1.jpg",
-      "/images/webdev_2.jpg",
-      "/images/webdev_3.jpg",
+      "/images/eduportal_admin.png",
+      "/images/eduportal_student.png",
+      "/images/oriflame_featured.jpg",
     ],
   },
 ];

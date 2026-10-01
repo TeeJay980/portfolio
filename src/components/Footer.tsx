@@ -6,10 +6,8 @@ import Logo from "./Logo";
 
 export default function Footer() {
   const links = [
-    { name: "Twitter / X", href: "https://twitter.com" },
-    { name: "LinkedIn", href: "https://linkedin.com" },
-    { name: "Dribbble", href: "https://dribbble.com" },
     { name: "GitHub", href: "https://github.com/TeeJay980" },
+    { name: "Email", href: "mailto:mctjay80@gmail.com" },
   ];
 
   return (
@@ -34,7 +32,7 @@ export default function Footer() {
             </h2>
 
             <p className="text-sm sm:text-base md:text-lg text-[#A0A0A0] leading-relaxed">
-              Whether you need a ground-up SaaS product redesign, a high-converting marketing site, or a scalable design system, I&apos;m here to help.
+              Whether you need a responsive website, an interactive web application, or a passionate young developer on your next project, let&apos;s connect and build something great.
             </p>
 
             <div className="pt-2">

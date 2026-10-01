@@ -40,34 +40,34 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "What’s your typical project timeline?",
+    question: "What technologies do you work with?",
     answer:
-      "Standard landing pages and portfolio sites take between 1 to 2 weeks. More complex web applications with bespoke interactive features typically take 3 to 4 weeks from project brief to deployment.",
+      "I specialize in modern HTML5, CSS3, JavaScript (ES6+), and React/Next.js. I also integrate cloud databases like Supabase, secure portals with Cloudflare, and deploy production apps via Vercel.",
   },
   {
-    question: "Do you offer revisions?",
+    question: "What kinds of projects do you build?",
     answer:
-      "Yes! Every project includes iterative feedback rounds during both the design and development phases to ensure the final product exceeds your expectations.",
+      "I build responsive web applications, educational management portals, e-commerce storefronts, and front-end component systems—such as the EduPortal School Management System and the Oriflame Abuja Store.",
   },
   {
-    question: "What do you need from me to get started?",
+    question: "How do you balance school and web development?",
     answer:
-      "A brief overview of your goals, any existing brand assets or inspirations, target audience details, and your preferred launch timeline.",
+      "I balance my school studies with dedicated afternoon and weekend coding sessions, interning at Spex to build real-world web apps and continuously improve my development skills.",
   },
   {
-    question: "Can you work with my existing brand guidelines?",
+    question: "What is your typical project turnaround time?",
     answer:
-      "Absolutely. I adapt seamlessly to existing design systems, typography guidelines, and brand identities while ensuring clean code and modern aesthetics.",
+      "Landing pages and standard websites take between 1 to 2 weeks. More comprehensive web applications with database features take around 2 to 3 weeks.",
   },
   {
-    question: "Do you provide post-project support?",
+    question: "Do you offer revisions and design adjustments?",
     answer:
-      "Yes, I provide post-launch support and warranty to address any questions, optimize performance, and assist with updates.",
+      "Yes! Every project includes iterative feedback rounds during both design and development to ensure everything looks sharp and works smoothly.",
   },
   {
-    question: "What’s the best way to reach you?",
+    question: "How can I reach you to start a project or collaborate?",
     answer:
-      "The fastest way to reach me is via email at mctjay80@gmail.com or via WhatsApp. I typically reply within a few hours.",
+      "The fastest and best way to reach me is directly via email at mctjay80@gmail.com. I check my inbox daily and reply promptly.",
   },
 ];
 
