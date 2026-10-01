@@ -45,18 +45,18 @@ export default function Hero() {
             className="lg:col-span-4 flex justify-center items-center relative z-10 -my-4 sm:-my-6 lg:-my-8"
           >
             <div className="relative w-[280px] sm:w-[340px] md:w-[380px] aspect-square">
-              {/* Main Cutout Portrait with White T-Shirt and Seamless Studio Background */}
+              {/* Main Cutout Portrait with White T-Shirt Seamlessly Blended on Page Canvas */}
               <Image
-                src="/images/tj_hero.jpg"
+                src="/images/tj_hero.png"
                 alt="Terrence J. Mark - Web Developer"
                 fill
                 priority
-                className="object-contain object-center select-none pointer-events-none drop-shadow-sm rounded-[24px]"
+                className="object-contain object-center select-none pointer-events-none"
                 sizes="(max-width: 768px) 300px, 400px"
               />
 
-              {/* Bottom Soft Gradient Mask to blend seamlessly into page background */}
-              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F8F8F7] via-[#F8F8F7]/60 to-transparent pointer-events-none" />
+              {/* Bottom Soft Gradient Mask to blend torso seamlessly into page background */}
+              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F8F8F7] via-[#F8F8F7]/70 to-transparent pointer-events-none" />
             </div>
           </motion.div>
 
