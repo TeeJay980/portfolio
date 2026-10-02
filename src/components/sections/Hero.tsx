@@ -44,14 +44,14 @@ export default function Hero() {
             transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-4 flex justify-center items-center relative z-10 -my-4 sm:-my-6 lg:-my-8"
           >
-            <div className="relative w-[280px] sm:w-[340px] md:w-[380px] aspect-square">
-              {/* Main Cutout Portrait with White T-Shirt Seamlessly Blended on Page Canvas */}
+            <div className="relative w-[270px] sm:w-[320px] md:w-[360px] aspect-[3/4] max-h-[470px]">
+              {/* Main Cutout Portrait Seamlessly Blended on Page Canvas */}
               <Image
                 src="/images/tj_hero.png"
                 alt="Terrence J. Mark - Web Developer"
                 fill
                 priority
-                className="object-contain object-center select-none pointer-events-none"
+                className="object-contain object-top select-none pointer-events-none"
                 sizes="(max-width: 768px) 300px, 400px"
               />
 
