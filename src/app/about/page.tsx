@@ -93,7 +93,7 @@ export default function AboutPage() {
                 The Journey So Far
               </h2>
               <p className="text-[#666665] leading-relaxed text-sm sm:text-base">
-                Ever since writing my first lines of HTML, I was fascinated by how code can create interactive tools and beautiful visual interfaces. Everyday, I practice building components, experimenting with CSS layouts, and understanding JavaScript logic to grow into a versatile web developer.
+                Ever since writing my first lines of HTML, I was fascinated by how code can create interactive tools and beautiful visual interfaces. Every day, I practice building components, experimenting with CSS layouts, and understanding JavaScript logic to grow into a versatile web developer.
               </p>
             </motion.div>
 
