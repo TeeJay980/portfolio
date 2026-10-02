@@ -15,7 +15,6 @@ export default function AboutPage() {
     { name: "React & Components", level: "Building" },
     { name: "Next.js & App Router", level: "Exploring" },
     { name: "Tailwind CSS", level: "Styling" },
-    { name: "Framer Motion", level: "Animations" },
     { name: "Git & GitHub", level: "Version Control" },
   ];
 
