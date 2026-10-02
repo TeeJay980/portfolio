@@ -24,23 +24,28 @@ export default function RecognitionSocialProof() {
           </div>
 
           {/* Quote */}
-          <blockquote className="text-lg sm:text-2xl md:text-[28px] font-normal text-[#111111] leading-relaxed tracking-[-0.02em] max-w-4xl">
-            “TJ delivered a transformative web project for our platform in record time. His attention to detail, clean code, and speed took our conversion rate up by 42% in the first quarter.”
+          <blockquote className="space-y-3 text-base sm:text-xl md:text-[22px] font-normal text-[#111111] leading-relaxed tracking-[-0.015em] max-w-4xl">
+            <p>
+              “I really enjoyed working with you on my website! You did a great job bringing my ideas to life, and I love how clean, simple, and professional the website looks.”
+            </p>
+            <p className="text-sm sm:text-base md:text-lg text-[#555554]">
+              “I also really appreciate your patience and willingness to make adjustments whenever I had suggestions. You’re still growing and building your experience, but your creativity and dedication are already evident in your work. I’m genuinely happy with the result, and I’m rooting for you as you continue to grow and improve. Keep up the good work! 👏🏽✨”
+            </p>
           </blockquote>
 
           {/* Author Profile */}
           <div className="flex items-center gap-3.5 sm:gap-4 pt-1 sm:pt-2">
             <div className="relative h-11 w-11 sm:h-12 sm:w-12 overflow-hidden rounded-full border border-[#E7E7E5] bg-[#F4F4F3]">
               <Image
-                src="/images/luzia_21.jpg"
-                alt="Samantha Vance"
+                src="/images/oriflame_testimonials.jpg"
+                alt="Monle Bate"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
             <div>
-              <div className="font-semibold text-[#111111] text-sm sm:text-base">Samantha Vance</div>
-              <div className="text-xs sm:text-sm text-[#666665]">VP of Product at Lumina Health</div>
+              <div className="font-semibold text-[#111111] text-sm sm:text-base">Monle Bate</div>
+              <div className="text-xs sm:text-sm text-[#666665]">Oriflame Vendor &amp; Business Owner</div>
             </div>
           </div>
         </motion.div>
