@@ -73,7 +73,7 @@ export default function Hero() {
 
             <div className="pt-1">
               <a
-                href="mailto:mcteejay24@gmail.com,mctjay80@gmail.com"
+                href="mailto:mctjay80@gmail.com"
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#111111] px-7 py-3.5 text-sm font-medium text-white transition-all duration-200 hover:bg-[#222222] active:scale-[0.97] shadow-[0_12px_28px_rgba(0,0,0,0.16)]"
               >
                 <span>Email Me</span>
