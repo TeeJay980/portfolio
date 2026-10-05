@@ -68,7 +68,7 @@ export default function Hero() {
             className="lg:col-span-4 z-20 space-y-6 text-left lg:text-left flex flex-col lg:items-start justify-center"
           >
             <p className="text-sm sm:text-base text-[#666665] leading-relaxed font-normal max-w-md">
-              As a 12-year-old web developer and Spex intern, he collaborates closely with teams to craft seamless, responsive, and user-centered web applications. A dedicated partner in bringing digital ideas to life.
+              As a 12-year-old web developer and Spex intern, I collaborate closely with teams to craft seamless, responsive, and user-centered web applications. A dedicated partner in bringing digital ideas to life.
             </p>
 
             <div className="pt-1">
