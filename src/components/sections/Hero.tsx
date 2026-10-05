@@ -68,12 +68,12 @@ export default function Hero() {
             className="lg:col-span-4 z-20 space-y-6 text-left lg:text-left flex flex-col lg:items-start justify-center"
           >
             <p className="text-sm sm:text-base text-[#666665] leading-relaxed font-normal max-w-md">
-              As a 12-year-old web developer and Spex intern, I collaborate closely with teams to craft seamless, responsive, and user-centered web applications. A dedicated partner in bringing digital ideas to life.
+              As a 12-year-old web developer and Spex intern, I collaborate closely with teams to craft seamless, responsive, and user-centered web applications. I partner in bringing digital ideas to life.
             </p>
 
             <div className="pt-1">
               <a
-                href="#contact"
+                href="mailto:mcteejay24@gmail.com,mctjay80@gmail.com"
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#111111] px-7 py-3.5 text-sm font-medium text-white transition-all duration-200 hover:bg-[#222222] active:scale-[0.97] shadow-[0_12px_28px_rgba(0,0,0,0.16)]"
               >
                 <span>Email Me</span>
