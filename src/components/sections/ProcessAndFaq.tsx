@@ -244,9 +244,7 @@ export default function ProcessAndFaq() {
                 return (
                   <div
                     key={index}
-                    className={`overflow-hidden border border-[#E7E7E5] bg-white transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.015)] hover:border-[#D2D2CF] ${
-                      isOpen ? "rounded-[22px]" : "rounded-full"
-                    }`}
+                    className="overflow-hidden rounded-[20px] border border-[#E7E7E5] bg-white transition-colors duration-200 shadow-[0_2px_10px_rgba(0,0,0,0.015)] hover:border-[#D2D2CF]"
                   >
                     <button
                       onClick={() => toggleFAQ(index)}
