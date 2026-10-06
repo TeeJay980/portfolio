@@ -1,7 +1,7 @@
 import type { Transition, Variants } from "framer-motion";
 
 /**
- * Standard Motion Configs replicating Luzia Framer site
+ * Standard Motion Configs replicating smooth Luzia Framer easing
  */
 
 // Spring transition preset
@@ -18,13 +18,13 @@ export const smoothEntranceEase = [0.16, 1, 0.3, 1] as const;
 
 // Transition presets
 export const smoothTransition: Transition = {
-  duration: 0.5,
-  ease: easePreset,
+  duration: 0.65,
+  ease: smoothEntranceEase,
 };
 
 export const slowTransition: Transition = {
-  duration: 0.7,
-  ease: easePreset,
+  duration: 0.75,
+  ease: smoothEntranceEase,
 };
 
 // Scroll reveal variants with subtle blur & spring entrance
@@ -33,6 +33,15 @@ export const scrollRevealVariants: Variants = {
     opacity: 0,
     y: 24,
     filter: "blur(4px)",
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.65,
+      ease: smoothEntranceEase,
+    },
   },
   whileInView: {
     opacity: 1,
@@ -48,4 +57,4 @@ export const scrollRevealVariants: Variants = {
 export const viewportConfig = {
   once: true,
   amount: 0.2,
-};
+} as const;

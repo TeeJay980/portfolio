@@ -13,6 +13,7 @@ import {
   X,
   Eye,
 } from "lucide-react";
+import { smoothEntranceEase, scrollRevealVariants, viewportConfig } from "@/lib/motion";
 
 interface Project {
   title: string;
@@ -109,10 +110,10 @@ export default function FeaturedWorks() {
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6 space-y-6 md:space-y-10">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          variants={scrollRevealVariants}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={viewportConfig}
           className="flex flex-col sm:flex-row sm:items-end justify-between gap-3"
         >
           <div>
@@ -128,7 +129,7 @@ export default function FeaturedWorks() {
           </p>
         </motion.div>
 
-        {/* Simplified & Compact Works Grid */}
+        {/* Works Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {projects.map((project, idx) => (
             <motion.div
@@ -139,7 +140,7 @@ export default function FeaturedWorks() {
               transition={{
                 duration: 0.55,
                 delay: idx * 0.08,
-                ease: [0.16, 1, 0.3, 1],
+                ease: smoothEntranceEase,
               }}
               onClick={() => setSelectedProject(project)}
               className="group relative cursor-pointer rounded-[24px] border border-[#E7E7E5] bg-white p-4 sm:p-5 transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_12px_36px_rgba(0,0,0,0.06)] hover:-translate-y-1 flex flex-col justify-between"
@@ -147,7 +148,7 @@ export default function FeaturedWorks() {
               <div className="space-y-4">
                 {/* Browser-style Preview Thumbnail */}
                 <div className="relative w-full rounded-[18px] overflow-hidden border border-[#E7E7E5] bg-[#F8F8F7]">
-                  {/* Top Browser Bar with Gunmetal Gray / Platinum Silver hover */}
+                  {/* Top Browser Bar */}
                   <div className="flex items-center justify-between px-3 py-2 bg-[#EFEFEF] group-hover:bg-[#E5E5E3] border-b border-[#E7E7E5] transition-colors duration-300">
                     <div className="flex items-center gap-1.5">
                       <span className="h-2 w-2 rounded-full bg-[#FF5F56] inline-block" />
@@ -197,7 +198,7 @@ export default function FeaturedWorks() {
                 </div>
               </div>
 
-              {/* Card Footer Button with Gunmetal Gray / Platinum Silver hover */}
+              {/* Card Footer */}
               <div className="mt-4 pt-3 border-t border-[#F0F0EE] flex items-center justify-between text-xs text-[#666665]">
                 <span className="font-medium group-hover:text-[#111111] transition-colors">
                   Explore Work
@@ -230,7 +231,7 @@ export default function FeaturedWorks() {
               initial={{ opacity: 0, scale: 0.94, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.35, ease: smoothEntranceEase }}
               className="relative w-full max-w-2xl max-h-[85vh] sm:max-h-[88vh] overflow-y-auto rounded-[28px] border border-[#E7E7E5] bg-white p-5 sm:p-7 md:p-8 shadow-2xl z-10 space-y-6"
             >
               {/* Top Header with Close Button */}
@@ -249,7 +250,7 @@ export default function FeaturedWorks() {
                   </h3>
                 </div>
 
-                {/* Top Desktop/Tablet Close 'X' Button */}
+                {/* Close Button */}
                 <button
                   type="button"
                   onClick={() => setSelectedProject(null)}
@@ -268,7 +269,7 @@ export default function FeaturedWorks() {
                     <span className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E] inline-block" />
                     <span className="h-2.5 w-2.5 rounded-full bg-[#27C93F] inline-block" />
                   </div>
-                  {/* Modal Address Bar with Gunmetal Gray / Platinum Silver hover */}
+                  {/* Modal Address Bar */}
                   <a
                     href={selectedProject.url}
                     target="_blank"
@@ -323,7 +324,7 @@ export default function FeaturedWorks() {
                 </div>
               </div>
 
-              {/* Actions: Visit Live Site Bar with Dark Gunmetal Gray & Platinum Silver Hover */}
+              {/* Actions: Visit Live Site */}
               <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
                 <a
                   href={selectedProject.url}
@@ -338,7 +339,7 @@ export default function FeaturedWorks() {
               </div>
             </motion.div>
 
-            {/* Mobile Bottom-Center "X" Floating Button to dismiss */}
+            {/* Mobile Bottom-Center "X" Floating Button */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -362,4 +363,3 @@ export default function FeaturedWorks() {
     </section>
   );
 }
-

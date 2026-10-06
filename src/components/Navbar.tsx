@@ -6,6 +6,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight, Mail } from "lucide-react";
 import Logo from "./Logo";
+import { siteConfig } from "@/lib/site-config";
+import { smoothEntranceEase } from "@/lib/motion";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -28,22 +30,16 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
-  const navLinks = [
-    { name: "Work", href: "/work" },
-    { name: "About", href: "/about" },
-    { name: "FAQ", href: "/faq" },
-  ];
-
   return (
     <>
       <header className="fixed top-5 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
         <motion.nav
           initial={{ y: -20, opacity: 0, filter: "blur(4px)" }}
           animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="pointer-events-auto inline-flex items-center gap-2.5 md:gap-6 rounded-full border border-[#E7E7E5] bg-white/90 p-1.5 md:px-5 md:py-2.5 shadow-sm backdrop-blur-md w-auto"
+          transition={{ duration: 0.65, ease: smoothEntranceEase }}
+          className="pointer-events-auto inline-flex items-center gap-2.5 md:gap-5 lg:gap-6 rounded-full border border-[#E7E7E5] bg-white/90 p-1.5 md:px-5 md:py-2.5 shadow-sm backdrop-blur-md w-auto"
         >
-          {/* Designed Brand Logo "TJ" */}
+          {/* Brand Logo */}
           <Link href="/" aria-label="TJ Home">
             <Logo variant="pill" />
           </Link>
@@ -52,8 +48,8 @@ export default function Navbar() {
           <div className="h-4 w-[1px] bg-[#E7E7E5] hidden md:block" />
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-1 sm:gap-2 text-sm font-medium text-[#666665]">
-            {navLinks.map((link) => {
+          <div className="hidden md:flex items-center gap-1 sm:gap-1.5 text-sm font-medium text-[#666665]">
+            {siteConfig.navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
@@ -113,7 +109,7 @@ export default function Navbar() {
               initial={{ y: -40, opacity: 0, scale: 0.96 }}
               animate={{ y: 0, opacity: 1, scale: 1 }}
               exit={{ y: -30, opacity: 0, scale: 0.96 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.3, ease: smoothEntranceEase }}
               className="absolute top-20 inset-x-4 max-w-lg mx-auto rounded-[28px] border border-[#E7E7E5] bg-white p-6 shadow-2xl space-y-6"
             >
               {/* Drawer Header */}
@@ -128,6 +124,7 @@ export default function Navbar() {
                 <button
                   onClick={() => setIsOpen(false)}
                   className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F4F4F3] text-[#666665] hover:text-[#111111]"
+                  aria-label="Close menu"
                 >
                   <X className="h-3.5 w-3.5" />
                 </button>
@@ -148,7 +145,7 @@ export default function Navbar() {
                   <ArrowUpRight className="h-4 w-4 opacity-50" />
                 </Link>
 
-                {navLinks.map((link) => {
+                {siteConfig.navLinks.map((link) => {
                   const isActive = pathname === link.href;
                   return (
                     <Link
@@ -171,12 +168,12 @@ export default function Navbar() {
               {/* Quick Contact CTA */}
               <div className="pt-2 border-t border-[#F0F0EE]">
                 <a
-                  href="mailto:mctjay80@gmail.com"
+                  href={`mailto:${siteConfig.email}`}
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-[#111111] text-white text-sm font-medium hover:bg-[#222222] transition-colors"
                 >
                   <Mail className="h-4 w-4" />
-                  <span>mctjay80@gmail.com</span>
+                  <span>{siteConfig.email}</span>
                 </a>
               </div>
             </motion.div>

@@ -3,17 +3,18 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import Image from "next/image";
+import { scrollRevealVariants, viewportConfig } from "@/lib/motion";
 
 export default function RecognitionSocialProof() {
   return (
     <section id="about" className="py-8 md:py-16">
       <div className="flex flex-col gap-5 sm:gap-6 max-w-[1140px] mx-auto px-4 sm:px-6 my-6 sm:my-10 md:my-16">
-        {/* ROW 1: Samantha's Testimonial Card */}
+        {/* ROW 1: Monle Bate's Testimonial Card */}
         <motion.div
-          initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          variants={scrollRevealVariants}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={viewportConfig}
           className="rounded-[28px] bg-white border border-[#E7E7E5] p-6 sm:p-8 md:p-12 shadow-[0_8px_30px_rgba(0,0,0,0.02)] space-y-6 sm:space-y-8 transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
         >
           {/* Star rating */}
@@ -50,12 +51,12 @@ export default function RecognitionSocialProof() {
           </div>
         </motion.div>
 
-        {/* ROW 3: Track Record Metrics Block */}
+        {/* ROW 2: Track Record Metrics Block */}
         <motion.div
-          initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          variants={scrollRevealVariants}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={viewportConfig}
           className="w-full rounded-[28px] bg-white border border-[#E7E7E5] p-6 sm:p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
         >
           <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3 py-1 text-xs font-medium text-[#333333] inline-block mb-5 sm:mb-6">

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import Image from "next/image";
+import { smoothEntranceEase, scrollRevealVariants, viewportConfig } from "@/lib/motion";
 
 interface ServiceItem {
   title: string;
@@ -29,10 +30,10 @@ export default function Services() {
     <section id="services" className="py-16 md:py-24 px-6 max-w-[1140px] mx-auto">
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        variants={scrollRevealVariants}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={viewportConfig}
         className="mb-12"
       >
         <span className="inline-block px-3.5 py-1 rounded-full text-xs font-medium bg-white border border-[#E7E7E5] text-[#111111]">
@@ -50,8 +51,8 @@ export default function Services() {
             key={svc.title}
             initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.65, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={viewportConfig}
+            transition={{ duration: 0.65, delay: index * 0.1, ease: smoothEntranceEase }}
             className="group w-full rounded-[28px] border border-[#E7E7E5] bg-white p-8 md:p-10 transition-all duration-300 hover:border-[#D2D2CF] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
           >
             {/* Top Bar: Title & Action Button */}
@@ -110,8 +111,8 @@ export default function Services() {
         <motion.div
           initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          viewport={viewportConfig}
+          transition={{ duration: 0.65, delay: 0.15, ease: smoothEntranceEase }}
           className="w-full rounded-[28px] border border-dashed border-[#D2D2CF] bg-white/60 p-8 md:p-12 text-center flex flex-col items-center justify-center gap-3 transition-colors hover:bg-white"
         >
           <div className="flex items-center gap-2 rounded-full bg-[#F4F4F3] px-3.5 py-1 text-xs font-medium text-[#333333] border border-[#E7E7E5]">

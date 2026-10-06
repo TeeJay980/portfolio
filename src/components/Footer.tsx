@@ -3,11 +3,13 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Mail } from "lucide-react";
 import Logo from "./Logo";
+import { siteConfig } from "@/lib/site-config";
+import { scrollRevealVariants, viewportConfig } from "@/lib/motion";
 
 export default function Footer() {
   const links = [
-    { name: "GitHub", href: "https://github.com/TeeJay980" },
-    { name: "Email", href: "mailto:mctjay80@gmail.com" },
+    { name: "GitHub", href: siteConfig.socials.github },
+    { name: "Email", href: `mailto:${siteConfig.email}` },
   ];
 
   return (
@@ -15,10 +17,10 @@ export default function Footer() {
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6 space-y-8 sm:space-y-12">
         {/* Contact Banner Card with Scroll Reveal */}
         <motion.div
-          initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          variants={scrollRevealVariants}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={viewportConfig}
           className="rounded-[28px] border border-[#E7E7E5] bg-[#111111] text-white p-6 sm:p-10 md:p-14 shadow-xl"
         >
           <div className="max-w-2xl space-y-5 sm:space-y-6">
@@ -37,11 +39,11 @@ export default function Footer() {
 
             <div className="pt-2">
               <a
-                href="mailto:mctjay80@gmail.com"
+                href={`mailto:${siteConfig.email}`}
                 className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-medium text-[#111111] transition-all duration-200 hover:bg-[#F2F2F0] shadow-md active:scale-[0.97]"
               >
                 <Mail className="h-4 w-4" />
-                <span>mctjay80@gmail.com</span>
+                <span>{siteConfig.email}</span>
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>

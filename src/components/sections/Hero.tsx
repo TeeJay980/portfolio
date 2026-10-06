@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import { siteConfig } from "@/lib/site-config";
+import { smoothEntranceEase } from "@/lib/motion";
 
 export default function Hero() {
   return (
@@ -14,7 +16,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.65, ease: smoothEntranceEase }}
             className="lg:col-span-4 z-20 space-y-4 sm:space-y-6 text-left"
           >
             {/* Availability Pill */}
@@ -41,11 +43,11 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.75, delay: 0.1, ease: smoothEntranceEase }}
             className="lg:col-span-4 flex justify-center items-center relative z-10 -my-4 sm:-my-6 lg:-my-8"
           >
             <div className="relative w-[270px] sm:w-[320px] md:w-[360px] aspect-[3/4] max-h-[470px]">
-              {/* Main Cutout Portrait Seamlessly Blended on Page Canvas */}
+              {/* Main Cutout Portrait */}
               <Image
                 src="/images/tj_hero.png"
                 alt="Terrence J. Mark - Web Developer"
@@ -64,7 +66,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.65, delay: 0.15, ease: smoothEntranceEase }}
             className="lg:col-span-4 z-20 space-y-6 text-left lg:text-left flex flex-col lg:items-start justify-center"
           >
             <p className="text-sm sm:text-base text-[#666665] leading-relaxed font-normal max-w-md">
@@ -73,7 +75,7 @@ export default function Hero() {
 
             <div className="pt-1">
               <a
-                href="mailto:mctjay80@gmail.com"
+                href={`mailto:${siteConfig.email}`}
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#111111] px-7 py-3.5 text-sm font-medium text-white transition-all duration-200 hover:bg-[#222222] active:scale-[0.97] shadow-[0_12px_28px_rgba(0,0,0,0.16)]"
               >
                 <span>Email Me</span>
@@ -86,4 +88,3 @@ export default function Hero() {
     </section>
   );
 }
-

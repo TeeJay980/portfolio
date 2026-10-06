@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
+import { siteConfig } from "@/lib/site-config";
+import { smoothEntranceEase, scrollRevealVariants, viewportConfig } from "@/lib/motion";
 
 interface Step {
   number: string;
@@ -66,8 +68,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: "How can I reach you to start a project or collaborate?",
-    answer:
-      "The fastest and best way to reach me is directly via email at mctjay80@gmail.com. I check my inbox daily and reply promptly.",
+    answer: `The fastest and best way to reach me is directly via email at ${siteConfig.email}. I check my inbox daily and reply promptly.`,
   },
 ];
 
@@ -92,10 +93,10 @@ export default function ProcessAndFaq() {
       <section className="max-w-[1140px] mx-auto px-6 space-y-8">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          variants={scrollRevealVariants}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={viewportConfig}
         >
           <span className="rounded-full bg-[#F4F4F3] hover:bg-[#EAEAE8] transition-colors duration-200 px-3.5 py-1.5 text-xs font-medium text-[#333333]">
             Workflow
@@ -117,8 +118,8 @@ export default function ProcessAndFaq() {
                 key={step.number}
                 initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.65, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                viewport={viewportConfig}
+                transition={{ duration: 0.65, delay: idx * 0.08, ease: smoothEntranceEase }}
                 onMouseEnter={() => setHoveredStep(idx)}
                 onMouseLeave={() => setHoveredStep(null)}
                 onClick={() => setHoveredStep(isHovered ? null : idx)}
@@ -186,18 +187,18 @@ export default function ProcessAndFaq() {
         </div>
       </section>
 
-      {/* 2. FAQ Section Designed to Match Reference Image */}
+      {/* 2. FAQ Section */}
       <section id="faq" className="max-w-[1140px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          {/* Left Column: Eyebrow + Divided Headline + Email CTA Button */}
+          {/* Left Column */}
           <motion.div
-            initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+            variants={scrollRevealVariants}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={viewportConfig}
             className="lg:col-span-5 space-y-6 sm:space-y-8"
           >
-            {/* Top Eyebrow with Divider Line */}
+            {/* Top Eyebrow */}
             <div className="flex items-center gap-3">
               <span className="text-sm font-medium text-[#737373]">FAQs</span>
               <div className="h-[1px] flex-1 max-w-[220px] bg-[#E7E7E5]" />
@@ -211,10 +212,10 @@ export default function ProcessAndFaq() {
               </span>
             </h2>
 
-            {/* Email Me Button with Soft Floating Shadow */}
+            {/* Email Me Button */}
             <div className="pt-2">
               <a
-                href="mailto:mctjay80@gmail.com"
+                href={`mailto:${siteConfig.email}`}
                 className="inline-flex items-center justify-center rounded-full bg-[#111111] px-7 py-3.5 text-sm font-medium text-white shadow-[0_12px_28px_rgba(0,0,0,0.18)] hover:bg-[#222222] active:scale-95 transition-all duration-200"
               >
                 Email Me
@@ -222,17 +223,15 @@ export default function ProcessAndFaq() {
             </div>
           </motion.div>
 
-          {/* Right Column: Rounded Card Container with Floating Badge & FAQ Items */}
+          {/* Right Column */}
           <motion.div
             initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={viewportConfig}
+            transition={{ duration: 0.65, delay: 0.1, ease: smoothEntranceEase }}
             className="lg:col-span-7 relative"
           >
-            {/* Card Shell */}
             <div className="relative rounded-[32px] sm:rounded-[40px] bg-[#F4F4F3] border border-[#E7E7E5] p-4 sm:p-6 md:p-8 pt-8 sm:pt-9 shadow-sm space-y-3">
-              {/* Floating Top Badge */}
               <div className="absolute -top-4 sm:-top-5 left-1/2 -translate-x-1/2 z-10">
                 <div className="inline-flex items-center justify-center rounded-full bg-[#111111] text-white px-5 py-2 text-xs sm:text-sm font-medium shadow-[0_12px_28px_rgba(0,0,0,0.22)] whitespace-nowrap">
                   I&apos;m here to help you
